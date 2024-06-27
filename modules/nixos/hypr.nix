@@ -1,0 +1,52 @@
+{pkgs, ...}: {
+  # Enable Hyprland
+  programs.hyprland.enable = true;
+  # swaylock
+  security.pam.services.swaylock = {};
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  # environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
+  # Thunar
+  programs.thunar.enable = true;
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
+
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-volman
+  ];
+
+  environment.systemPackages = with pkgs; [
+    alacritty
+    waybar
+    wttrbar
+    rofi-wayland
+    dunst
+    swww
+    swaylock-effects # replace swaylock
+    swayidle
+    libnotify # notification in screen
+    grimblast # Grab images from a Wayland compositor
+    slurp # Select a region in a Wayland compositor
+    wlogout
+    zathura
+    google-chrome
+    brave
+    dropbox
+    slack
+    xclip
+    wl-clipboard
+    vscode
+    direnv # vscode depend
+    meld
+    networkmanager-openvpn
+    networkmanagerapplet
+    telegram-desktop
+    feh
+    vlc
+    brightnessctl
+    cider # apple music client
+    # sddm deps
+    libsForQt5.qt5.qtgraphicaleffects
+    libsForQt5.qt5.qtquickcontrols2
+  ];
+}

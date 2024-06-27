@@ -1,0 +1,48 @@
+# NixOS
+import = ["~/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 13.0
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Heavy"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Heavy Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Medium Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Medium"
+
+[window]
+decorations = "None"
+opacity = 0.9
+dynamic_padding = false
+startup_mode = "Maximized" 
+# startup_mode = "Windowed" | "Maximized" | "Fullscreen" | "SimpleFullscreen"
+
+[window.padding]
+x = 20
+y = 20
+
+[scrolling]
+history = 10000
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+hide_when_typing = false
+
+#[shell]
+#program = "/home/bofh/bin/mtmux"
