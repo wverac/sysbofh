@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    neofetch
+    fastfetch
     inxi
     yazi
     ueberzugpp # alacritty support for yazi
