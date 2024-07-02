@@ -14,6 +14,7 @@
     ../../modules/home/lvim.nix
     ../../modules/home/vim.nix
     ../../modules/home/tmux.nix
+    ../../modules/home/shell.nix
   ];
 
   # dotfiles
@@ -23,19 +24,10 @@
 
   # Packages that should be installed to the user profile.
   home.packages = [
-    #neofetch
+    #fastfetch
   ];
   #
 
-  # My bash alias
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    shellAliases = {
-      ll = "ls -latrh";
-      #vim = "lvim";
-    };
-  };
   # Basic configuration of git
   programs.git = {
     enable = true;
