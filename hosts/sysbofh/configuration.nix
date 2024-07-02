@@ -3,7 +3,6 @@
     # sudo nixos-generate-config --show-hardware-config > ./hosts/$hostname/hardware-configuration.nix
     ./hardware-configuration.nix
     ../../modules/nixos/zen-kernel.nix
-    #    ../../modules/nixos/suspend-and-hibernate.nix
     ../../modules/nixos/hibernate.nix
     ../../modules/nixos/sddm.nix
     ../../modules/nixos/fonts.nix
@@ -15,7 +14,6 @@
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/keyd.nix
     ../../modules/nixos/laptop.nix
-    ../../modules/nixos/blesh.nix
   ];
 
   # Bootloader.
