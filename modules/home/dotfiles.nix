@@ -6,6 +6,7 @@
     ".config/feh/themes".source = ../../modules/home/config/feh/feh.conf;
     ".config/waybar/config".source = ../../modules/home/config/waybar/config;
     ".config/waybar/style.css".source = ../../modules/home/config/waybar/style.css;
+    ".config/waybar/scripts/tailscale.sh".source = ../../modules/home/config/waybar/scripts/tailscale.sh;
     ".config/wlogout/layout".source = ../../modules/home/config/wlogout/layout;
     ".config/wlogout/style.css".source = ../../modules/home/config/wlogout/style.css;
     ".config/wlogout/icons".source = ../../modules/home/config/wlogout/icons;

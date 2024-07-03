@@ -69,7 +69,6 @@ window#waybar.hidden {
     background: #383c4a;
 }
 
-
 #mode {
     padding-left: 16px;
     padding-right: 16px;
@@ -100,7 +99,6 @@ window#waybar.hidden {
     color: #ffffff;
     background: #181818;
 }
-
 
 #pulseaudio {
     margin-right: 8px;
@@ -179,6 +177,31 @@ window#waybar.hidden {
     background-color: #181818;
     color: #ffffff;
     border-color: #ad2626;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-vpn.vpn-on {
+    margin-right: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+    color: #ffffff;
+    background: #383c4a;
+}
+
+#custom-vpn.vpn-off {
+    margin-right: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+    color: #ffffff;
+    background: #383c4a;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;

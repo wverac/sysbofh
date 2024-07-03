@@ -1,10 +1,9 @@
 {
-
     "margin": "5 20 0 20",
 
         "modules-left": ["hyprland/workspaces"],
         "modules-center": ["clock"],
-        "modules-right": ["custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "custom/exit", "tray"],
+        "modules-right": ["custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "custom/vpn", "custom/exit", "tray"],
 
         "hyprland/workspaces": {
             "disable-scroll": true,
@@ -100,5 +99,12 @@
             "icon-size": 16,
             "spacing": 4
         },
-       
+        
+        "custom/vpn": {
+            "exec": "~/.config/waybar/scripts/tailscale.sh",
+            "interval": 10,
+            "format": "{}",
+            "tooltip": false,
+            "return-type": "json"
+        },
 }
