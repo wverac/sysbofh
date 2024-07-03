@@ -44,5 +44,9 @@ save_to_clipboard = true
 [mouse]
 hide_when_typing = false
 
-#[shell]
-#program = "/home/bofh/bin/mtmux"
+[cursor]
+blink_interval = 500
+
+[cursor.style]
+shape = "Block"
+blinking = "Always"

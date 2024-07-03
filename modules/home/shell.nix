@@ -16,7 +16,7 @@
     };
     bashrcExtra = ''
       if [[ -s "${pkgs.blesh}/share/blesh/ble.sh" ]]; then
-          source "${pkgs.blesh}/share/blesh/ble.sh"
+        source "${pkgs.blesh}/share/blesh/ble.sh"
       fi
     '';
   };
