@@ -1,9 +1,11 @@
 {pkgs, ...}: {
   programs.bat.enable = true;
   programs.lsd.enable = true;
+  programs.fzf.enableBashIntegration = true;
 
   home.packages = with pkgs; [
     blesh
+    fzf
   ];
 
   programs.bash = {
@@ -18,6 +20,7 @@
       if [[ -s "${pkgs.blesh}/share/blesh/ble.sh" ]]; then
         source "${pkgs.blesh}/share/blesh/ble.sh"
       fi
+      eval "$(fzf --bash)"
     '';
   };
 }
