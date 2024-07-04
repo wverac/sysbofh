@@ -2,8 +2,8 @@
     "margin": "5 20 0 20",
 
         "modules-left": ["hyprland/workspaces"],
-        "modules-center": ["clock"],
-        "modules-right": ["custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "custom/vpn", "custom/exit", "tray"],
+        "modules-center": ["custom/vpn", "clock"],
+        "modules-right": ["custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "custom/exit", "tray"],
 
         "hyprland/workspaces": {
             "disable-scroll": true,
