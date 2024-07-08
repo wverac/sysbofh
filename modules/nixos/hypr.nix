@@ -29,6 +29,7 @@
     slurp # Select a region in a Wayland compositor
     wlogout
     zathura
+    evince # gnome document viewer
     google-chrome
     brave
     dropbox
