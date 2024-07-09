@@ -23,4 +23,69 @@
       eval "$(fzf --bash)"
     '';
   };
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      format = builtins.concatStringsSep "" [
+        "$username"
+        "$hostname"
+        "$directory"
+        "$kubernetes"
+        "$nix_shell"
+        "$python"
+        "$docker_context"
+        "$git_branch"
+        "$git_state"
+        "$git_status"
+        "$cmd_duration"
+        "$character"
+      ];
+      username = {
+        format = "[$user]($style)";
+        show_always = true;
+        style_user = "gray bold";
+      };
+      hostname = {
+        ssh_only = false;
+        format = "@[$ssh_symbol$hostname]($style) ";
+        style = "white bold";
+      };
+
+      directory = {
+        read_only = " 󰌾";
+        style = "blue";
+      };
+      docker_context = {
+        symbol = " ";
+      };
+      git_branch = {
+        symbol = " ";
+      };
+      golang = {
+        symbol = " ";
+      };
+      hostname = {
+        ssh_symbol = " ";
+      };
+      lua = {
+        symbol = " ";
+      };
+      memory_usage = {
+        symbol = "󰍛 ";
+      };
+      nix_shell = {
+        symbol = " ";
+      };
+      nodejs = {
+        symbol = " ";
+      };
+      package = {
+        symbol = "󰏗 ";
+      };
+      python = {
+        symbol = " ";
+      };
+    };
+  };
 }
