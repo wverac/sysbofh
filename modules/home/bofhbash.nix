@@ -49,7 +49,7 @@
       hostname = {
         ssh_only = false;
         ssh_symbol = "";
-        format = "@[$hostname](white bold) [$ssh_symbol](red bold) ";
+        format = "@[$hostname](white bold) [$ssh_symbol](red bold)";
       };
 
       directory = {
