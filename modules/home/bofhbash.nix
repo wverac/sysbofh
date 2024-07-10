@@ -48,8 +48,8 @@
       };
       hostname = {
         ssh_only = false;
-        format = "@[$ssh_symbol$hostname]($style) ";
-        style = "white bold";
+        ssh_symbol = "";
+        format = "@[$hostname](white bold) [$ssh_symbol](red bold) ";
       };
 
       directory = {
@@ -64,9 +64,6 @@
       };
       golang = {
         symbol = " ";
-      };
-      hostname = {
-        ssh_symbol = " ";
       };
       lua = {
         symbol = " ";

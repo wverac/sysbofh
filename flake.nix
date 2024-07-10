@@ -21,7 +21,6 @@
   } @ inputs: let
     inherit (self) outputs;
   in {
-    overlays = import ./overlays {inherit inputs;};
     hydraJobs = import ./hydra.nix {inherit inputs outputs;};
 
     nixosConfigurations = {

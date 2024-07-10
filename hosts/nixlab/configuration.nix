@@ -85,7 +85,7 @@
     overlays = [
       # no pgks yet
       # outputs.overlays.additions
-      outputs.overlays.modifications
+      # outputs.overlays.modifications
       # outputs.overlays.stable-packages # we living in the edge!
     ];
     config = {

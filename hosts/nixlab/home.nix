@@ -9,13 +9,14 @@
     ../../modules/home/lvim.nix
     ../../modules/home/tmux.nix
     ../../modules/home/vim.nix
+    ../../modules/home/bofhbash.nix
   ];
 
   nixpkgs = {
     overlays = [
       # no pgks yet
       # outputs.overlays.additions
-      outputs.overlays.modifications
+      # outputs.overlays.modifications
       # outputs.overlays.stable-packages # we living in the edge!
     ];
     config = {
@@ -32,17 +33,7 @@
   home.packages = [
     #neofetch
   ];
-  #
 
-  # My bash alias
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    shellAliases = {
-      ll = "ls -latrh";
-      #vim = "lvim";
-    };
-  };
   # Basic configuration of git
   programs.git = {
     enable = true;
