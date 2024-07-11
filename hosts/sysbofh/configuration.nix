@@ -85,8 +85,27 @@
   };
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
+  #nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+    overlays = [
+      (final: prev: {
+        pythonPackagesExtensions =
+          prev.pythonPackagesExtensions
+          ++ [
+            (pyfinal: pyprev: {
+              afdko = pyprev.websockets.overridePythonAttrs (oldAttrs: {
+                doCheck = false;
+                doInstallCheck = false;
+                dontCheck = true;
+              });
+            })
+          ];
+      })
+    ];
+  };
   # Latest Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.enableAllFirmware = true;
