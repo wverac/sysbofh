@@ -157,14 +157,22 @@ in {
     ];
 
     home.file."${config.xdg.configHome}/lvim/config.lua".text = ''
-      -- lvim.colorscheme = "gruvbox"
-      lvim.transparent_window = true
+            -- lvim.colorscheme = "gruvbox"
+            lvim.transparent_window = true
 
-      lvim.plugins = {
-        { "simrat39/symbols-outline.nvim" },
-      }
-      ${symbolsOutlineConfig}
-      ${nilLsConfig}
+            lvim.plugins = {
+              { "simrat39/symbols-outline.nvim" },
+              { "mfussenegger/nvim-lint" },
+            }
+            -- Configure nvim-lint
+              require('lint').linters_by_ft = {
+              sh = { 'shellcheck' },
+             }
+             vim.cmd [[
+        autocmd BufWritePost <buffer> lua require('lint').try_lint()
+      ]]
+            ${symbolsOutlineConfig}
+            ${nilLsConfig}
     '';
   };
 }
