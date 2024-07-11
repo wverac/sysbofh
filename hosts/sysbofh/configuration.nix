@@ -23,10 +23,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.luks.devices."luks-e53376fc-56fa-4762-a654-e25f6def2e3d".device = "/dev/disk/by-uuid/e53376fc-56fa-4762-a654-e25f6def2e3d";
 
-  networking.hostName = "sysbofh"; # Define your hostname.
-
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.hostName = "sysbofh"; # Define your hostname.
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -56,7 +55,7 @@
   users.users = {
     "bofh" = {
       isNormalUser = true;
-      description = "SAE DevOps";
+      description = "BOFH";
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -84,13 +83,16 @@
     ];
   };
 
-  # Allow unfree packages
-  #nixpkgs.config.allowUnfree = true;
+  # nixpgks overlays
+  # FIX: “error: nose-1.3.7 not supported for interpreter python3.12”
   nixpkgs = {
     config = {
       allowUnfree = true;
     };
     overlays = [
+      (_: prev: {
+        python312 = prev.python312.override {packageOverrides = _: pysuper: {nose = pysuper.pynose;};};
+      })
       (final: prev: {
         pythonPackagesExtensions =
           prev.pythonPackagesExtensions
@@ -106,6 +108,7 @@
       })
     ];
   };
+
   # Latest Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.enableAllFirmware = true;
