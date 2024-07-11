@@ -21,6 +21,7 @@
     btop
     p7zip
     alejandra # nix code formatter
+    shellcheck
     nix-bash-completions
     bash-completion
     coreutils
