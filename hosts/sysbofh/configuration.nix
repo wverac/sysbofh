@@ -14,7 +14,7 @@
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/keyd.nix
     ../../modules/nixos/laptop.nix
-    ../../modules/nixos/nosuspend.nix
+#    ../../modules/nixos/nosuspend.nix
     ../../modules/nixos/usbprinter.nix
   ];
 
