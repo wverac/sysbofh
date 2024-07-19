@@ -17,11 +17,12 @@
     "application/xhtml+xml" = "google-chrome.desktop";
     "application/x-extension-xhtml" = "google-chrome.desktop";
     "application/x-extension-xht" = "google-chrome.desktop";
-    "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
+    "application/pdf" = "org.gnome.Evince.desktop";
     "text/css" = "code.desktop";
     "application/x-shellscript" = "code.desktop";
     "text/markdown" = "code.desktop";
     "text/plain" = "code.desktop";
-    "image/png" = "feh.desktop";
+    "image/png" = "org.gnome.eog.desktop";
+    "image/jpeg" = "org.gnome.eog.desktop";
   };
 }

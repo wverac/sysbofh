@@ -30,6 +30,7 @@
     wlogout
     zathura
     evince # gnome document viewer
+    eog # Eye of GNOME
     google-chrome
     brave
     dropbox

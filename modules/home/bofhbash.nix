@@ -13,6 +13,7 @@
     enableCompletion = true;
     shellAliases = {
       cat = "bat --paging=never";
+      lcat = "bat --style=plain --paging=never";
       ls = "lsd";
       ll = "lsd -latrh";
     };
