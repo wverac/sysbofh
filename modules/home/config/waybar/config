@@ -104,7 +104,7 @@
             "exec": "~/.config/waybar/scripts/tailscale.sh",
             "interval": 10,
             "format": "{}",
-            "tooltip": false,
+            "tooltip": true,
             "return-type": "json"
         },
 }
