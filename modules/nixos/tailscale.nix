@@ -31,12 +31,14 @@
       # check if we are already authenticated to tailscale
       status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
       if [ $status = "Running" ]; then
-        ${tailscale}/bin/tailscale set --exit-node=$(cat ${config.sops.secrets.exitNode.path}) --exit-node-allow-lan-access=true
+        # ${tailscale}/bin/tailscale set --exit-node=$(cat ${config.sops.secrets.exitNode.path}) --exit-node-allow-lan-access=true
+        ${tailscale}/bin/tailscale set --exit-node=$(tailscale exit-node suggest | grep ^Suggested | awk '{print $NF}') --exit-node-allow-lan-access=true
         exit 0
       fi
 
       # otherwise authenticate with tailscale
-      ${tailscale}/bin/tailscale up -authkey $(cat ${config.sops.secrets.tailscaleKey.path}) --exit-node=$(cat ${config.sops.secrets.exitNode.path}) --exit-node-allow-lan-access=true
+      # ${tailscale}/bin/tailscale up -authkey $(cat ${config.sops.secrets.tailscaleKey.path}) --exit-node=$(cat ${config.sops.secrets.exitNode.path}) --exit-node-allow-lan-access=true
+      ${tailscale}/bin/tailscale up -authkey $(cat ${config.sops.secrets.tailscaleKey.path}) --exit-node=$(tailscale exit-node suggest | grep ^Suggested | awk '{print $NF}') --exit-node-allow-lan-access=true
 
     '';
   };
