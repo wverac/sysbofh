@@ -157,22 +157,33 @@ in {
     ];
 
     home.file."${config.xdg.configHome}/lvim/config.lua".text = ''
-            -- lvim.colorscheme = "gruvbox"
-            lvim.transparent_window = true
 
-            lvim.plugins = {
-              { "simrat39/symbols-outline.nvim" },
-              { "mfussenegger/nvim-lint" },
-            }
-            -- Configure nvim-lint
-              require('lint').linters_by_ft = {
-              sh = { 'shellcheck' },
-             }
-             vim.cmd [[
-        autocmd BufWritePost <buffer> lua require('lint').try_lint()
-      ]]
-            ${symbolsOutlineConfig}
-            ${nilLsConfig}
+                  -- Function to insert the shebang line
+                  function AddShebang()
+                    if vim.bo.filetype == 'python' then
+                      vim.api.nvim_buf_set_lines(0, 0, 0, false, { '#!/usr/bin/env python3' })
+                    end
+                  end
+
+                  -- Keybind to call the function
+                  vim.api.nvim_set_keymap('n', '<leader>np', ':lua AddShebang()<CR>', { noremap = true, silent = true })
+
+                  -- lvim.colorscheme = "gruvbox"
+                  lvim.transparent_window = true
+
+                  lvim.plugins = {
+                    { "simrat39/symbols-outline.nvim" },
+                    { "mfussenegger/nvim-lint" },
+                  }
+                  -- Configure nvim-lint
+                    require('lint').linters_by_ft = {
+                    sh = { 'shellcheck' },
+                   }
+                   vim.cmd [[
+              autocmd BufWritePost <buffer> lua require('lint').try_lint()
+            ]]
+                  ${symbolsOutlineConfig}
+                  ${nilLsConfig}
     '';
   };
 }
