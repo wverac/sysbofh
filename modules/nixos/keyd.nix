@@ -9,6 +9,16 @@
     f6 = volumeup
     f8 = brightnessdown
     f9 = brightnessup
+    pageup = left
+    pagedown = right
+    capslock = layer(nav)
+    [nav]
+    pagedown = pagedown
+    pageup = pageup
+    h = left
+    k = up
+    j = down
+    l = right
   '';
 in {
   systemd.services.keyd = {
