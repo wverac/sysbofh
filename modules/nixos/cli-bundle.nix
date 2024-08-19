@@ -3,7 +3,8 @@
     fastfetch
     inxi
     yazi
-    ueberzugpp # alacritty support for yazi
+    # ueberzugpp # alacritty support for yazi
+    xorg.libXau # dependency of ueberzugpp
     tree
     killall
     ethtool
