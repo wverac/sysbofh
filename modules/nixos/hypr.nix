@@ -48,6 +48,7 @@
     brightnessctl
     cider # apple music client
     planify # Task manager
+    zoom-us
     # sddm deps
     libsForQt5.qt5.qtgraphicaleffects
     libsForQt5.qt5.qtquickcontrols2
