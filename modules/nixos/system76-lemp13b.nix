@@ -1,8 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   # hardware setup for my system76 Lemur Pro 13
   hardware.system76 = {
     # this enabled: power-daemon, kernel-modules, firmware-daemon
-    enableAll = true;
+    enableAll = lib.mkDefault true;
   };
   environment.systemPackages = with pkgs; [
     system76-keyboard-configurator
