@@ -2,7 +2,7 @@ keys:
   - &work age1jjzwtk7efwztm9c8kd73mp0269c43znpcr49usj84x54zn4f25rqtvhcv6
   - &nixlab age1cghjdfqq08yuj22p89k2v8xv3dxzmsn5jrav7es86er30vyhharq5mr4ud
   - &overcloud age1ewdv97ycruymp8z4j2deja3axdwfxv0nntchhxn8qxsy298yn4xqwc9vu3
-  - &sysbofh age1ypgv932wphu8sj7ax5gfwyzdmtxes5c89cx662lvzlf4v8n6udashk57p2
+  - &sysbofh age1nps4uakty7t5zmuyxcr3cm94zcnq29js3zeterg5cvgzmvkzeq6qajmqx7
 creation_rules:
   - path_regex: hosts/work/secrets.yaml$
     key_groups:
