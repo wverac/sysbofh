@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     #../../modules/nixos/zen-kernel.nix
     #../../modules/nixos/hibernate.nix
+    ../../modules/nixos/poweroptions.nix
     ../../modules/nixos/sddm.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/hypr.nix
@@ -14,6 +15,7 @@
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/keyd.nix
     #../../modules/nixos/laptop.nix
+    ../../modules/nixos/auto-cpufreq.nix
     ../../modules/nixos/usbprinter.nix
     #../../modules/nixos/system76-lemp13b.nix
   ];

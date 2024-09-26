@@ -103,6 +103,8 @@
 
   nilLsConfig = ''
     local lspconfig = require('lspconfig')
+    -- Python
+    lspconfig.pyright.setup{}
 
     lspconfig.nil_ls.setup {
       on_attach = function(client, bufnr)
