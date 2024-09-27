@@ -5,8 +5,10 @@ if tailscale status &>/dev/null; then
     tooltip=$(tailscale exit-node list | grep selected | awk '{print $2" "$3}')
     echo "{\"text\": \" \", \"class\": \"vpn-on\", \"tooltip\": \"$tooltip\"}"
   else
-    echo '{"text": " ", "class": "vpn-off"}'
+    tooltip="No exit-node assigned"
+    echo "{\"text\": \" \", \"class\": \"vpn-off\", \"tooltip\": \"$tooltip\"}"
   fi
 else
-  echo '{"text": " ", "class": "vpn-off"}'
+    tooltip="Tailscale is not connected"
+    echo "{\"text\": \" \", \"class\": \"vpn-off\", \"tooltip\": \"$tooltip\"}"
 fi
