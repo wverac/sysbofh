@@ -3,7 +3,6 @@
     # sudo nixos-generate-config --show-hardware-config > ./hosts/$hostname/hardware-configuration.nix
     ./hardware-configuration.nix
     #../../modules/nixos/zen-kernel.nix
-    #../../modules/nixos/hibernate.nix
     ../../modules/nixos/poweroptions.nix
     ../../modules/nixos/sddm.nix
     ../../modules/nixos/fonts.nix
@@ -16,6 +15,7 @@
     ../../modules/nixos/keyd.nix
     ../../modules/nixos/auto-cpufreq.nix
     ../../modules/nixos/usbprinter.nix
+    ../../modules/nixos/batterycargethreshold.nix
     #../../modules/nixos/system76-lemp13b.nix
   ];
 

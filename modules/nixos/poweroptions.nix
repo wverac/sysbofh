@@ -1,12 +1,11 @@
-{ ...}: {
+{...}: {
   services.logind = {
     powerKey = "suspend";
     powerKeyLongPress = "poweroff";
-    lidSwitch = "suspend";
-    lidSwitchExternalPower = "ignore";
+    lidSwitch = "suspend-then-hibernate";
+    lidSwitchExternalPower = "suspend";
+    lidSwitchDocked = "suspend-then-hibernate";
     extraConfig = ''
-      "IdleAction=lock"
-      "IdleActionSec=1m"
     '';
   };
 }
