@@ -1,5 +1,5 @@
 {...}: {
-  # The TLP power management  it is not compatible with system76
+  # The TLP power management is not compatible with system76
   # https://support.system76.com/articles/battery/
 
   systemd.services.setChargeThreshold = {
