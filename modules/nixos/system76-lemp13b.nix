@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   # hardware setup for my system76 Lemur Pro 13
   hardware.system76 = {
     # this enabled: power-daemon, kernel-modules, firmware-daemon
