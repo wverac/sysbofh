@@ -32,23 +32,7 @@
           ./hosts/nixlab/configuration.nix
         ];
       };
-      # Work laptop - ThinkPad X1 Yoga Gen 6
-      work = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          inputs.sops-nix.nixosModules.sops
-          ./hosts/work/configuration.nix
-        ];
-      };
-      # Personal laptop - ThinkPad X1 Carbon 6th
-      overcloud = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          inputs.sops-nix.nixosModules.sops
-          ./hosts/overcloud/configuration.nix
-        ];
-      };
-      # New personal laptop - System76 Lemur Pro
+      # Personal laptop - System76 Lemur Pro
       sysbofh = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
@@ -64,20 +48,6 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/nixlab/home.nix
-        ];
-      };
-      "bofh@work" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/work/home.nix
-        ];
-      };
-      "link@overcloud" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/overcloud/home.nix
         ];
       };
       "bofh@sysbofh" = home-manager.lib.homeManagerConfiguration {
