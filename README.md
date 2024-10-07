@@ -41,20 +41,19 @@
 sysbofh/
 ├── hosts
 │   ├── nixlab
-│   ├── overcloud
-│   ├── sysbofh
-│   └── work
+│   └── sysbofh
 ├── modules
 │   ├── home
 │   │   └── config
 │   │       ├── alacritty
 │   │       ├── dunst
+│   │       ├── fastfetch
 │   │       ├── feh
 │   │       ├── hypr
 │   │       │   └── scripts
-│   │       ├── neofetch
 │   │       ├── rofi
 │   │       ├── waybar
+│   │       │   └── scripts
 │   │       └── wlogout
 │   │           └── icons
 │   └── nixos
