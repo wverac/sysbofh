@@ -70,6 +70,7 @@ sysbofh/
 - [nixos](modules/nixos) OS-wide configurations and settings
 
 ## Screenshots
+![lunarvim](screenshots/lunarvim.png)
 ![overcloud02](screenshots/overcloud_02.png)
 ![overcloud01](screenshots/overcloud_01.png)
 ![ssd_bofh_theme](https://github.com/wverac/bofh-theme-sddm/blob/main/Preview.png)
