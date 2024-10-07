@@ -12,7 +12,7 @@
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 [![Zen Linux](https://img.shields.io/badge/kernel-zen-blue)](https://github.com/zen-kernel/zen-kernel)
 [![hyprland](https://img.shields.io/badge/hyprland-unstable-informational.svg?style=flat&logo=wayland)](https://hyprland.org/)
-[![hydra build](https://img.shields.io/badge/Hydra_build-status-blue)](https://hydra.nixos.me/jobset/sysbofh/sysbofh#tabs-jobs)
+[![hydra build](https://img.shields.io/badge/Hydra_build-status-blue)](https://hydra.bofh.dev/jobset/sysbofh/sysbofh#tabs-jobs)
 
 </div>
 
@@ -62,9 +62,9 @@ sysbofh/
 ```
 - [hosts](hosts) Custom settings for each machine I use
   - [nixlab](hosts/nixlab) Beelink S12 Pro Mini PC
-  - [overcloud](hosts/overcloud) ThinkPad X1 Carbon 6th
+  - ~~[overcloud](hosts/overcloud) ThinkPad X1 Carbon 6th~~
   - [sysbofh](hosts/sysbofh) System76 Lemur Pro
-  - [work](hosts/work) ThinkPad X1 Yoga Gen 6
+  - ~~[work](hosts/work) ThinkPad X1 Yoga Gen 6~~
 - [modules](modules) Modularized NixOS configurations
   - [home](modules/home) home-manager configurations
       - [config](modules/home/config) Programs dotfiles, themes and configurations
