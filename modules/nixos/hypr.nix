@@ -33,7 +33,8 @@
     eog # Eye of GNOME
     google-chrome
     brave
-    dropbox
+    maestral
+    maestral-gui
     slack
     xclip
     wl-clipboard
