@@ -16,6 +16,7 @@
     ../../modules/nixos/auto-cpufreq.nix
     ../../modules/nixos/usbprinter.nix
     ../../modules/nixos/batterycargethreshold.nix
+    ../../modules/nixos/docker.nix
     #../../modules/nixos/system76-lemp13b.nix
   ];
 
