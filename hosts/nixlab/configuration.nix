@@ -6,7 +6,7 @@
   imports = [
     # sudo nixos-generate-config --show-hardware-config > ./hosts/$hostname/hardware-configuration.nix
     ./hardware-configuration.nix
-    ../../modules/nixos/iwlwifi.nix
+    #../../modules/nixos/iwlwifi.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/libvirtd.nix
     ../../modules/nixos/cli-bundle.nix
