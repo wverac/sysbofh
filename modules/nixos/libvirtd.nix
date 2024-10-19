@@ -21,4 +21,6 @@
     spiceUSBRedirection.enable = true;
   };
   services.spice-vdagentd.enable = true;
+  # Nested virtualization
+  boot.extraModprobeConfig = "options kvm_intel nested=1";
 }
