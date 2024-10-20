@@ -14,9 +14,10 @@
     };
     networking.firewall = {
       enable = true;
-      allowedTCPPorts = [80 3000];
+      allowedTCPPorts = [8888 3000];
       extraCommands = ''
-        iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
+      # Lab
+      #  iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
       '';
     };
   };
