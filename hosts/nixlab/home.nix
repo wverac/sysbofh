@@ -12,12 +12,12 @@
     ../../modules/home/bofhbash.nix
   ];
 
+  # Overlays
   nixpkgs = {
     overlays = [
-      # no pgks yet
-      # outputs.overlays.additions
-      # outputs.overlays.modifications
-      # outputs.overlays.stable-packages # we living in the edge!
+      (self: super: {
+        utillinux = super.util-linux;
+      })
     ];
     config = {
       allowUnfree = true;

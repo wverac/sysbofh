@@ -26,12 +26,19 @@
   home.packages = [
     #fastfetch
   ];
+
   # Overlays
-  nixpkgs.overlays = [
-    (self: super: {
-      utillinux = super.util-linux;
-    })
-  ];
+  nixpkgs = {
+    overlays = [
+      (self: super: {
+        utillinux = super.util-linux;
+      })
+    ];
+    config = {
+      allowUnfree = true;
+    };
+  };
+
   # Basic configuration of git
   programs.git = {
     enable = true;

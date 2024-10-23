@@ -16,8 +16,8 @@
       enable = true;
       allowedTCPPorts = [8888 3000];
       extraCommands = ''
-      # Lab
-      #  iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
+        # Lab
+        #  iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
       '';
     };
   };
