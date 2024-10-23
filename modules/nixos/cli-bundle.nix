@@ -32,5 +32,6 @@
     terraform
     cdrtools
     ansible
+    awscli
   ];
 }

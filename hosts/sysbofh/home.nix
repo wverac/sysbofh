@@ -15,6 +15,7 @@
     ../../modules/home/vim.nix
     ../../modules/home/tmux.nix
     ../../modules/home/bofhbash.nix
+    ../../modules/home/neovim.nix
   ];
 
   # dotfiles
