@@ -15,7 +15,6 @@
     ../../modules/home/vim.nix
     ../../modules/home/tmux.nix
     ../../modules/home/bofhbash.nix
-    ../../modules/home/neovim.nix
   ];
 
   # dotfiles
@@ -27,8 +26,12 @@
   home.packages = [
     #fastfetch
   ];
-  #
-
+  # Overlays
+  nixpkgs.overlays = [
+    (self: super: {
+      utillinux = super.util-linux;
+    })
+  ];
   # Basic configuration of git
   programs.git = {
     enable = true;
