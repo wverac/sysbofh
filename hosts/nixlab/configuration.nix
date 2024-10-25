@@ -1,8 +1,4 @@
-{
-  pkgs,
-  outputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # sudo nixos-generate-config --show-hardware-config > ./hosts/$hostname/hardware-configuration.nix
     ./hardware-configuration.nix
@@ -13,7 +9,7 @@
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/zen-kernel.nix
     ../../modules/nixos/hydra-service.nix
-    ../../modules/nixos/index.nix
+    ../../modules/nixos/sws.nix
   ];
 
   # Bootloader.
