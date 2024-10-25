@@ -33,5 +33,6 @@
     cdrtools
     ansible
     awscli
+    libguestfs-with-appliance
   ];
 }
