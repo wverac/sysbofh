@@ -4,6 +4,7 @@ let
   tunnelid = builtins.readFile "${config.sops.secrets.TunnelName.path}";
   credentialsFile = builtins.readFile "${config.sops.secrets.CloudflareCred.path}";
   tunnelname = "billysh"; 
+  tunneluser = "tank"; 
 in
 {
   environment.systemPackages = with pkgs; [
@@ -17,7 +18,7 @@ in
       wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {
-        ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --cred-file ${credentialsFile} ${tunnelid}";
+        ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --config /home/${tunneluser}/.cloudflared/config.yml --no-autoupdate run --cred-file ${credentialsFile} ${tunnelid}";
         Restart = "always";
       };
     };
