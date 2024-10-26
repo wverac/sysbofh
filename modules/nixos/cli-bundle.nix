@@ -27,7 +27,6 @@
     nix-bash-completions
     bash-completion
     coreutils
-    # Add other packages you want to install
     # Lab
     terraform
     cdrtools

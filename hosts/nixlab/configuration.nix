@@ -11,6 +11,7 @@
     ../../modules/nixos/zen-kernel.nix
     ../../modules/nixos/hydra-service.nix
     ../../modules/nixos/sws.nix
+    ../../modules/nixos/cloudflare.nix
   ];
 
   # Bootloader.
@@ -113,6 +114,8 @@
   sops.age.keyFile = "/home/tank/.config/sops/age/keys.txt";
   sops.secrets.tailscaleKey = {}; # tailscale service
   sops.secrets.exitNode = {}; # tailscale exit node
+  sops.secrets.TunnelName = {}; # Cloudflare
+  sops.secrets.CloudflareCred = {}; # Cloudflare
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
