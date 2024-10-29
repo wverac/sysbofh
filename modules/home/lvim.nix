@@ -10,6 +10,8 @@
       yaml-language-server
       nodePackages.bash-language-server
       terraform-ls
+      vscode-langservers-extracted
+
     ];
 
     home.file."${config.xdg.configHome}/lvim/config.lua".text = ''
@@ -107,6 +109,29 @@
         root_dir = lspconfig.util.root_pattern(".terraform", ".git"),
         on_attach = function(client, bufnr)
         end,
+      }
+
+      lspconfig.jsonls.setup {
+        cmd = { "vscode-json-language-server", "--stdio" },
+        filetypes = { "json", "jsonc" },
+        settings = {
+            json = {
+                schemas = {
+                    {
+                    description = "Schema for GitHub Workflows",
+                    fileMatch = { ".github/workflows/*.json" },
+                    url = "https://json.schemastore.org/github-workflow.json",
+                    },
+                    {
+                    description = "Schema for Ansible Playbooks",
+                    fileMatch = { "ansible*.json" },
+                    url = "https://json.schemastore.org/ansible-playbook.json",
+                    },
+                },
+            },
+        },
+      on_attach = function(client, bufnr)
+      end,
       }
 
       -- Outline symbols
