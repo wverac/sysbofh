@@ -75,7 +75,22 @@
 
        -- LSP
        local lspconfig = require('lspconfig')
-       lspconfig.nil_ls.setup {}
+       lvim.lsp.default_keybindings = true
+       lspconfig.nil_ls.setup {
+         flags = {
+           debounce_text_changes = 150,
+         },
+         settings = {
+           ['nil'] = {
+             nix = {
+               autoArchive = true,
+             },
+             formatting = {
+               command = { "alejandra" }
+             },
+           },
+         },
+       }
        lspconfig.pyright.setup{}
        lspconfig.lua_ls.setup {}
        lspconfig.yamlls.setup {
