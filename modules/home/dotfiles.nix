@@ -13,6 +13,6 @@
     ".config/rofi/config.rasi".source = ../../modules/home/config/rofi/config.rasi;
     ".config/rofi/theme.rasi".source = ../../modules/home/config/rofi/theme.rasi;
     ".config/dunst/dunstrc".source = ../../modules/home/config/dunst/dunstrc;
-    ".config/fastfetch/config.jsonc".source = ../../modules/home/config/fastfetch/config.jsonc;
+    #    ".config/fastfetch/config.jsonc".source = ../../modules/home/config/fastfetch/config.jsonc;
   };
 }

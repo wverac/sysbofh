@@ -3,15 +3,20 @@
   pkgs,
   ...
 }: let
+  lib = pkgs.lib;
   username = config.home.username;
   userConfigs = {
-    bofh = ../../modules/home/config/fastfetch/sysbofh.jsonc;
-    tank = ../../modules/home/config/fastfetch/tank.jsonc;
-    # Add more users as needed
+    bofh = {configFile = ../../modules/home/config/fastfetch/sysbofh.jsonc;};
+    tank = {configFile = ../../modules/home/config/fastfetch/nixlab.jsonc;};
   };
-  defaultConfigFile = ../../modules/home/config/fastfetch/sysbofh.jsonc;
-  configFile = builtins.getAttr username userConfigs or defaultConfigFile;
+  defaultConfig = {
+    configFile = ../../modules/home/config/fastfetch/sysbofh.jsonc;
+  };
+  userConfig =
+    if lib.hasAttr username userConfigs
+    then lib.getAttr username userConfigs
+    else defaultConfig;
 in {
   home.packages = [pkgs.fastfetch];
-  home.file.".config/fastfetch/config.jsonc".source = configFile;
+  home.file.".config/fastfetch/config.jsonc".source = userConfig.configFile;
 }
