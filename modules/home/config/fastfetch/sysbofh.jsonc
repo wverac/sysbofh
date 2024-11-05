@@ -1,8 +1,7 @@
-
 {
     "logo": {
         "padding": {
-            "top": 2
+            "top": 0
         }
     },
     "display": {
@@ -90,11 +89,6 @@
             "keyColor": "green"
         },
         {
-            "type": "swap",
-            "key": "│ ├󰓡",
-            "keyColor": "green"
-        },
-        {
             "type": "uptime",
             "key": "│ ├󰅐",
             "keyColor": "green"
@@ -103,21 +97,6 @@
             "type": "display",
             "key": "│ └󰍹",
             "keyColor": "green"
-        },
-        {
-            "type": "sound",
-            "key": " SND",
-            "keyColor": "cyan"
-        },
-        {
-            "type": "player",
-            "key": "│ ├󰥠",
-            "keyColor": "cyan"
-        },
-        {
-            "type": "media",
-            "key": "│ └󰝚",
-            "keyColor": "cyan"
         },
         {
             "type": "custom",
