@@ -23,18 +23,23 @@
           { "simrat39/symbols-outline.nvim" },
        }
 
-       -- Keybind
+       -- Custom keybindings
        lvim.keys.normal_mode["<leader>o"] = ":SymbolsOutline<CR>"
-       lvim.keys.normal_mode["<leader>a"] = ":%!alejandra -qq<CR>"
-       lvim.keys.normal_mode["<leader>p"] = ":lua AddShebang()<CR>", { noremap = true, silent = true }
-       lvim.keys.normal_mode["<leader>b"] = ":lua AddBashShebang()<CR>", { noremap = true, silent = true }
+       lvim.keys.normal_mode["<leader>ale"] = ":%!alejandra -qq<CR>"
+       lvim.keys.normal_mode["<leader>np"] = ":lua AddShebang()<CR>", { noremap = true, silent = true }
+       lvim.keys.normal_mode["<leader>sb"] = ":lua AddBashShebang()<CR>", { noremap = true, silent = true }
+       -- Tab Navigation Keybindings
+       lvim.keys.normal_mode["gt"] = ":BufferLineCycleNext<CR>"
+       lvim.keys.normal_mode["gT"] = ":BufferLineCyclePrev<CR>"
+       -- LSP Keybindings
+       lvim.lsp.default_keybindings = true
 
        -- Function to insert the shebang line
        function AddShebang()
          if vim.bo.filetype == 'python' then
              vim.api.nvim_buf_set_lines(0, 0, 0, false, { '#!/usr/bin/env python3' })
            end
-        end
+       end
 
        function AddBashShebang()
          if vim.bo.filetype == 'sh' or vim.bo.filetype == 'bash' then
@@ -75,7 +80,6 @@
 
        -- LSP
        local lspconfig = require('lspconfig')
-       lvim.lsp.default_keybindings = true
        lspconfig.nil_ls.setup {
          flags = {
            debounce_text_changes = 150,
