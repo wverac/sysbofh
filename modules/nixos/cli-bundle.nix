@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     nix-index
-    fastfetch
+    # fastfetch
     inxi
     # yazi
     ueberzugpp # alacritty support for yazi

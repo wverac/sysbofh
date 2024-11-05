@@ -10,6 +10,7 @@
     ../../modules/home/tmux.nix
     ../../modules/home/vim.nix
     ../../modules/home/bofhbash.nix
+    ../../modules/home/fastfetch.nix
   ];
 
   # Overlays
