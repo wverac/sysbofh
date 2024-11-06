@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   # sysBOFH
   programs.bat.enable = true;
   programs.lsd.enable = true;
@@ -26,10 +30,12 @@
       eval "$(fzf --bash)"
     '';
   };
+
   programs.starship = {
     enable = true;
     settings = {
-      add_newline = false;
+      add_newline = true;
+      right_format = "$custom";
       format = builtins.concatStringsSep "" [
         "$username"
         "$hostname"
@@ -44,6 +50,12 @@
         "$cmd_duration"
         "$character"
       ];
+      custom.vpn_script = {
+        command = "${config.home.homeDirectory}/.config/scripts/check-vpn.sh";
+        when = "true";
+        format = "[$output]($style)";
+        style = "bold green";
+      };
       username = {
         format = "[$user]($style)";
         show_always = true;
@@ -87,5 +99,8 @@
         symbol = " ";
       };
     };
+  };
+  home.file.".config/scripts/check-vpn.sh" = {
+    source = ../../modules/home/config/scripts/check-vpn.sh;
   };
 }
