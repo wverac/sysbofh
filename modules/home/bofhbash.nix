@@ -34,7 +34,7 @@
   programs.starship = {
     enable = true;
     settings = {
-      add_newline = true;
+      add_newline = false;
       right_format = "$custom";
       format = builtins.concatStringsSep "" [
         "$username"

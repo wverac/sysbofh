@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
     nix-index
     inxi
-    # yazi
+    yazi
     ueberzugpp # alacritty support for yazi
     xorg.libXau # dependency of ueberzugpp
     tree

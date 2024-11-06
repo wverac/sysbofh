@@ -12,6 +12,7 @@
     ../../modules/nixos/hydra-service.nix
     ../../modules/nixos/sws.nix
     ../../modules/nixos/cloudflare.nix
+    ../../modules/nixos/jenkins.nix
   ];
 
   # Bootloader.
