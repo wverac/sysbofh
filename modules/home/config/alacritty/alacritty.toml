@@ -1,6 +1,6 @@
 # NixOS
-import = ["~/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
-live_config_reload = true
+general.import = ["~/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+general.live_config_reload = true
 
 [env]
 TERM = "xterm-256color"
