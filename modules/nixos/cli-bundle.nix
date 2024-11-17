@@ -32,5 +32,6 @@
     ansible
     awscli
     libguestfs-with-appliance
+    sshuttle
   ];
 }
