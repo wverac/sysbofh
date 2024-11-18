@@ -52,9 +52,10 @@
       ];
       custom.vpn_script = {
         command = "${config.home.homeDirectory}/.config/scripts/check-vpn.sh";
-        when = "true";
+        #when = "true";
         format = "[$output]($style)";
         style = "bold green";
+        when = "hostname | grep -qE '^(nixlab|nabucodonosor)$'";
       };
       username = {
         format = "[$user]($style)";
