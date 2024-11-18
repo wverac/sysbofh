@@ -29,6 +29,9 @@
   networking.networkmanager.enable = true;
   networking.hostName = "sysbofh"; # Define your hostname.
 
+  # Enable systemd-resolved
+  services.resolved.enable = true;
+
   # Set your time zone.
   time.timeZone = "America/Chicago";
 

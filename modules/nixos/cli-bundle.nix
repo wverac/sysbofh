@@ -33,5 +33,6 @@
     awscli
     libguestfs-with-appliance
     sshuttle
+    bc
   ];
 }
