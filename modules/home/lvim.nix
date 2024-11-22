@@ -27,7 +27,7 @@
        lvim.keys.normal_mode["<leader>o"] = ":SymbolsOutline<CR>"
        lvim.keys.normal_mode["<leader>ale"] = ":%!alejandra -qq<CR>"
        lvim.keys.normal_mode["<leader>np"] = ":lua AddShebang()<CR>", { noremap = true, silent = true }
-       lvim.keys.normal_mode["<leader>sb"] = ":lua AddBashShebang()<CR>", { noremap = true, silent = true }
+       lvim.keys.normal_mode["<leader>ss"] = ":lua AddBashShebang()<CR>", { noremap = true, silent = true }
        -- Tab Navigation Keybindings
        lvim.keys.normal_mode["gt"] = ":BufferLineCycleNext<CR>"
        lvim.keys.normal_mode["gT"] = ":BufferLineCyclePrev<CR>"

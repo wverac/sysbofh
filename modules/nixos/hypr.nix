@@ -52,6 +52,7 @@
     zoom-us
     marktext
     obsidian
+    imagemagick
     # sddm deps
     libsForQt5.qt5.qtgraphicaleffects
     libsForQt5.qt5.qtquickcontrols2
