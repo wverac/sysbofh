@@ -34,7 +34,6 @@
     libguestfs-with-appliance
     sshuttle
     bc
-    slack-cli
     sharutils
     msmtp
   ];
