@@ -27,6 +27,7 @@
     bash-completion
     coreutils
     # Lab
+    file
     terraform
     cdrtools
     ansible

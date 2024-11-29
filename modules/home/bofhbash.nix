@@ -21,7 +21,6 @@
       lcat = "bat --style=plain --paging=never";
       ls = "lsd";
       ll = "lsd -latrh";
-      vim = "lvim";
     };
     bashrcExtra = ''
       if [[ -s "${pkgs.blesh}/share/blesh/ble.sh" ]]; then
