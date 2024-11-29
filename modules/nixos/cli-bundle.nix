@@ -37,5 +37,6 @@
     bc
     sharutils
     msmtp
+    lazygit
   ];
 }
