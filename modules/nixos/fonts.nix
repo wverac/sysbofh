@@ -6,6 +6,6 @@
     powerline-symbols
     jetbrains-mono
     nerd-font-patcher
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    (nerd-fonts.jetbrains-mono)
   ];
 }
