@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     # sudo nixos-generate-config --show-hardware-config > ./hosts/$hostname/hardware-configuration.nix
     ./hardware-configuration.nix
@@ -13,6 +14,7 @@
     ../../modules/nixos/sws.nix
     ../../modules/nixos/cloudflare.nix
     ../../modules/nixos/jenkins.nix
+    ../../modules/nixos/nixvim.nix
   ];
 
   # Bootloader.
@@ -61,7 +63,7 @@
       ];
       shell = pkgs.bash;
       ignoreShellProgramCheck = true;
-      packages = [];
+      packages = [ ];
     };
   };
   # sudo no passwd
@@ -72,10 +74,10 @@
         commands = [
           {
             command = "ALL";
-            options = ["NOPASSWD"];
+            options = [ "NOPASSWD" ];
           }
         ];
-        users = ["tank"];
+        users = [ "tank" ];
       }
     ];
   };
@@ -98,7 +100,10 @@
   hardware.enableRedistributableFirmware = true;
 
   # Enable Flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.systemPackages = with pkgs; [
     # Flakes clones its dependencies through the git command,
     # so git must be installed first
@@ -113,10 +118,10 @@
   sops.defaultSopsFile = ./secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/tank/.config/sops/age/keys.txt";
-  sops.secrets.tailscaleKey = {}; # tailscale service
-  sops.secrets.exitNode = {}; # tailscale exit node
-  sops.secrets.TunnelName = {}; # Cloudflare
-  sops.secrets.CloudflareCred = {}; # Cloudflare
+  sops.secrets.tailscaleKey = { }; # tailscale service
+  sops.secrets.exitNode = { }; # tailscale exit node
+  sops.secrets.TunnelName = { }; # Cloudflare
+  sops.secrets.CloudflareCred = { }; # Cloudflare
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
