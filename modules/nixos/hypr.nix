@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Enable Hyprland
   programs.hyprland.enable = true;
   # swaylock
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
   # Thunar
@@ -53,6 +54,7 @@
     marktext
     obsidian
     imagemagick
+    pro-office-calculator
     # sddm deps
     libsForQt5.qt5.qtgraphicaleffects
     libsForQt5.qt5.qtquickcontrols2
