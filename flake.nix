@@ -12,8 +12,6 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    # My sysBOFH NeoVim configuration
-    nixvim.url = "github:wverac/nixvim";
   };
   outputs = {
     self,

@@ -14,7 +14,6 @@
     ../../modules/nixos/sws.nix
     ../../modules/nixos/cloudflare.nix
     ../../modules/nixos/jenkins.nix
-    ../../modules/nixos/nixvim.nix
   ];
 
   # Bootloader.

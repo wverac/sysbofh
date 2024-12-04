@@ -18,7 +18,6 @@
     ../../modules/nixos/batterycargethreshold.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/mullvad.nix
-    ../../modules/nixos/nixvim.nix
     #../../modules/nixos/system76-lemp13b.nix
   ];
 
