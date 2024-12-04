@@ -11,6 +11,11 @@
       nodePackages.bash-language-server
       terraform-ls
       vscode-langservers-extracted
+      ansible-language-server
+      bash-language-server
+      dockerfile-language-server-nodejs
+      terraform-ls
+      yaml-language-server
     ];
 
     home.file."${config.xdg.configHome}/lvim/config.lua".text = ''
@@ -77,6 +82,24 @@
        vim.api.nvim_set_keymap('n', '<C-v>', '"+p', { noremap = true, silent = true })
        vim.api.nvim_set_keymap('v', '<C-v>', '"+p', { noremap = true, silent = true })
        vim.api.nvim_set_keymap('i', '<C-v>', '<C-r>+', { noremap = true, silent = true })
+
+       -- Enable indent lines
+       lvim.builtin.indentlines.active = true
+
+       -- Configuration for indent-blankline.nvim
+       lvim.builtin.indentlines.options = {
+           char = "│", -- Choose the character for vertical lines
+           show_current_context = true, -- Highlight the current context
+           show_trailing_blankline_indent = false, -- Disable trailing lines
+           use_treesitter = true, -- Use Treesitter for better indentation
+           use_treesitter_scope = true, -- Highlight scope boundaries
+       }
+
+       --Set colors for the indent lines
+       vim.cmd([[
+       highlight IndentBlanklineChar guifg=#2a2e36 gui=nocombine
+       highlight IndentBlanklineContextChar guifg=#a3be8c gui=nocombine
+       ]])
 
        -- LSP
        local lspconfig = require('lspconfig')
