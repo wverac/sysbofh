@@ -19,6 +19,7 @@
     ../../modules/nixos/docker.nix
     ../../modules/nixos/mullvad.nix
     #../../modules/nixos/system76-lemp13b.nix
+    ../../modules/nixos/nixvim.nix
   ];
 
   # Bootloader.
