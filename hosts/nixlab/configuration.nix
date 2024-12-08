@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     # sudo nixos-generate-config --show-hardware-config > ./hosts/$hostname/hardware-configuration.nix
     ./hardware-configuration.nix
@@ -14,6 +13,7 @@
     ../../modules/nixos/sws.nix
     ../../modules/nixos/cloudflare.nix
     ../../modules/nixos/jenkins.nix
+    ../../modules/nixos/nixvim.nix
   ];
 
   # Bootloader.
@@ -62,7 +62,7 @@
       ];
       shell = pkgs.bash;
       ignoreShellProgramCheck = true;
-      packages = [ ];
+      packages = [];
     };
   };
   # sudo no passwd
@@ -73,10 +73,10 @@
         commands = [
           {
             command = "ALL";
-            options = [ "NOPASSWD" ];
+            options = ["NOPASSWD"];
           }
         ];
-        users = [ "tank" ];
+        users = ["tank"];
       }
     ];
   };
@@ -117,10 +117,16 @@
   sops.defaultSopsFile = ./secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/tank/.config/sops/age/keys.txt";
-  sops.secrets.tailscaleKey = { }; # tailscale service
-  sops.secrets.exitNode = { }; # tailscale exit node
-  sops.secrets.TunnelName = { }; # Cloudflare
-  sops.secrets.CloudflareCred = { }; # Cloudflare
+  sops.secrets.tailscaleKey = {}; # tailscale service
+  sops.secrets.exitNode = {}; # tailscale exit node
+  sops.secrets.TunnelName = {
+    mode = "0440";
+    owner = "tank";
+  }; # Cloudflared
+  sops.secrets.CloudflareCred = {
+    mode = "0440";
+    owner = "tank";
+  }; # Cloudflared
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
