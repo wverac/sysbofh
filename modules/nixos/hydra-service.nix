@@ -1,10 +1,13 @@
 {...}: {
   config = {
-    # nix.settings.allowed-uris = [
-    #   "github:"
-    #   "git+https://github.com/"
-    #   "git+ssh://github.com/"
-    # ];
+    nix.settings = {
+      allowed-uris = [
+        "github:"
+        "git+https://github.com/"
+        "git+ssh://github.com/"
+      ];
+      restrict-eval = false;
+    };
     services.hydra = {
       enable = true;
       hydraURL = "http://localhost:3000";
@@ -19,11 +22,6 @@
         # Lab
         #  iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
       '';
-    };
-    nix = {
-      settings = {
-        restrict-eval = false;
-      };
     };
   };
 }
