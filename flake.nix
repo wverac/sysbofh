@@ -23,7 +23,7 @@
   } @ inputs: let
     inherit (self) outputs;
   in {
-    hydraJobs = import ./hydra.nix {inherit inputs outputs;};
+    hydraJobs = {inherit inputs outputs;};
 
     nixosConfigurations = {
       # Home lab - Beelink S12 Pro Mini PC
