@@ -20,8 +20,10 @@
 - [About](#About)
 - [Structure](#Structure)
 - [Screenshots](#Screenshots)
+- [NixVim](#NixVim)
 - [Contact](#Contact)
-- [License](#License)  
+- [License](#License)
+
   
 ## About
 ### sysBOFH Project
@@ -75,6 +77,14 @@ sysbofh/
 ![overcloud02](screenshots/overcloud_02.png)
 ![overcloud01](screenshots/overcloud_01.png)
 ![ssd_bofh_theme](https://github.com/wverac/bofh-theme-sddm/blob/main/Preview.png)
+
+## NixVim
+Yes, I made my NixVim distro, it's simple, it's functional, there are no thousand configuration files, it's fast and it's beautiful.
+https://github.com/wverac/nixvim
+
+```nix
+nix run github:wverac/nixvim
+```
 
 ## Contact
 ```wv@linux.com```
