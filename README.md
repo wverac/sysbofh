@@ -12,7 +12,7 @@
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 [![Zen Linux](https://img.shields.io/badge/kernel-zen-blue)](https://github.com/zen-kernel/zen-kernel)
 [![hyprland](https://img.shields.io/badge/hyprland-unstable-informational.svg?style=flat&logo=wayland)](https://hyprland.org/)
-[![hydra build](https://img.shields.io/badge/Hydra_build-status-blue)](https://hydra.billy.sh/jobset/sysbofh/sysbofh#tabs-jobs)
+[![hydra build](https://img.shields.io/badge/Hydra_build-status-blue)](https://hydra.billy.sh/jobset/sysBOFH/sysbofh#tabs-jobs)
 
 </div>
 
