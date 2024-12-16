@@ -79,7 +79,7 @@ sysbofh/
 ![ssd_bofh_theme](https://github.com/wverac/bofh-theme-sddm/blob/main/Preview.png)
 
 ## NixVim
-Yes, I made my NixVim distro, it's simple, it's functional, there are no thousand configuration files, it's fast and it's beautiful.
+Yes, I made my NixVim distro, it's simple, it's functional, there are no thousand configuration files, it's fast and it's beautiful.  
 https://github.com/wverac/nixvim
 
 ```nix
