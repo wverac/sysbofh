@@ -22,6 +22,7 @@
     #../../modules/nixos/system76-lemp13b.nix
     ../../modules/nixos/nixvim.nix
     ../../modules/nixos/thunderbolt.nix
+    ../../modules/nixos/vial.nix
   ];
 
   # Bootloader.
