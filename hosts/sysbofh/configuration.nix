@@ -15,7 +15,7 @@
     ../../modules/nixos/keyd.nix
     ../../modules/nixos/auto-cpufreq.nix
     # FIXME: Fix this module
-    #../../modules/nixos/usbprinter.nix
+    ../../modules/nixos/usbprinter.nix
     ../../modules/nixos/batterycargethreshold.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/mullvad.nix
