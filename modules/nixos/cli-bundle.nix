@@ -5,6 +5,8 @@
     yazi
     ueberzugpp # alacritty support for yazi
     xorg.libXau # dependency of ueberzugpp
+    libinput
+    libinput-gestures
     tree
     killall
     ethtool

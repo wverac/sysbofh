@@ -4,5 +4,8 @@
     vial
     via
   ];
-  environment.systemPackages = with pkgs; [vial];
+  environment.systemPackages = with pkgs; [
+    vial
+    via
+  ];
 }
