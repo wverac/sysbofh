@@ -28,8 +28,11 @@
       setw -g pane-base-index 1
       # https://www.rockyourcode.com/copy-and-paste-in-tmux/
       # requires: xclip
+      # NOTE: Avoid insert mode with select in nvim
       ## Use vim keybindings in copy mode
-      set-option -g mouse on
+      ##set-option -g mouse on
+      setw -g mouse on
+      bind -n MouseDrag1Pane if-shell -F "#{pane_in_mode}" "send-keys -X begin-selection" "send-keys -M"
       setw -g mode-keys vi
       set-option -s set-clipboard off
       bind P paste-buffer
