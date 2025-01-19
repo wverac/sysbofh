@@ -39,6 +39,7 @@
     xclip
     wl-clipboard
     vscode
+    code-cursor
     direnv # vscode depend
     meld
     networkmanager-openvpn
