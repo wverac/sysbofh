@@ -31,6 +31,7 @@
     zathura
     evince # gnome document viewer
     eog # Eye of GNOME
+    xdg-utils
     google-chrome
     brave
     maestral
