@@ -34,7 +34,8 @@
     enable = true;
     settings = {
       add_newline = false;
-      right_format = "$custom";
+      # NOTE: Moved to left side
+      #right_format = "$custom";
       format = builtins.concatStringsSep "" [
         "$username"
         "$hostname"
@@ -47,12 +48,13 @@
         "$git_state"
         "$git_status"
         "$cmd_duration"
+        "$custom"
         "$character"
       ];
       custom.vpn_script = {
         command = "${config.home.homeDirectory}/.config/scripts/check-vpn.sh";
         format = "[$output]($style)";
-        style = "bold green";
+        style = "green";
         when = "hostname | grep -qE '^(nixlab|nabucodonosor)$'";
       };
       username = {
