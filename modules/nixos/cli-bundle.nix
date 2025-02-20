@@ -3,6 +3,7 @@
     nix-index
     inxi
     yazi
+    ncdu
     ueberzugpp # alacritty support for yazi
     xorg.libXau # dependency of ueberzugpp
     libinput

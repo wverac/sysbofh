@@ -3,10 +3,7 @@
     powerKey = "suspend";
     powerKeyLongPress = "poweroff";
     # NOTE: ignore lidSwitch, testing docking station
-    # lidSwitch = "suspend-then-hibernate";
-    # lidSwitchExternalPower = "suspend";
-    # lidSwitchDocked = "suspend-then-hibernate";
-    lidSwitch = "ignore";
+    lidSwitch = "suspend-then-hibernate";
     lidSwitchExternalPower = "ignore";
     lidSwitchDocked = "ignore";
     extraConfig = ''

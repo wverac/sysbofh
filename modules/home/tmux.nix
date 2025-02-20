@@ -19,6 +19,7 @@
       set-option -g mouse on
       set -g allow-passthrough on
       set-option -s set-clipboard on
+      set -g @scroll-speed-num-lines 5
     '';
   };
 }
