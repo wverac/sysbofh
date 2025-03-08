@@ -1,14 +1,14 @@
 keys:
-  - &nixlab age19qzulnznhcc36056t52zj79nxmt3tr362y87exagdrfa8xvj5yuqgl60s8
+  - &nixlab age1fgugkzpt620qzcufv6fnv7y0awra7q26cxmlcnnhnhm28gt4xyuq2tl8sg
   - &sysbofh age1nps4uakty7t5zmuyxcr3cm94zcnq29js3zeterg5cvgzmvkzeq6qajmqx7
 
 creation_rules:
   - path_regex: hosts/nixlab/secrets.yaml$
     key_groups:
-    - age:
-      - *nixlab
+      - age:
+          - *nixlab
 
   - path_regex: hosts/sysbofh/secrets.yaml$
     key_groups:
-    - age:
-      - *sysbofh
+      - age:
+          - *sysbofh

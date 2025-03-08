@@ -10,8 +10,9 @@
     ../../modules/nixos/mullvad.nix
     ../../modules/nixos/zen-kernel.nix
     ../../modules/nixos/hydra-service.nix
-    ../../modules/nixos/sws.nix
+    #../../modules/nixos/sws.nix
     ../../modules/nixos/cloudflare.nix
+    ../../modules/nixos/dropbear.nix
     ../../modules/nixos/jenkins.nix
     ../../modules/nixos/nixvim.nix
     ../../modules/nixos/ollama.nix
@@ -54,7 +55,7 @@
   users.users = {
     "tank" = {
       isNormalUser = true;
-      description = "nabucosonosor operator";
+      description = "Nebuchadnezzar's operator";
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -118,8 +119,8 @@
   sops.defaultSopsFile = ./secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/tank/.config/sops/age/keys.txt";
-  sops.secrets.tailscaleKey = {}; # tailscale service
-  sops.secrets.exitNode = {}; # tailscale exit node
+  # sops.secrets.tailscaleKey = {}; # tailscale service
+  # sops.secrets.exitNode = {}; # tailscale exit node
   sops.secrets.TunnelName = {
     mode = "0440";
     owner = "tank";

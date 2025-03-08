@@ -13,7 +13,7 @@ in {
   systemd.services = {
     "cloudflared-tunnel-${tunnelname}" = {
       description = "Cloudflare Tunnel Service for ${tunnelname}";
-      after = ["network-online.target" "systemd-resolved.service"];
+      after = ["systemd-resolved.service"];
       wantedBy = ["multi-user.target"];
 
       serviceConfig = {
