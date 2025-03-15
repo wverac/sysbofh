@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{...}: {
   boot.kernelParams = ["ip=dhcp"];
   boot.initrd = {
     availableKernelModules = ["r8169"];
