@@ -102,6 +102,6 @@
     };
   };
   home.file.".config/scripts/check-vpn.sh" = {
-    source = ../../modules/home/config/scripts/check-vpn.sh;
+    source = ../../modules/home/config/scripts/tailscale.sh;
   };
 }

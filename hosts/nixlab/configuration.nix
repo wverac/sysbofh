@@ -6,8 +6,8 @@
     ../../modules/nixos/docker.nix
     ../../modules/nixos/libvirtd.nix
     ../../modules/nixos/cli-bundle.nix
-    #../../modules/nixos/tailscale.nix
-    ../../modules/nixos/mullvad.nix
+    ../../modules/nixos/tailscale.nix
+    #../../modules/nixos/mullvad.nix
     ../../modules/nixos/zen-kernel.nix
     ../../modules/nixos/hydra-service.nix
     #../../modules/nixos/sws.nix
@@ -119,8 +119,8 @@
   sops.defaultSopsFile = ./secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/tank/.config/sops/age/keys.txt";
-  # sops.secrets.tailscaleKey = {}; # tailscale service
-  # sops.secrets.exitNode = {}; # tailscale exit node
+  sops.secrets.tailscaleKey = {}; # tailscale service
+  sops.secrets.exitNode = {}; # tailscale exit node
   sops.secrets.TunnelName = {
     mode = "0440";
     owner = "tank";
