@@ -16,10 +16,12 @@
     # My sysBOFH NeoVim configuration
     nixvim.url = "github:wverac/nixvim";
   };
+
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    darwin,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -29,9 +31,7 @@
     nixosConfigurations = {
       # Home lab - Beelink S12 Pro Mini PC
       nixlab = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs outputs;
-        };
+        specialArgs = {inherit inputs outputs;};
         modules = [
           inputs.sops-nix.nixosModules.sops
           ./hosts/nixlab/configuration.nix
@@ -39,42 +39,47 @@
       };
       # Personal laptop - System76 Lemur Pro
       sysbofh = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs outputs;
-        };
+        specialArgs = {inherit inputs outputs;};
         modules = [
           inputs.sops-nix.nixosModules.sops
           ./hosts/sysbofh/configuration.nix
         ];
       };
     };
-
-    homeConfigurations = {
-      "wvera@m4minix" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-        extraSpecialArgs = {
-          inherit inputs outputs;
-        };
+    darwinConfigurations = {
+      minix = darwin.lib.darwinSystem {
+        specialArgs = {inherit inputs outputs;};
         modules = [
-          ./hosts/m4minix/home.nix
+          ./hosts/minix/configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.wvera = import ./hosts/minix/home.nix;
+          }
         ];
       };
+    };
+    homeConfigurations = {
       "tank@nixlab" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {
-          inherit inputs outputs;
-        };
+        extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/nixlab/home.nix
         ];
       };
       "bofh@sysbofh" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {
-          inherit inputs outputs;
-        };
+        extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/sysbofh/home.nix
+        ];
+      };
+      "wvera@minix" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/minix/home.nix
         ];
       };
     };
