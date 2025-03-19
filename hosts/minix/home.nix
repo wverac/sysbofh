@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  nixvim,
+  ...
+}: {
   home.username = "wvera";
   home.homeDirectory = "/Users/wvera";
 
@@ -18,6 +21,7 @@
     enable = true;
     shellAliases = {
       ll = "ls -larth";
+      vim = "nvim";
     };
   };
 
@@ -25,12 +29,11 @@
     enable = true;
   };
 
-imports = [
-../../modules/home/fastfetch.nix
-../../modules/home/tmux.nix
-../../modules/home/vim.nix
-
-];
+  imports = [
+    ../../modules/home/fastfetch.nix
+    ../../modules/home/tmux.nix
+    ../../modules/home/vim.nix
+  ];
 
   home.stateVersion = "24.05";
 }

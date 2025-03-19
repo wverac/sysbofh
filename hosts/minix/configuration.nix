@@ -20,6 +20,7 @@
 
   # System-wide packages
   environment.systemPackages = with pkgs; [
+    inputs.nixvim.packages.${pkgs.system}.default
     git
     vim
     gotop
