@@ -22,7 +22,7 @@
     ../../modules/nixos/nixvim.nix
     ../../modules/nixos/thunderbolt.nix
     ../../modules/nixos/vial.nix
-    ../../modules/nixos/ollama.nix
+    #../../modules/nixos/ollama.nix
   ];
 
   # Bootloader.
