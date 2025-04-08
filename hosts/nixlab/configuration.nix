@@ -10,7 +10,7 @@
     #../../modules/nixos/mullvad.nix
     ../../modules/nixos/zen-kernel.nix
     ../../modules/nixos/hydra-service.nix
-    #../../modules/nixos/sws.nix
+    ../../modules/nixos/sws.nix
     ../../modules/nixos/cloudflare.nix
     ../../modules/nixos/dropbear.nix
     ../../modules/nixos/jenkins.nix
