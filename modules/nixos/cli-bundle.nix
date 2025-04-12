@@ -41,5 +41,8 @@
     sharutils
     msmtp
     lazygit
+    # hugo
+    hugo
+    dart-sass
   ];
 }
