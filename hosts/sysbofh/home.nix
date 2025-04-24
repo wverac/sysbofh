@@ -16,6 +16,7 @@
     ../../modules/home/tmux.nix
     ../../modules/home/bofhbash.nix
     ../../modules/home/fastfetch.nix
+    ../../modules/home/ghostty.nix
   ];
 
   # dotfiles
@@ -27,6 +28,10 @@
   home.packages = [
     #fastfetch
   ];
+
+  home.sessionVariables = {
+    TERM = "xterm-256color";
+  };
 
   # Overlays
   nixpkgs = {
