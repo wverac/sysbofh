@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   # sysBOFH
@@ -19,8 +20,8 @@
     shellAliases = {
       cat = "bat --paging=never";
       lcat = "bat --style=plain --paging=never";
-      ls = "lsd";
-      ll = "lsd -latrh";
+      ls = lib.mkDefault "lsd";
+      ll = lib.mkDefault "lsd -latrh";
     };
     bashrcExtra = ''
       if [[ -s "${pkgs.blesh}/share/blesh/ble.sh" ]]; then
