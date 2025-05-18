@@ -19,6 +19,9 @@
     ../../modules/home/ghostty.nix
   ];
 
+  # Disable mismatched versions warning
+  home.enableNixpkgsReleaseCheck = false;
+
   # dotfiles
   home.file = {
     #".config/neofetch/config.conf".source = ../../modules/home/config/neofetch/config.conf;

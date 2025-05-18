@@ -50,7 +50,6 @@
     vlc
     brightnessctl
     cider # apple music client
-    planify # Task manager
     zoom-us
     marktext
     obsidian

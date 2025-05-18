@@ -20,8 +20,8 @@
     shellAliases = {
       cat = "bat --paging=never";
       lcat = "bat --style=plain --paging=never";
-      ls = lib.mkDefault "lsd";
-      ll = lib.mkDefault "lsd -latrh";
+      ls = lib.mkForce "lsd";
+      ll = lib.mkForce "lsd -latrh";
     };
     bashrcExtra = ''
       if [[ -s "${pkgs.blesh}/share/blesh/ble.sh" ]]; then
