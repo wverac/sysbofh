@@ -50,6 +50,7 @@
       working-directory = "home";
       window-inherit-working-directory = false;
       gtk-tabs-location = "hidden";
+      app-notifications = "no-clipboard-copy";
     };
   };
 }
