@@ -30,6 +30,10 @@
     gotop
     wget
     curl
+    fastfetch
+    colima
+    docker
+    ollama
   ];
 
   services.tailscale.enable = true;
@@ -45,6 +49,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.wvera.home.homeDirectory = lib.mkForce "/Users/wvera";
+  system.primaryUser = "wvera";
   ids.gids.nixbld = 350;
 
   system.stateVersion = 4; # Keep this the same across updates
