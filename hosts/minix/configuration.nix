@@ -1,21 +1,25 @@
-{ config, pkgs, lib, inputs, ... }:
-
 {
-  imports = [ 
-	inputs.home-manager.darwinModules.home-manager 
-];
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
+  imports = [
+    inputs.home-manager.darwinModules.home-manager
+  ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   networking.hostName = "minix";
 
   programs.zsh.enable = true;
-  environment.shells = [ pkgs.zsh ];
+  environment.shells = [pkgs.zsh];
 
   homebrew = {
     enable = false;
-    taps = [ "homebrew/cask" ];
-    casks = [ "iterm2" ];
+    taps = ["homebrew/cask"];
+    casks = ["iterm2"];
   };
 
   # System-wide packages
@@ -45,4 +49,3 @@
 
   system.stateVersion = 4; # Keep this the same across updates
 }
-
