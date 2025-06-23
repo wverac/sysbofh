@@ -44,5 +44,8 @@
     # hugo
     hugo
     dart-sass
+    # LLM tools
+    goose-cli
+    claude-code
   ];
 }
