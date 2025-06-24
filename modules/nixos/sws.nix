@@ -1,7 +1,7 @@
 {...}: {
   services.static-web-server = {
     enable = true;
-    listen = "[::]:8080";
+    listen = "[::]:1337";
     root = "/var/www";
     configuration = {
       general = {
