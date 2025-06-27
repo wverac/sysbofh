@@ -21,6 +21,8 @@
     ollama
     claude-code
     bash # Modern bash from Nix
+    tailscale
+    goose-cli
   ];
 
   programs.git = {
@@ -55,6 +57,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Disable home-manager news notifications
+  news.display = "silent";
 
   imports = [
     ../../modules/home/fastfetch.nix
