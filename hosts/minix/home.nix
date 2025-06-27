@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   home.username = "wvera";
@@ -19,7 +20,7 @@
     docker-compose
     ollama
     claude-code
-    bash  # Modern bash from Nix
+    bash # Modern bash from Nix
   ];
 
   programs.git = {
@@ -38,9 +39,9 @@
     shellAliases = {
       cat = "bat --paging=never";
       lcat = "bat --style=plain --paging=never";
-      ls = "lsd";
-      ll = "lsd -latrh";
-      vim = "nvim";
+      ls = lib.mkForce "lsd";
+      ll = lib.mkForce "lsd -latrh";
+      vim = lib.mkForce "nvim";
     };
     bashrcExtra = ''
       # Use modern bash features with Nix bash

@@ -11,11 +11,13 @@ in {
   programs.lsd.enable = true;
   programs.fzf.enableBashIntegration = true;
 
-  home.packages = with pkgs; [
-    fzf
-  ] ++ lib.optionals (!isDarwin) [
-    blesh  # Only install blesh on non-Darwin systems
-  ];
+  home.packages = with pkgs;
+    [
+      fzf
+    ]
+    ++ lib.optionals (!isDarwin) [
+      blesh # Only install blesh on non-Darwin systems
+    ];
 
   programs.bash = lib.mkIf (!isDarwin) {
     enable = true;
@@ -72,7 +74,6 @@ in {
         ssh_symbol = "";
         format = "@[$hostname](white bold) [$ssh_symbol](red bold)";
       };
-
       directory = {
         read_only = " 󰌾";
         style = "blue";
@@ -106,7 +107,7 @@ in {
       };
     };
   };
-  
+
   # Only create VPN check script on non-Darwin systems
   home.file.".config/scripts/check-vpn.sh" = lib.mkIf (!isDarwin) {
     source = ../../modules/home/config/scripts/mullvad.sh;
