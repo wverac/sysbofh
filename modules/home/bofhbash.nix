@@ -17,7 +17,7 @@ in {
     blesh  # Only install blesh on non-Darwin systems
   ];
 
-  programs.bash = {
+  programs.bash = lib.mkIf (!isDarwin) {
     enable = true;
     enableCompletion = true;
     shellAliases = {
@@ -26,12 +26,11 @@ in {
       ls = lib.mkForce "lsd";
       ll = lib.mkForce "lsd -latrh";
     };
-    bashrcExtra = lib.optionalString (!isDarwin) ''
-      # Only configure blesh on non-Darwin systems
+    bashrcExtra = ''
+      # Configure blesh on non-Darwin systems
       if [[ -s "${pkgs.blesh}/share/blesh/ble.sh" ]]; then
         source "${pkgs.blesh}/share/blesh/ble.sh"
       fi
-    '' + ''
       eval "$(fzf --bash)"
     '';
   };

@@ -19,6 +19,7 @@
     docker-compose
     ollama
     claude-code
+    bash  # Modern bash from Nix
   ];
 
   programs.git = {
@@ -30,13 +31,22 @@
     };
   };
 
-  # programs.zsh = {
-  #   enable = true;
-  #   shellAliases = {
-  #     ll = "ls -larth";
-  #     vim = "nvim";
-  #   };
-  # };
+  # Use modern bash from Nix on macOS
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+    shellAliases = {
+      cat = "bat --paging=never";
+      lcat = "bat --style=plain --paging=never";
+      ls = "lsd";
+      ll = "lsd -latrh";
+      vim = "nvim";
+    };
+    bashrcExtra = ''
+      # Use modern bash features with Nix bash
+      eval "$(fzf --bash)"
+    '';
+  };
 
   programs.starship = {
     enable = true;
