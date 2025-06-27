@@ -42,6 +42,9 @@
     enable = true;
   };
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   imports = [
     ../../modules/home/fastfetch.nix
     ../../modules/home/tmux.nix
