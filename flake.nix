@@ -46,20 +46,6 @@
         ];
       };
     };
-    darwinConfigurations = {
-      minix = darwin.lib.darwinSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/minix/configuration.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.wvera = import ./hosts/minix/home.nix;
-          }
-        ];
-      };
-    };
     homeConfigurations = {
       "tank@nixlab" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
