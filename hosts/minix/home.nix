@@ -10,7 +10,7 @@
     starship
     inputs.nixvim.packages.${pkgs.system}.default
     git
-    vim
+    # vim # removed - conflicts with nixvim
     gotop
     wget
     curl
@@ -30,13 +30,13 @@
     };
   };
 
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      ll = "ls -larth";
-      vim = "nvim";
-    };
-  };
+  # programs.zsh = {
+  #   enable = true;
+  #   shellAliases = {
+  #     ll = "ls -larth";
+  #     vim = "nvim";
+  #   };
+  # };
 
   programs.starship = {
     enable = true;
@@ -48,7 +48,8 @@
   imports = [
     ../../modules/home/fastfetch.nix
     ../../modules/home/tmux.nix
-    ../../modules/home/vim.nix
+    ../../modules/home/bofhbash.nix
+    # ../../modules/home/vim.nix # conflicts with nixvim
   ];
 
   home.stateVersion = "25.05";

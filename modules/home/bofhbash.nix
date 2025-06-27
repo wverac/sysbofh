@@ -3,15 +3,18 @@
   config,
   lib,
   ...
-}: {
+}: let
+  isDarwin = pkgs.stdenv.isDarwin;
+in {
   # sysBOFH
   programs.bat.enable = true;
   programs.lsd.enable = true;
   programs.fzf.enableBashIntegration = true;
 
   home.packages = with pkgs; [
-    blesh
     fzf
+  ] ++ lib.optionals (!isDarwin) [
+    blesh  # Only install blesh on non-Darwin systems
   ];
 
   programs.bash = {
@@ -23,10 +26,12 @@
       ls = lib.mkForce "lsd";
       ll = lib.mkForce "lsd -latrh";
     };
-    bashrcExtra = ''
+    bashrcExtra = lib.optionalString (!isDarwin) ''
+      # Only configure blesh on non-Darwin systems
       if [[ -s "${pkgs.blesh}/share/blesh/ble.sh" ]]; then
         source "${pkgs.blesh}/share/blesh/ble.sh"
       fi
+    '' + ''
       eval "$(fzf --bash)"
     '';
   };
@@ -52,7 +57,7 @@
         "$custom"
         "$character"
       ];
-      custom.vpn_script = {
+      custom.vpn_script = lib.mkIf (!isDarwin) {
         command = "${config.home.homeDirectory}/.config/scripts/check-vpn.sh";
         format = "[$output]($style)";
         style = "green";
@@ -102,7 +107,9 @@
       };
     };
   };
-  home.file.".config/scripts/check-vpn.sh" = {
+  
+  # Only create VPN check script on non-Darwin systems
+  home.file.".config/scripts/check-vpn.sh" = lib.mkIf (!isDarwin) {
     source = ../../modules/home/config/scripts/mullvad.sh;
   };
 }
