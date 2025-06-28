@@ -19,7 +19,7 @@ in {
       blesh # Only install blesh on non-Darwin systems
     ];
 
-  programs.bash = lib.mkIf (!isDarwin) {
+  programs.bash = {
     enable = true;
     enableCompletion = true;
     shellAliases = {
@@ -29,10 +29,16 @@ in {
       ll = lib.mkForce "lsd -latrh";
     };
     bashrcExtra = ''
-      # Configure blesh on non-Darwin systems
-      if [[ -s "${pkgs.blesh}/share/blesh/ble.sh" ]]; then
-        source "${pkgs.blesh}/share/blesh/ble.sh"
-      fi
+      ${lib.optionalString (!isDarwin) ''
+        # Configure blesh on non-Darwin systems
+        if [[ -s "${pkgs.blesh}/share/blesh/ble.sh" ]]; then
+          source "${pkgs.blesh}/share/blesh/ble.sh"
+        fi
+      ''}
+      ${lib.optionalString isDarwin ''
+        # Add ~/.local/bin to PATH on Darwin systems
+        export PATH="$HOME/.local/bin:$PATH"
+      ''}
       eval "$(fzf --bash)"
     '';
   };
@@ -71,7 +77,10 @@ in {
       };
       hostname = {
         ssh_only = false;
-        ssh_symbol = "";
+        ssh_symbol =
+          if isDarwin
+          then ""
+          else "";
         format = "@[$hostname](white bold) [$ssh_symbol](red bold)";
       };
       directory = {

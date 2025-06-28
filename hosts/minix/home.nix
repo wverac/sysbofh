@@ -11,7 +11,7 @@
     starship
     inputs.nixvim.packages.${pkgs.system}.default
     git
-    # vim # removed - conflicts with nixvim
+    # vim #FIX: conflicts with nixvim
     gotop
     wget
     curl
@@ -20,9 +20,10 @@
     docker-compose
     ollama
     claude-code
-    bash # Modern bash from Nix
+    bash
     tailscale
     goose-cli
+    sshuttle
   ];
 
   programs.git = {
@@ -34,7 +35,6 @@
     };
   };
 
-  # Use modern bash from Nix on macOS
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -55,17 +55,21 @@
     enable = true;
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Disable home-manager news notifications
   news.display = "silent";
+
+  # Tailscale CLI management script
+  home.file.".local/bin/tailscale-macos" = {
+    source = ../../modules/home/config/scripts/tailscale-macos.sh;
+    executable = true;
+  };
 
   imports = [
     ../../modules/home/fastfetch.nix
     ../../modules/home/tmux.nix
     ../../modules/home/bofhbash.nix
-    # ../../modules/home/vim.nix # conflicts with nixvim
+    # ../../modules/home/vim.nix #FIX: conflicts with nixvim
   ];
 
   home.stateVersion = "25.05";
