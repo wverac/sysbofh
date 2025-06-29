@@ -4,7 +4,7 @@
   home.username = "tank";
   home.homeDirectory = "/home/tank";
 
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "25.05"; # Please read the comment before changing.
   imports = [
     ../../modules/home/lvim.nix
     ../../modules/home/tmux.nix
@@ -16,9 +16,7 @@
   # Overlays
   nixpkgs = {
     overlays = [
-      (self: super: {
-        utillinux = super.util-linux;
-      })
+      # No overlays needed currently
     ];
     config = {
       allowUnfree = true;

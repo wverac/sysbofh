@@ -4,7 +4,7 @@
   home.username = "bofh";
   home.homeDirectory = "/home/bofh";
 
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "25.05"; # Please read the comment before changing.
 
   imports = [
     ../../modules/home/mimedefault.nix
@@ -39,9 +39,7 @@
   # Overlays
   nixpkgs = {
     overlays = [
-      (self: super: {
-        utillinux = super.util-linux;
-      })
+      # No overlays needed currently
     ];
     config = {
       allowUnfree = true;
