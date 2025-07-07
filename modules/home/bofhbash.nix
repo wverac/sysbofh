@@ -119,6 +119,6 @@ in {
 
   # Only create VPN check script on non-Darwin systems
   home.file.".config/scripts/check-vpn.sh" = lib.mkIf (!isDarwin) {
-    source = ../../modules/home/config/scripts/mullvad.sh;
+    source = ../../modules/home/config/scripts/tailscale.sh;
   };
 }
