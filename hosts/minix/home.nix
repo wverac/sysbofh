@@ -16,14 +16,15 @@
     wget
     curl
     fastfetch
-    docker
-    docker-compose
+    # docker
+    # docker-compose
     ollama
     claude-code
     bash
-    tailscale
+    # tailscale
     goose-cli
     sshuttle
+    cloudflared
   ];
 
   programs.git = {
