@@ -39,9 +39,7 @@
     sshuttle
     bc
     sharutils
-    msmtp
     lazygit
-    # hugo
     hugo
     dart-sass
     # LLM tools
