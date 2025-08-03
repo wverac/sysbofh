@@ -29,6 +29,7 @@
     nix-bash-completions
     bash-completion
     coreutils
+    fast-cli
     # Lab
     file
     terraform
@@ -36,6 +37,7 @@
     ansible
     awscli
     libguestfs-with-appliance
+    exfatprogs
     sshuttle
     bc
     sharutils
