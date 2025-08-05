@@ -11,7 +11,7 @@
     starship
     inputs.nixvim.packages.${pkgs.system}.default
     git
-    # vim #FIX: conflicts with nixvim
+    # vim
     gotop
     wget
     curl
@@ -25,6 +25,7 @@
     goose-cli
     sshuttle
     cloudflared
+    gemini-cli
   ];
 
   programs.git = {
