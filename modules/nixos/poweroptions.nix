@@ -1,12 +1,15 @@
 {...}: {
   services.logind = {
-    powerKey = "suspend";
-    powerKeyLongPress = "poweroff";
-    # NOTE: ignore lidSwitch, testing docking station
-    lidSwitch = "suspend-then-hibernate";
-    lidSwitchExternalPower = "ignore";
-    lidSwitchDocked = "ignore";
-    extraConfig = ''
-    '';
+    settings = {
+      Login = {
+        HandlePowerKey = "suspend";
+        HandlePowerKeyLongPress = "poweroff";
+
+        # NOTE: ignore lidSwitch, testing docking station
+        HandleLidSwitch = "suspend-then-hibernate";
+        HandleLidSwitchExternalPower = "ignore";
+        HandleLidSwitchDocked = "ignore";
+      };
+    };
   };
 }
