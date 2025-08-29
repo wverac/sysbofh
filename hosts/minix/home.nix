@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  lib,
   ...
 }: {
   home.username = "wvera";
@@ -37,21 +36,22 @@
     };
   };
 
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    shellAliases = {
-      cat = "bat --paging=never";
-      lcat = "bat --style=plain --paging=never";
-      ls = lib.mkForce "lsd";
-      ll = lib.mkForce "lsd -latrh";
-      vim = lib.mkForce "nvim";
-    };
-    bashrcExtra = ''
-      # Use modern bash features with Nix bash
-      eval "$(fzf --bash)"
-    '';
-  };
+  # Bash configuration moved to darwin-fixes.nix module
+  # programs.bash = {
+  #   enable = true;
+  #   enableCompletion = true;
+  #   shellAliases = {
+  #     cat = "bat --paging=never";
+  #     lcat = "bat --style=plain --paging=never";
+  #     ls = lib.mkForce "lsd";
+  #     ll = lib.mkForce "lsd -latrh";
+  #     vim = lib.mkForce "nvim";
+  #   };
+  #   bashrcExtra = ''
+  #     # Use modern bash features with Nix bash
+  #     eval "$(fzf --bash)"
+  #   '';
+  # };
 
   programs.starship = {
     enable = true;
@@ -69,7 +69,8 @@
 
   imports = [
     ../../modules/home/fastfetch.nix
-    ../../modules/home/tmux.nix
+    # ../../modules/home/tmux.nix #FIX:wtf?
+    ../../modules/home/darwin-fixes.nix
     ../../modules/home/bofhbash.nix
     # ../../modules/home/vim.nix #FIX: conflicts with nixvim
   ];
