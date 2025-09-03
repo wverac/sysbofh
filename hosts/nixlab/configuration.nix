@@ -15,7 +15,7 @@
     ../../modules/nixos/dropbear.nix
     ../../modules/nixos/jenkins.nix
     ../../modules/nixos/nixvim.nix
-    ../../modules/nixos/ollama.nix
+    #../../modules/nixos/ollama.nix #FIXME: Some issues with open-webui
   ];
 
   # Bootloader.
