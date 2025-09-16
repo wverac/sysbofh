@@ -6,7 +6,7 @@
   environment.systemPackages = [
     pkgs.tailscale
     pkgs.trayscale
-    pkgs.tail-tray
+    # pkgs.tail-tray
   ];
 
   services.tailscale.enable = true;

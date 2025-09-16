@@ -19,7 +19,7 @@
     alacritty
     waybar
     wttrbar
-    rofi-wayland
+    rofi
     dunst
     swww
     swaylock-effects # replace swaylock
