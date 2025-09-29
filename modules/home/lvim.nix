@@ -11,7 +11,6 @@
       nodePackages.bash-language-server
       terraform-ls
       vscode-langservers-extracted
-      ansible-language-server
       bash-language-server
       dockerfile-language-server-nodejs
       terraform-ls
