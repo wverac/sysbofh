@@ -83,7 +83,6 @@ sysbofh/
 ![lunarvim](https://github.com/wverac/nixvim/blob/main/assets/BOFH_02.png)
 ![overcloud02](screenshots/overcloud_02.png)
 ![overcloud01](screenshots/overcloud_01.png)
-![ssd_bofh_theme](https://github.com/wverac/bofh-theme-sddm/blob/main/Preview.png)
 
 ## NixVim
 
