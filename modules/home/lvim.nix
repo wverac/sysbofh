@@ -12,7 +12,7 @@
       terraform-ls
       vscode-langservers-extracted
       bash-language-server
-      dockerfile-language-server-nodejs
+      dockerfile-language-server
       terraform-ls
       yaml-language-server
     ];
