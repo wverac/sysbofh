@@ -14,8 +14,9 @@
       enable = true;
       qemu = {
         swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [pkgs.OVMFFull.fd];
+        # OVMF is now included by default
+        # ovmf.enable = true;
+        # ovmf.packages = [pkgs.OVMFFull.fd];
       };
     };
     spiceUSBRedirection.enable = true;
