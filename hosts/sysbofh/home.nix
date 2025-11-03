@@ -47,13 +47,11 @@
   };
 
   # Basic configuration of git
-  programs.git = {
+  programs.git.settings = {
     enable = true;
-    userName = "William Vera";
-    userEmail = "wv@linux.com";
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
+    user.name = "William Vera";
+    user.email = "wv@linux.com";
+    init.defaultBranch = "main";
   };
 
   # restart services on change

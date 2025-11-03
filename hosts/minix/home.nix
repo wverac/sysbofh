@@ -8,7 +8,7 @@
 
   home.packages = with pkgs; [
     starship
-    inputs.nixvim.packages.${pkgs.system}.default
+    inputs.nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
     git
     # vim
     gotop
