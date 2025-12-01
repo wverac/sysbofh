@@ -29,7 +29,6 @@
     nix-bash-completions
     bash-completion
     coreutils
-    fast-cli
     # Lab
     file
     terraform
@@ -47,5 +46,6 @@
     # LLM tools
     goose-cli
     claude-code
+    codex
   ];
 }
