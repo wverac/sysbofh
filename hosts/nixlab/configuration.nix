@@ -6,7 +6,7 @@
     ../../modules/nixos/docker.nix
     ../../modules/nixos/libvirtd.nix
     ../../modules/nixos/cli-bundle.nix
-    ../../modules/nixos/tailscale.nix
+    #../../modules/nixos/tailscale.nix
     #../../modules/nixos/mullvad.nix
     ../../modules/nixos/zen-kernel.nix
     ../../modules/nixos/hydra-service.nix
@@ -16,6 +16,7 @@
     ../../modules/nixos/jenkins.nix
     ../../modules/nixos/nixvim.nix
     #../../modules/nixos/ollama.nix #FIXME: Some issues with open-webui
+    ../../modules/nixos/proton-wg.nix
   ];
 
   # Bootloader.

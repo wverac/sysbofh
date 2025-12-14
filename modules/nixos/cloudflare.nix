@@ -13,8 +13,9 @@ in {
   systemd.services = {
     "cloudflared-tunnel-${tunnelname}" = {
       description = "Cloudflare Tunnel Service for ${tunnelname}";
-      after = ["systemd-resolved.service"];
       wantedBy = ["multi-user.target"];
+      wants = ["network-online.target"];
+      after = ["network-online.target" "systemd-resolved.service"];
 
       serviceConfig = {
         Restart = "always";
