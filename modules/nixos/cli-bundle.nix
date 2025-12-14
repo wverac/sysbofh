@@ -43,6 +43,7 @@
     lazygit
     hugo
     dart-sass
+    cloudflared
     # LLM tools
     goose-cli
     claude-code

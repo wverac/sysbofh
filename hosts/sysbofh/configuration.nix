@@ -11,7 +11,7 @@
     ../../modules/nixos/sound.nix
     ../../modules/nixos/libvirtd.nix
     ../../modules/nixos/cli-bundle.nix
-    ../../modules/nixos/tailscale.nix
+    #../../modules/nixos/tailscale.nix
     ../../modules/nixos/keyd.nix
     ../../modules/nixos/auto-cpufreq.nix
     ../../modules/nixos/usbprinter.nix
@@ -23,6 +23,7 @@
     ../../modules/nixos/thunderbolt.nix
     ../../modules/nixos/vial.nix
     #../../modules/nixos/ollama.nix
+    ../../modules/nixos/proton.nix
   ];
 
   # Bootloader.
