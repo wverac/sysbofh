@@ -20,7 +20,6 @@
     ollama
     claude-code
     bash
-    # tailscale
     goose-cli
     sshuttle
     cloudflared
@@ -58,12 +57,6 @@
   nixpkgs.config.allowUnfree = true;
 
   news.display = "silent";
-
-  # Tailscale CLI management script
-  home.file.".local/bin/tailscale-macos" = {
-    source = ../../modules/home/config/scripts/tailscale-macos.sh;
-    executable = true;
-  };
 
   imports = [
     ../../modules/home/fastfetch.nix

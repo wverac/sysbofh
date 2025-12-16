@@ -64,11 +64,14 @@ in {
         "$custom"
         "$character"
       ];
-      custom.vpn_script = lib.mkIf (!isDarwin) {
-        command = "${config.home.homeDirectory}/.config/scripts/check-vpn.sh";
+      custom.vpn_script = {
+        command =
+          if isDarwin
+          then "${config.home.homeDirectory}/.config/scripts/protonvpn-macos.sh"
+          else "${config.home.homeDirectory}/.config/scripts/check-vpn.sh";
         format = "[$output]($style)";
         style = "green";
-        when = "hostname | grep -qE '^(nixlab|nabucodonosor)$'";
+        when = "hostname | grep -qE '^m4nix'";
       };
       username = {
         format = "[$user]($style)";
@@ -120,5 +123,11 @@ in {
   # Only create VPN check script on non-Darwin systems
   home.file.".config/scripts/check-vpn.sh" = lib.mkIf (!isDarwin) {
     source = ../../modules/home/config/scripts/proton-wg.sh;
+  };
+
+  # Deploy ProtonVPN script on Darwin
+  home.file.".config/scripts/protonvpn-macos.sh" = lib.mkIf isDarwin {
+    source = ../../modules/home/config/scripts/protonvpn-macos.sh;
+    executable = true;
   };
 }
