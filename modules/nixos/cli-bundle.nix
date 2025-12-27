@@ -24,6 +24,7 @@
     lm_sensors
     btop
     p7zip
+    autossh
     alejandra # nix code formatter
     shellcheck
     nix-bash-completions
