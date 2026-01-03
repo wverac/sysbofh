@@ -65,10 +65,7 @@ in {
         "$character"
       ];
       custom.vpn_script = {
-        command =
-          if isDarwin
-          then "${config.home.homeDirectory}/.config/scripts/protonvpn-macos.sh"
-          else "${config.home.homeDirectory}/.config/scripts/check-vpn.sh";
+        command = "${config.home.homeDirectory}/.config/scripts/ivpn.sh";
         format = "[$output]($style)";
         style = "green";
         when = "hostname | grep -qE '^(sysbofh|m4nix|nixlab)'";
@@ -120,15 +117,9 @@ in {
     };
   };
 
-  # Only create VPN check script on non-Darwin systems
-  home.file.".config/scripts/check-vpn.sh" = lib.mkIf (!isDarwin) {
+  # Deploy IVPN status script on all platforms (same binary interface)
+  home.file.".config/scripts/ivpn.sh" = {
     source = ../../modules/home/config/scripts/ivpn.sh;
-    executable = true;
-  };
-
-  # Deploy ProtonVPN script on Darwin
-  home.file.".config/scripts/protonvpn-macos.sh" = lib.mkIf isDarwin {
-    source = ../../modules/home/config/scripts/protonvpn-macos.sh;
     executable = true;
   };
 }

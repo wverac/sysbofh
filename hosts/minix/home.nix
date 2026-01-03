@@ -20,10 +20,9 @@
     ollama
     claude-code
     bash
-    goose-cli
     sshuttle
     cloudflared
-    gemini-cli
+    autossh
   ];
 
   programs.git.settings = {
