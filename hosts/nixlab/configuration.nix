@@ -16,7 +16,7 @@
     ../../modules/nixos/jenkins.nix
     ../../modules/nixos/nixvim.nix
     #../../modules/nixos/ollama.nix #FIXME: Some issues with open-webui
-    ../../modules/nixos/proton-wg.nix
+    #../../modules/nixos/proton-wg.nix
   ];
 
   # Bootloader.

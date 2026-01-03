@@ -71,7 +71,7 @@ in {
           else "${config.home.homeDirectory}/.config/scripts/check-vpn.sh";
         format = "[$output]($style)";
         style = "green";
-        when = "hostname | grep -qE '^m4nix'";
+        when = "hostname | grep -qE '^(m4nix|nixlab)'";
       };
       username = {
         format = "[$user]($style)";
