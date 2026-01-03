@@ -8,14 +8,13 @@ IVPN_BIN="$(command -v ivpn)"
   exit 0
 }
 
-# Check ivpn status
-status_output="$("$IVPN_BIN" status 2>/dev/null)"
+# Check ivpn status - get VPN line and check for DISCONNECTED
+vpn_state="$("$IVPN_BIN" status 2>/dev/null | grep "^VPN" | awk -F': ' '{print $2}')"
 
-# Check if connected
-if echo "$status_output" | grep -qi "connected"; then
-  echo -n "󰖂"
-else
+if [[ "$vpn_state" == "DISCONNECTED" ]]; then
   echo -n "󰦞"
+else
+  echo -n "󰖂"
 fi
 
 exit 0
