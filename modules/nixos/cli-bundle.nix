@@ -30,6 +30,10 @@
     nix-bash-completions
     bash-completion
     coreutils
+    wireguard-tools
+    nftables
+    iptables
+    iproute2
     # Lab
     file
     terraform
@@ -46,7 +50,6 @@
     dart-sass
     cloudflared
     # LLM tools
-    goose-cli
     claude-code
     codex
   ];
