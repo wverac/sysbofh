@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, outputs, ...}: {
   imports = [
     # sudo nixos-generate-config --show-hardware-config > ./hosts/$hostname/hardware-configuration.nix
     ./hardware-configuration.nix
@@ -87,10 +87,7 @@
 
   nixpkgs = {
     overlays = [
-      # no pgks yet
-      # outputs.overlays.additions
-      # outputs.overlays.modifications
-      # outputs.overlays.stable-packages # we living in the edge!
+      outputs.overlays.hydra
     ];
     config = {
       allowUnfree = true;

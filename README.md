@@ -63,6 +63,7 @@ sysbofh/
 │   │       └── wlogout
 │   │           └── icons
 │   └── nixos
+├── overlays
 └── screenshots
 ```
 
@@ -76,6 +77,7 @@ sysbofh/
   - [home](modules/home) home-manager configurations
     - [config](modules/home/config) Programs dotfiles, themes and configurations
 - [nixos](modules/nixos) OS-wide configurations and settings
+- [overlays](overlays) Nixpkgs overlays for package modifications and fixes
 
 ## Screenshots
 

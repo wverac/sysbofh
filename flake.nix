@@ -26,6 +26,10 @@
   } @ inputs: let
     inherit (self) outputs;
   in {
+    # Package overlays
+    overlays = {
+      hydra = import ./overlays/hydra.nix;
+    };
     hydraJobs = import ./hydra.nix {inherit inputs outputs;};
 
     nixosConfigurations = {
