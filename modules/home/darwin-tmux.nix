@@ -12,37 +12,92 @@
 
   programs.tmux = {
     enable = true;
-    terminal = "screen-256color";
     plugins = with pkgs.tmuxPlugins; [
-      better-mouse-mode
+      sensible
+      yank
       gruvbox
     ];
     extraConfig = ''
-      # Existing configuration
+      # Prefix key configuration
       unbind C-b
       set-option -g prefix C-q
       bind-key C-a send-prefix
+
+      # History and reload
       set -g history-limit 90000
       bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
+
+      # Window splitting
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
+
+      # Base index
       set -g base-index 1
       setw -g pane-base-index 1
+
+      # Mouse configuration
       set-option -g mouse on
-      set -g allow-passthrough on
       set-option -s set-clipboard on
-      set -g @scroll-speed-num-lines 5
+      set -g allow-passthrough on
 
-      # macOS-specific terminal and encoding fixes
-      set-option -g default-terminal "screen-256color"
-      set-option -ga terminal-overrides ",xterm-256color:Tc"
-      set-option -sa terminal-overrides ',*:RGB'
+      # Terminal overrides for OSC 52 clipboard
+      set -ga terminal-overrides ',xterm*:XT:Ms=\E]52;%p1%s;%p2%s\007'
+      # Cursor shape: Ss = set cursor style, Se = reset to blinking block
+      set -ga terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[1 q'
+      # macOS true color support
+      set -ga terminal-overrides ",xterm-256color:Tc"
+      set -sa terminal-overrides ',*:RGB'
 
-      # Fix character encoding issues
-      set-option -g assume-paste-time 1
-      set-option -g escape-time 10
+      # Performance settings (balanced for responsive copy-mode exit)
+      set -sg escape-time 50
+      set -g focus-events off
+      set -g repeat-time 200
 
-      # Ensure proper locale inside tmux
+      # Vi-mode for selection
+      setw -g mode-keys vi
+      set -g @yank_selection_mouse 'clipboard'
+
+      # Scroll wheel enters copy-mode when not already in it
+      bind-key -T root WheelUpPane if-shell -F "#{||:#{pane_in_mode},#{mouse_any_flag}}" { send-keys -M } { copy-mode -e }
+      bind-key -T root WheelDownPane send-keys -M
+
+      # Smooth scroll in copy-mode (3 lines up, single down for auto-exit)
+      bind-key -T copy-mode-vi WheelUpPane send-keys -N3 -X scroll-up
+      bind-key -T copy-mode-vi WheelDownPane send-keys -X scroll-down
+      bind-key -T copy-mode WheelUpPane send-keys -N3 -X scroll-up
+      bind-key -T copy-mode WheelDownPane send-keys -X scroll-down
+
+      # Fine touchpad scroll with shift
+      bind-key -T copy-mode-vi S-WheelUpPane send-keys -X scroll-up
+      bind-key -T copy-mode-vi S-WheelDownPane send-keys -X scroll-down
+
+      # Copy mode vi bindings (using pbcopy for macOS)
+      bind-key -T copy-mode-vi v send-keys -X begin-selection
+      bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+      bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'pbcopy'
+
+      # Exit copy-mode bindings
+      bind-key -T copy-mode-vi Escape send-keys -X cancel
+      bind-key -T copy-mode-vi q send-keys -X cancel
+      bind-key -T copy-mode Escape send-keys -X cancel
+      bind-key -T copy-mode q send-keys -X cancel
+
+      # Unbind MouseDown1Pane to prevent accidental copy-mode cancel
+      unbind-key -T copy-mode-vi MouseDown1Pane
+      unbind-key -T copy-mode MouseDown1Pane
+
+      # Mouse drag copies and exits copy-mode immediately
+      bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection-and-cancel
+      bind-key -T copy-mode MouseDragEnd1Pane send-keys -X copy-selection-and-cancel
+
+      # Double/triple click selection
+      bind-key -T copy-mode-vi DoubleClick1Pane send-keys -X select-word
+      bind-key -T copy-mode-vi TripleClick1Pane send-keys -X select-line
+
+      # Terminal type
+      set -g default-terminal "tmux-256color"
+
+      # Ensure proper locale inside tmux (macOS-specific)
       set-environment -g LANG en_US.UTF-8
       set-environment -g LC_ALL en_US.UTF-8
       set-environment -g LC_CTYPE en_US.UTF-8
