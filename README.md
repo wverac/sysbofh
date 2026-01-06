@@ -36,7 +36,7 @@
 
 ### High level overview
 
-- [SDDM](https://github.com/sddm/sddm) Login Manager with my custom ([BOFH Theme](https://github.com/wverac/bofh-theme-sddm)) version of [tokyo-night-sddm](https://github.com/rototrash/tokyo-night-sddm)
+- [SDDM](https://github.com/sddm/sddm) Login Manager ~with my custom ([BOFH Theme](https://github.com/wverac/bofh-theme-sddm)) version of [tokyo-night-sddm](https://github.com/rototrash/tokyo-night-sddm)~
 - [Wayland](https://wayland.freedesktop.org/) with [Hyprland](https://hyprland.org/) and [waybar](https://github.com/alexays/waybar)
 - [SOPS-Nix](https://github.com/Mic92/sops-nix) as secrets management scheme
 - [zen-kernel](https://github.com/zen-kernel/zen-kernel) in my main-personal machine
