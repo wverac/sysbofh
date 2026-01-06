@@ -39,7 +39,9 @@ in {
         # Add ~/.local/bin to PATH on Darwin systems
         export PATH="$HOME/.local/bin:$PATH"
       ''}
-      eval "$(fzf --bash)"
+      ${lib.optionalString (!isDarwin) ''
+        eval "$(fzf --bash)"
+      ''}
     '';
   };
 

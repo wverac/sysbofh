@@ -68,9 +68,6 @@
 
       # Add ~/.local/bin to PATH on Darwin
       export PATH="$HOME/.local/bin:$PATH"
-
-      # Configure fzf with bash integration
-      eval "$(fzf --bash)"
     '';
     profileExtra = ''
       # Ensure locale is set early in profile

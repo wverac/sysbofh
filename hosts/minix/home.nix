@@ -60,7 +60,7 @@
   imports = [
     ../../modules/home/fastfetch.nix
     # ../../modules/home/tmux.nix #FIX:wtf?
-    ../../modules/home/darwin-fixes.nix
+    ../../modules/home/darwin-tmux.nix
     ../../modules/home/bofhbash.nix
     # ../../modules/home/vim.nix #FIX: conflicts with nixvim
   ];
