@@ -22,6 +22,7 @@
     ../../modules/nixos/nixvim.nix
     ../../modules/nixos/thunderbolt.nix
     ../../modules/nixos/vial.nix
+    ../../modules/nixos/dock-reboot-fix.nix
     #../../modules/nixos/ollama.nix
     #../../modules/nixos/proton.nix
     ../../modules/nixos/ivpn.nix
