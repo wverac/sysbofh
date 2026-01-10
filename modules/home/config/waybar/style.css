@@ -88,6 +88,35 @@ window#waybar.hidden {
     background: #383c4a;
 }
 
+#custom-pcloud.pcloud-on {
+    margin-right: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 20px 5px 20px 5px;
+    border: solid 1px;
+    border-color: #487caf;
+    transition: none;
+    color: #487caf;
+    background: #181818;
+}
+
+#custom-pcloud.pcloud-off {
+    margin-right: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 20px 5px 20px 5px;
+    border: solid 1px;
+    border-color: #ad2626;
+    transition: none;
+    color: #ad2626;
+    background: #181818;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
 #custom-weather {
     margin-right: 8px;
     padding-left: 16px;

@@ -3,7 +3,7 @@
 
         "modules-left": ["hyprland/workspaces"],
         "modules-center": ["clock"],
-        "modules-right": ["custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "custom/exit", "tray"],
+        "modules-right": ["custom/pcloud", "custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "custom/exit", "tray"],
 
         "hyprland/workspaces": {
             "disable-scroll": true,
@@ -104,11 +104,20 @@
             "spacing": 4
         },
         
+        "custom/pcloud": {
+            "exec": "~/.config/waybar/scripts/pcloud.sh",
+            "interval": 30,
+            "format": "{}",
+            "tooltip": true,
+            "return-type": "json",
+            "on-click": "pcloud"
+        },
+
         "custom/vpn": {
             "exec": "~/.config/waybar/scripts/tailscale.sh",
             "interval": 10,
             "format": "{}",
             "tooltip": true,
             "return-type": "json"
-        },
+        }
 }
