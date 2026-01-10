@@ -34,8 +34,7 @@
     xdg-utils
     google-chrome
     brave
-    maestral
-    maestral-gui
+    pcloud
     slack
     xclip
     wl-clipboard
