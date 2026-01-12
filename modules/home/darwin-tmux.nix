@@ -34,6 +34,7 @@
       # Base index
       set -g base-index 1
       setw -g pane-base-index 1
+      set -g renumber-windows on
 
       # Mouse configuration
       set-option -g mouse on
