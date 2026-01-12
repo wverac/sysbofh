@@ -39,6 +39,9 @@
   # Enable systemd-resolved
   services.resolved.enable = true;
 
+  # Enable cron
+  services.cron.enable = true;
+
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
