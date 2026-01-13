@@ -53,21 +53,30 @@
     homeConfigurations = {
       "tank@nixlab" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {
+          inherit inputs outputs;
+          hostname = "nixlab";
+        };
         modules = [
           ./hosts/nixlab/home.nix
         ];
       };
       "bofh@sysbofh" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {
+          inherit inputs outputs;
+          hostname = "sysbofh";
+        };
         modules = [
           ./hosts/sysbofh/home.nix
         ];
       };
       "wvera@minix" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {
+          inherit inputs outputs;
+          hostname = "minix";
+        };
         modules = [
           ./hosts/minix/home.nix
         ];

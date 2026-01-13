@@ -35,7 +35,7 @@
         "ctrl+alt+s=toggle_tab_overview"
       ];
       theme = "catppuccin-mocha";
-      font-family = "JetBrainsMono Nerd Font";
+      font-family = "JetBrainsMono NF";
       font-size = 13;
       font-synthetic-style = "no-bold";
       cursor-style = "block";

@@ -2,11 +2,32 @@
   pkgs,
   lib,
   config,
+  hostname ? "unknown",
   ...
 }: let
   # Only enable session persistence on local machine (sysbofh/bofh)
   username = config.home.username;
   isLocalMachine = username == "bofh";
+
+  # Theme configuration per hostname
+  themeConfig = {
+    sysbofh = {
+      plugin = pkgs.tmuxPlugins.gruvbox;
+      extraConfig = ''
+        set -g @tmux-gruvbox 'dark'
+      '';
+    };
+    nixlab = {
+      plugin = pkgs.tmuxPlugins.onedark-theme;
+      extraConfig = ''
+        set -g @onedark_time_format '%I:%M %p'
+        set -g @onedark_date_format '%D'
+      '';
+    };
+  };
+
+  # Fallback to gruvbox if hostname not found
+  selectedTheme = themeConfig.${hostname} or themeConfig.sysbofh;
 in {
   programs.tmux = {
     enable = true;
@@ -14,7 +35,10 @@ in {
       [
         sensible
         yank
-        gruvbox
+        {
+          plugin = selectedTheme.plugin;
+          extraConfig = selectedTheme.extraConfig;
+        }
       ]
       ++ lib.optionals isLocalMachine [
         resurrect
