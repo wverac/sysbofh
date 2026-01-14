@@ -49,6 +49,7 @@ in {
     enable = true;
     settings = {
       add_newline = false;
+      command_timeout = 2000;
       # NOTE: Moved to left side
       #right_format = "$custom";
       format = builtins.concatStringsSep "" [

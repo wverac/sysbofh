@@ -15,7 +15,12 @@
     plugins = with pkgs.tmuxPlugins; [
       sensible
       yank
-      gruvbox
+      {
+        plugin = gruvbox;
+        extraConfig = ''
+          set -g @tmux-gruvbox 'light'
+        '';
+      }
     ];
     extraConfig = ''
       # Prefix key configuration
