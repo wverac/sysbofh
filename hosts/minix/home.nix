@@ -23,6 +23,7 @@
     sshuttle
     cloudflared
     autossh
+    alejandra
   ];
 
   programs.git.settings = {
