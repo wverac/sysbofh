@@ -3,7 +3,7 @@
 
         "modules-left": ["hyprland/workspaces"],
         "modules-center": ["clock"],
-        "modules-right": ["custom/pcloud", "custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "custom/exit", "tray"],
+        "modules-right": ["custom/pcloud", "custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "idle_inhibitor", "custom/exit", "tray"],
 
         "hyprland/workspaces": {
             "disable-scroll": true,
@@ -91,6 +91,16 @@
             },
             "tooltip": false,
             "on-click": "2"
+        },
+
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "󰅶",
+                "deactivated": "󰾪"
+            },
+            "tooltip-format-activated": "Idle inhibitor: ON (screen stays awake)",
+            "tooltip-format-deactivated": "Idle inhibitor: OFF (idle enabled)"
         },
 
         "custom/exit": {
