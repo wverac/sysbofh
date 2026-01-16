@@ -42,9 +42,9 @@ final: prev: {
               --replace-fail 'echo "$(bc -l <<<"scale=1; $bytes / 1048576 / $secs")MB/s"' \
                              'printf "%5.1fM\n" "$(bc -l <<<"scale=1; $bytes / 1048576 / $secs")"'
 
-            # Patch status-left to add NixOS icon (󱄅) before session name
+            # Patch status-left: NixOS icon (󱄅) normally, 󰠠 when prefix is pressed
             substituteInPlace $out/share/tmux-plugins/tokyo-night-tmux/tokyo-night.tmux \
-              --replace-fail '#[bold,nodim]#S' '#[bold,nodim]󱄅 #S'
+              --replace-fail '#{?client_prefix,󰠠 ,#[dim]󰤂 }' '#{?client_prefix,󰠠 ,󱄅 }'
           '';
       });
     };
