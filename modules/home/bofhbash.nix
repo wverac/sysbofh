@@ -49,6 +49,7 @@ in {
     enable = true;
     settings = {
       add_newline = false;
+      scan_timeout = 100;
       command_timeout = 2000;
       # NOTE: Moved to left side
       #right_format = "$custom";

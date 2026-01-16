@@ -2,6 +2,8 @@
   home.file = {
     ".config/alacritty/alacritty.toml".source = ../../modules/home/config/alacritty/alacritty.toml;
     ".config/hypr/hyprland.conf".source = ../../modules/home/config/hypr/hyprland.conf;
+    ".config/hypr/hyprlock.conf".source = ../../modules/home/config/hypr/hyprlock.conf;
+    ".config/hypr/hypridle.conf".source = ../../modules/home/config/hypr/hypridle.conf;
     ".config/hypr/scripts/swww-random.sh".source = ../../modules/home/config/hypr/scripts/swww-random.sh;
     ".config/feh/themes".source = ../../modules/home/config/feh/feh.conf;
     ".config/waybar/config".source = ../../modules/home/config/waybar/config;

@@ -8,7 +8,8 @@
   getConfigTopLevel = _: cfg: cfg.config.system.build.toplevel;
 
   # Filter out darwin configurations (Hydra only has Linux builders)
-  linuxHomes = lib.filterAttrs
+  linuxHomes =
+    lib.filterAttrs
     (_: cfg: cfg.pkgs.stdenv.hostPlatform.isLinux)
     outputs.homeConfigurations;
 in {

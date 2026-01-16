@@ -1,8 +1,10 @@
 {pkgs, ...}: {
   # Enable Hyprland
   programs.hyprland.enable = true;
-  # swaylock
-  security.pam.services.swaylock = {};
+  # swaylock - commented for hyprlock migration
+  #security.pam.services.swaylock = {};
+  # hyprlock
+  security.pam.services.hyprlock = {};
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
   # Thunar
@@ -22,8 +24,11 @@
     rofi
     dunst
     swww
-    swaylock-effects # replace swaylock
-    swayidle
+    # swaylock-effects/swayidle - commented for hyprlock/hypridle migration
+    #swaylock-effects
+    #swayidle
+    hyprlock
+    hypridle
     libnotify # notification in screen
     grimblast # Grab images from a Wayland compositor
     slurp # Select a region in a Wayland compositor
