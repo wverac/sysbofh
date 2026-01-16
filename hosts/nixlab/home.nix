@@ -16,7 +16,7 @@
   # Overlays
   nixpkgs = {
     overlays = [
-      # No overlays needed currently
+      (import ../../overlays/onedark-nixlab.nix)
     ];
     config = {
       allowUnfree = true;
