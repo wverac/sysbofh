@@ -12,9 +12,14 @@
   # Theme configuration per hostname
   themeConfig = {
     sysbofh = {
-      plugin = pkgs.tmuxPlugins.gruvbox;
+      plugin = pkgs.tmuxPlugins.tokyo-night-tmux;
       extraConfig = ''
-        set -g @tmux-gruvbox 'dark'
+        set -g @tokyo-night-tmux_theme 'gruvbox'
+        set -g @tokyo-night-tmux_window_id_style 'hsquare'
+        set -g @tokyo-night-tmux_pane_id_style 'hsquare'
+        set -g @tokyo-night-tmux_zoom_id_style 'dsquare'
+        set -g @tokyo-night-tmux_show_netspeed '1'
+        set -g @tokyo-night-tmux_show_wbg '1'
       '';
     };
     nixlab = {

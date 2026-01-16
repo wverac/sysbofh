@@ -29,7 +29,6 @@
 
   # Packages that should be installed to the user profile.
   home.packages = [
-    #fastfetch
   ];
 
   home.sessionVariables = {
@@ -39,7 +38,7 @@
   # Overlays
   nixpkgs = {
     overlays = [
-      # No overlays needed currently
+      (import ../../overlays/tokyo-night-gruvbox.nix)
     ];
     config = {
       allowUnfree = true;

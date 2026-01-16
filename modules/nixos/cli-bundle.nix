@@ -46,6 +46,7 @@
     bc
     sharutils
     lazygit
+    gh
     hugo
     dart-sass
     cloudflared
