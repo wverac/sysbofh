@@ -18,7 +18,7 @@
       {
         plugin = gruvbox;
         extraConfig = ''
-          set -g @tmux-gruvbox 'light'
+          set -g @tmux-gruvbox 'dark'
         '';
       }
     ];
@@ -27,6 +27,10 @@
       unbind C-b
       set-option -g prefix C-q
       bind-key C-a send-prefix
+
+      # Status-left: Apple icon (󰀵) +  normally, 󰠠 when prefix is pressed (matches overlay behavior for NixOS)
+      # #S = session name
+      set -g status-left '#{?client_prefix, 󰠠 , 󰀵 }#S '
 
       # History and reload
       set -g history-limit 90000
