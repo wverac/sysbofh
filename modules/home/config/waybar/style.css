@@ -255,8 +255,14 @@ window#waybar.hidden {
     animation-direction: alternate;
 }
 
-#tooltip {
+tooltip {
     background-color: #181818;
+    border-radius: 10px;
+    border: 1px solid #474036;
+}
+
+tooltip label {
+    color: #ffffff;
 }
 
 #tray {

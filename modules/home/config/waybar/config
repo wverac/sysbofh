@@ -30,8 +30,18 @@
         },
 
         "clock": {
-            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-            "format": "{:%a, %d %b, %I:%M %p}"
+            "format": "{:%a, %d %b, %I:%M %p}",
+            "tooltip-format": "<tt><small>{calendar}</small></tt>",
+            "calendar": {
+                "mode": "month",
+                "weeks-pos": "right",
+                "format": {
+                    "months": "<span color='#ffffff'><b>{}</b></span>",
+                    "days": "<span color='#ffffff'>{}</span>",
+                    "weekdays": "<span color='#7c818c'><b>{}</b></span>",
+                    "today": "<span color='#87ceeb'><b>{}</b></span>"
+                }
+            }
         },
 
         "custom/weather": {
