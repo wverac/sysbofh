@@ -53,5 +53,6 @@
     # LLM tools
     claude-code
     codex
+    opencode
   ];
 }
