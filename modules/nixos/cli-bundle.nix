@@ -5,7 +5,7 @@
     yazi
     ncdu
     ueberzugpp # alacritty support for yazi
-    xorg.libXau # dependency of ueberzugpp
+    libxau # dependency of ueberzugpp
     libinput
     libinput-gestures
     tree

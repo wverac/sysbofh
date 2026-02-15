@@ -1,14 +1,9 @@
 {
   pkgs,
   lib,
-  config,
   hostname ? "unknown",
   ...
 }: let
-  # Only enable session persistence on local machine (sysbofh/bofh)
-  username = config.home.username;
-  isLocalMachine = username == "bofh";
-
   # Theme configuration per hostname
   themeConfig = {
     sysbofh = {
@@ -36,25 +31,14 @@
 in {
   programs.tmux = {
     enable = true;
-    plugins = with pkgs.tmuxPlugins;
-      [
-        sensible
-        yank
-        {
-          plugin = selectedTheme.plugin;
-          extraConfig = selectedTheme.extraConfig;
-        }
-      ]
-      ++ lib.optionals isLocalMachine [
-        resurrect
-        {
-          plugin = continuum;
-          extraConfig = ''
-            set -g @continuum-restore 'on'
-            set -g @continuum-save-interval '15'
-          '';
-        }
-      ];
+    plugins = with pkgs.tmuxPlugins; [
+      sensible
+      yank
+      {
+        plugin = selectedTheme.plugin;
+        extraConfig = selectedTheme.extraConfig;
+      }
+    ];
     extraConfig = ''
       # Prefix key configuration
       unbind C-b
