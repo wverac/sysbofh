@@ -8,6 +8,6 @@
     system76-keyboard-configurator
     system76-firmware
     linuxKernel.packages.linux_zen.system76
-    linuxKernel.packages.linux_zen.system76-power
+    system76-power
   ];
 }

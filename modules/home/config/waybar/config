@@ -3,7 +3,7 @@
 
         "modules-left": ["hyprland/workspaces"],
         "modules-center": ["clock"],
-        "modules-right": ["custom/pcloud", "custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "idle_inhibitor", "custom/exit", "tray"],
+        "modules-right": ["custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "idle_inhibitor", "custom/exit", "tray"],
 
         "hyprland/workspaces": {
             "disable-scroll": true,

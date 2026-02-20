@@ -50,6 +50,7 @@
     hugo
     dart-sass
     cloudflared
+    ripgrep
     # LLM tools
     claude-code
     codex
