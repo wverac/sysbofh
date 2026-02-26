@@ -51,6 +51,7 @@
     dart-sass
     cloudflared
     ripgrep
+    rclone
     # LLM tools
     claude-code
     codex
