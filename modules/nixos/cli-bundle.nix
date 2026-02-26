@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     nix-index
     inxi
@@ -53,8 +57,8 @@
     ripgrep
     rclone
     # LLM tools
-    claude-code
-    codex
+    inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
     opencode
   ];
 }

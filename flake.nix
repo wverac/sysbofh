@@ -13,6 +13,8 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    claude-code.url = "github:sadjow/claude-code-nix";
+    codex-cli-nix.url = "github:sadjow/codex-cli-nix";
     # My sysBOFH NeoVim configuration
     nixvim.url = "github:wverac/nixvim";
   };
