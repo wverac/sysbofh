@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # sudo nixos-generate-config --show-hardware-config > ./hosts/$hostname/hardware-configuration.nix
     ./hardware-configuration.nix
@@ -27,6 +31,7 @@
     #../../modules/nixos/proton.nix
     ../../modules/nixos/ivpn.nix
     ../../modules/nixos/large-builds.nix
+    ../../modules/nixos/rclone-mount.nix
   ];
 
   # Bootloader.
@@ -128,6 +133,18 @@
   sops.age.keyFile = "/home/bofh/.config/sops/age/keys.txt";
   sops.secrets.tailscaleKey = {}; # tailscale service
   sops.secrets.exitNode = {}; # tailscale exit node
+  sops.secrets.rcloneMountRemote = {};
+  sops.secrets.rcloneMountPoint = {};
+  sops.secrets.rcloneConfig = {};
+
+  # rclone remote mount
+  services.rclone-mount = {
+    enable = true;
+    remoteSecretFile = config.sops.secrets.rcloneMountRemote.path;
+    mountPointSecretFile = config.sops.secrets.rcloneMountPoint.path;
+    configFile = config.sops.secrets.rcloneConfig.path;
+    user = "bofh";
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

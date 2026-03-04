@@ -40,7 +40,6 @@
     xdg-utils
     google-chrome
     brave
-    #pcloud
     slack
     xclip
     wl-clipboard

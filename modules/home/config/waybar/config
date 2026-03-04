@@ -124,14 +124,6 @@
             "spacing": 4
         },
         
-        "custom/pcloud": {
-            "exec": "~/.config/waybar/scripts/pcloud.sh",
-            "interval": 30,
-            "format": "{}",
-            "tooltip": true,
-            "return-type": "json",
-            "on-click": "pcloud"
-        },
 
         "custom/vpn": {
             "exec": "~/.config/waybar/scripts/tailscale.sh",

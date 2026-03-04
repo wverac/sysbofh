@@ -1,0 +1,28 @@
+# Secrets and credentials
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+id_rsa
+id_ed25519
+*.env
+.env.*
+credentials.json
+
+# Decrypted secrets
+*secret*.dec
+*secret*.plain
+
+# Editor and OS
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Nix build artifacts
+result
+result-*
