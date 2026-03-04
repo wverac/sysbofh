@@ -26,6 +26,7 @@
     #../../modules/nixos/ollama.nix
     #../../modules/nixos/proton.nix
     ../../modules/nixos/ivpn.nix
+    ../../modules/nixos/large-builds.nix
   ];
 
   # Bootloader.
@@ -149,9 +150,6 @@
   # Refer to the following link for more details:
   # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
   nix.settings.auto-optimise-store = true;
-
-  # Download buffer
-  nix.settings.download-buffer-size = 268435456; # 256 MiB
 
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
