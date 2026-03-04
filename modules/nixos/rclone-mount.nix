@@ -57,10 +57,14 @@ in {
       wantedBy = ["multi-user.target"];
       path = [pkgs.coreutils pkgs.gawk pkgs.fuse pkgs.rclone];
 
-      # ProcSubset/ProtectProc hide /proc from other users so secrets
-      # passed as CLI args are not visible via /proc/[pid]/cmdline.
       serviceConfig = {
         Type = "notify";
+        ExecStartPre = pkgs.writeShellScript "rclone-mount-pre" ''
+          MOUNTPOINT=$(cat ${cfg.mountPointSecretFile})
+          if ${pkgs.util-linux}/bin/mountpoint -q "$MOUNTPOINT" 2>/dev/null; then
+            ${pkgs.fuse}/bin/fusermount -uz "$MOUNTPOINT" || true
+          fi
+        '';
         ExecStart = pkgs.writeShellScript "rclone-mount-start" ''
           REMOTE=$(cat ${cfg.remoteSecretFile})
           MOUNTPOINT=$(cat ${cfg.mountPointSecretFile})
@@ -82,8 +86,6 @@ in {
         '';
         Restart = "on-failure";
         RestartSec = 10;
-        ProcSubset = "pid";
-        ProtectProc = "invisible";
       };
     };
 
