@@ -61,7 +61,12 @@ in {
         Type = "notify";
         ExecStartPre = pkgs.writeShellScript "rclone-mount-pre" ''
           MOUNTPOINT=$(cat ${cfg.mountPointSecretFile})
+          # Clean active mount
           if ${pkgs.util-linux}/bin/mountpoint -q "$MOUNTPOINT" 2>/dev/null; then
+            ${pkgs.fuse}/bin/fusermount -uz "$MOUNTPOINT" || true
+          fi
+          # Clean stale FUSE mount (Transport endpoint is not connected)
+          if stat "$MOUNTPOINT" 2>&1 | grep -q "Transport endpoint is not connected"; then
             ${pkgs.fuse}/bin/fusermount -uz "$MOUNTPOINT" || true
           fi
         '';

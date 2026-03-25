@@ -57,6 +57,7 @@
     zoom-us
     marktext
     obsidian
+    nomachine-client
     imagemagick
     pro-office-calculator
     # sddm deps
