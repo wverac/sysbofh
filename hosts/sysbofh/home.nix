@@ -11,7 +11,7 @@
     ../../modules/home/gtktheme.nix
     ../../modules/home/dotfiles.nix
     ../../modules/home/avizo.nix
-    ../../modules/home/lvim.nix
+    # ../../modules/home/lvim.nix
     ../../modules/home/vim.nix
     ../../modules/home/tmux.nix
     ../../modules/home/bofhbash.nix
@@ -46,11 +46,13 @@
   };
 
   # Basic configuration of git
-  programs.git.settings = {
+  programs.git = {
     enable = true;
-    user.name = "William Vera";
-    user.email = "wv@linux.com";
-    init.defaultBranch = "main";
+    userName = "William Vera";
+    userEmail = "wv@linux.com";
+    settings = {
+      init.defaultBranch = "main";
+    };
   };
 
   # restart services on change

@@ -28,11 +28,13 @@
     alejandra
   ];
 
-  programs.git.settings = {
+  programs.git = {
     enable = true;
-    user.name = "William Vera";
-    user.email = "wv@linux.com";
-    init.defaultBranch = "main";
+    userName = "William Vera";
+    userEmail = "wv@linux.com";
+    settings = {
+      init.defaultBranch = "main";
+    };
   };
 
   # Bash configuration moved to darwin-fixes.nix module
