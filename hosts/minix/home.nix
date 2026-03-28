@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   inputs,
   ...
@@ -23,7 +24,6 @@
     opencode
     bash
     sshuttle
-    cloudflared
     autossh
     alejandra
   ];
@@ -68,7 +68,23 @@
     ../../modules/home/darwin-tmux.nix
     ../../modules/home/bofhbash.nix
     # ../../modules/home/vim.nix #FIX: conflicts with nixvim
+    ../../modules/home/cloudflare-darwin.nix
   ];
+
+  # SOPS
+  sops.defaultSopsFile = ./secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/Users/wvera/.config/sops/age/keys.txt";
+  sops.secrets.cloudflareTunnelName = {};
+  sops.secrets.cloudflareCredFile = {};
+  sops.secrets.cloudflareConfigPath = {};
+
+  services.cloudflare-tunnel = {
+    enable = true;
+    tunnelName = config.sops.secrets.cloudflareTunnelName.path;
+    credFile = config.sops.secrets.cloudflareCredFile.path;
+    configPath = config.sops.secrets.cloudflareConfigPath.path;
+  };
 
   home.stateVersion = "25.05";
 }

@@ -22,12 +22,16 @@ in {
   programs.bash = {
     enable = true;
     enableCompletion = true;
-    shellAliases = {
-      cat = "bat --paging=never";
-      lcat = "bat --style=plain --paging=never";
-      ls = lib.mkForce "lsd";
-      ll = lib.mkForce "lsd -latrh";
-    };
+    shellAliases =
+      {
+        cat = "bat --paging=never";
+        lcat = "bat --style=plain --paging=never";
+        ls = lib.mkForce "lsd";
+        ll = lib.mkForce "lsd -latrh";
+      }
+      // lib.optionalAttrs isDarwin {
+        claude-unlock = "security unlock-keychain ~/Library/Keychains/login.keychain-db && claude";
+      };
     bashrcExtra = ''
       ${lib.optionalString (!isDarwin) ''
         # Configure blesh on non-Darwin systems
@@ -36,8 +40,8 @@ in {
         fi
       ''}
       ${lib.optionalString isDarwin ''
-        # Add ~/.local/bin to PATH on Darwin systems
-        export PATH="$HOME/.local/bin:$PATH"
+        # Add Nix profile and ~/.local/bin to PATH on Darwin systems
+        export PATH="$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH"
       ''}
       ${lib.optionalString (!isDarwin) ''
         eval "$(fzf --bash)"

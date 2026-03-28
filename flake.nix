@@ -83,6 +83,7 @@
           hostname = "minix";
         };
         modules = [
+          inputs.sops-nix.homeManagerModules.sops
           ./hosts/minix/home.nix
         ];
       };
