@@ -7,6 +7,10 @@ final: prev: {
         postInstall =
           (oldAttrs.postInstall or "")
           + ''
+            # Fix shebang for NixOS (no /bin/bash)
+            substituteInPlace $out/share/tmux-plugins/onedark-theme/tmux-onedark-theme.tmux \
+              --replace-fail '#!/bin/bash' '#!/usr/bin/env bash'
+
             # Patch status-left: 󰙨 icon normally, 󰠠 when prefix is pressed
             substituteInPlace $out/share/tmux-plugins/onedark-theme/tmux-onedark-theme.tmux \
               --replace-fail '#S #{prefix_highlight}' '#{?client_prefix,󰠠 ,󰙨 }#S '

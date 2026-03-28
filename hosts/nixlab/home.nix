@@ -6,7 +6,7 @@
 
   home.stateVersion = "25.05"; # Please read the comment before changing.
   imports = [
-    ../../modules/home/lvim.nix
+    # ../../modules/home/lvim.nix
     ../../modules/home/tmux.nix
     ../../modules/home/vim.nix
     ../../modules/home/bofhbash.nix

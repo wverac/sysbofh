@@ -124,14 +124,9 @@
   sops.age.keyFile = "/home/tank/.config/sops/age/keys.txt";
   sops.secrets.tailscaleKey = {}; # tailscale service
   sops.secrets.exitNode = {}; # tailscale exit node
-  sops.secrets.TunnelName = {
-    mode = "0440";
-    owner = "tank";
-  }; # Cloudflared
-  sops.secrets.CloudflareCred = {
-    mode = "0440";
-    owner = "tank";
-  }; # Cloudflared
+  sops.secrets.TunnelName = {}; # Cloudflared
+  sops.secrets.CloudflareCred = {}; # Cloudflared
+  sops.secrets.tunnelConfig = {}; # Cloudflared
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
