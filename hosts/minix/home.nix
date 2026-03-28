@@ -30,9 +30,9 @@
 
   programs.git = {
     enable = true;
-    userName = "William Vera";
-    userEmail = "wv@linux.com";
     settings = {
+      user.name = "William Vera";
+      user.email = "wv@linux.com";
       init.defaultBranch = "main";
     };
   };
