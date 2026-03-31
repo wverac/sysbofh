@@ -18,7 +18,7 @@
     fastfetch
     # docker
     # docker-compose
-    ollama
+    # ollama - managed by ollama-darwin module
     inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
     opencode
@@ -69,6 +69,7 @@
     ../../modules/home/bofhbash.nix
     # ../../modules/home/vim.nix #FIX: conflicts with nixvim
     ../../modules/home/cloudflare-darwin.nix
+    ../../modules/home/ollama-darwin.nix
   ];
 
   # SOPS
@@ -78,6 +79,16 @@
   sops.secrets.cloudflareTunnelName = {};
   sops.secrets.cloudflareCredFile = {};
   sops.secrets.cloudflareConfigPath = {};
+  sops.secrets.ollamaHost = {};
+  sops.secrets.ollamaPort = {};
+  sops.secrets.ollamaOrigins = {};
+
+  services.ollama-darwin = {
+    enable = true;
+    hostFile = config.sops.secrets.ollamaHost.path;
+    portFile = config.sops.secrets.ollamaPort.path;
+    originsFile = config.sops.secrets.ollamaOrigins.path;
+  };
 
   services.cloudflare-tunnel = {
     enable = true;

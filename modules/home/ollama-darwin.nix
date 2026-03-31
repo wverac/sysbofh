@@ -4,34 +4,34 @@
   lib,
   ...
 }: let
-  cfg = config.services.cloudflare-tunnel;
-  logDir = "${config.home.homeDirectory}/Library/Logs/cloudflared";
+  cfg = config.services.ollama-darwin;
+  logDir = "${config.home.homeDirectory}/Library/Logs/ollama";
 in {
-  options.services.cloudflare-tunnel = {
-    enable = lib.mkEnableOption "Cloudflare Tunnel";
-    tunnelName = lib.mkOption {
+  options.services.ollama-darwin = {
+    enable = lib.mkEnableOption "Ollama (Darwin)";
+    hostFile = lib.mkOption {
       type = lib.types.str;
-      description = "Path to file containing the Cloudflare Tunnel name";
+      description = "Path to file containing the bind address";
     };
-    credFile = lib.mkOption {
+    portFile = lib.mkOption {
       type = lib.types.str;
-      description = "Path to file containing the credentials.json path";
+      description = "Path to file containing the bind port";
     };
-    configPath = lib.mkOption {
+    originsFile = lib.mkOption {
       type = lib.types.str;
-      description = "Path to file containing the cloudflared config file path";
+      description = "Path to file containing the allowed CORS origins";
     };
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [pkgs.cloudflared];
+    home.packages = [pkgs.ollama];
 
-    home.activation.reloadCloudflared = lib.hm.dag.entryAfter ["linkGeneration"] ''
-      plistName="org.nix-community.home.cloudflared-tunnel"
+    home.activation.reloadOllama = lib.hm.dag.entryAfter ["linkGeneration"] ''
+      plistName="org.nix-community.home.ollama-serve"
       plistPath="$HOME/Library/LaunchAgents/$plistName.plist"
       domainTarget="gui/$(id -u)"
       serviceTarget="$domainTarget/$plistName"
-      hashFile="$HOME/.local/state/cloudflared-plist.md5"
+      hashFile="$HOME/.local/state/ollama-plist.md5"
 
       if [ -f "$plistPath" ]; then
         mkdir -p "$(dirname "$hashFile")"
@@ -39,13 +39,11 @@ in {
         oldHash=$(cat "$hashFile" 2>/dev/null || echo "none")
 
         if [ "$newHash" = "$oldHash" ]; then
-          # Plist unchanged — only ensure the service is running
           if ! /bin/launchctl print "$serviceTarget" &>/dev/null; then
             /bin/launchctl bootstrap "$domainTarget" "$plistPath" 2>/dev/null || true
             /bin/launchctl kickstart "$serviceTarget" 2>/dev/null || true
           fi
         else
-          # Plist changed — full reload
           /bin/launchctl bootout "$serviceTarget" 2>/dev/null || true
           sleep 1
           /bin/launchctl bootstrap "$domainTarget" "$plistPath" 2>/dev/null || true
@@ -56,7 +54,7 @@ in {
       fi
     '';
 
-    launchd.agents."cloudflared-tunnel" = {
+    launchd.agents."ollama-serve" = {
       enable = true;
       config = {
         ProgramArguments = [
@@ -65,22 +63,20 @@ in {
           ''
             # Wait for sops-nix to decrypt secrets
             for i in $(seq 1 30); do
-              [ -f "${cfg.configPath}" ] && [ -f "${cfg.credFile}" ] && break
+              [ -f "${cfg.hostFile}" ] && [ -f "${cfg.portFile}" ] && [ -f "${cfg.originsFile}" ] && break
               sleep 1
             done
-            CONFIG_PATH=$(cat ${cfg.configPath})
-            CRED_FILE=$(cat ${cfg.credFile})
-            ${pkgs.cloudflared}/bin/cloudflared tunnel \
-              --config "$CONFIG_PATH" \
-              --no-autoupdate \
-              run \
-              --cred-file "$CRED_FILE"
+            OLLAMA_HOST="$(cat ${cfg.hostFile}):$(cat ${cfg.portFile})"
+            export OLLAMA_HOST
+            OLLAMA_ORIGINS="$(cat ${cfg.originsFile})"
+            export OLLAMA_ORIGINS
+            exec ${pkgs.ollama}/bin/ollama serve
           ''
         ];
         KeepAlive = true;
         RunAtLoad = true;
-        StandardOutPath = "${logDir}/cloudflared.log";
-        StandardErrorPath = "${logDir}/cloudflared.err";
+        StandardOutPath = "${logDir}/ollama.log";
+        StandardErrorPath = "${logDir}/ollama.err";
       };
     };
   };
