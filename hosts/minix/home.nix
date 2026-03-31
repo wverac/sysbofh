@@ -26,6 +26,15 @@
     sshuttle
     autossh
     alejandra
+    iterm2
+    firefox-bin
+    brave
+    shellcheck
+    nmap
+    iperf3
+    ripgrep
+    tree
+    jq
   ];
 
   programs.git = {
