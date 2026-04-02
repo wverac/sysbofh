@@ -17,16 +17,28 @@
     ../../modules/nixos/sws.nix
     ../../modules/nixos/cloudflare.nix
     ../../modules/nixos/dropbear.nix
-    ../../modules/nixos/jenkins.nix
+    #../../modules/nixos/jenkins.nix
     ../../modules/nixos/nixvim.nix
     #../../modules/nixos/ollama.nix #FIXME: Some issues with open-webui
     #../../modules/nixos/proton-wg.nix
     ../../modules/nixos/ivpn.nix
+    ../../modules/nixos/fail2ban.nix
+    ../../modules/nixos/auditd.nix
   ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Sysctl hardening
+  boot.kernel.sysctl = {
+    "net.ipv6.conf.all.accept_redirects" = 0;
+    "net.ipv6.conf.default.accept_redirects" = 0;
+    "net.ipv4.conf.default.accept_redirects" = 0;
+    "net.ipv4.conf.default.send_redirects" = 0;
+    "net.ipv4.conf.all.log_martians" = 1;
+    "kernel.kexec_load_disabled" = 1;
+  };
 
   networking.hostName = "nixlab"; # Define your hostname.
 
@@ -108,6 +120,7 @@
     "nix-command"
     "flakes"
   ];
+  nix.settings.allowed-users = [ "root" "@wheel" ];
   environment.systemPackages = with pkgs; [
     # Flakes clones its dependencies through the git command,
     # so git must be installed first
@@ -131,6 +144,8 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "no";
+  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh.settings.KbdInteractiveAuthentication = false;
 
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
