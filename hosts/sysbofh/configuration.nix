@@ -32,11 +32,23 @@
     ../../modules/nixos/ivpn.nix
     ../../modules/nixos/large-builds.nix
     ../../modules/nixos/rclone-mount.nix
+    ../../modules/nixos/fail2ban.nix
+    ../../modules/nixos/auditd.nix
   ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Sysctl hardening
+  boot.kernel.sysctl = {
+    "net.ipv6.conf.all.accept_redirects" = 0;
+    "net.ipv6.conf.default.accept_redirects" = 0;
+    "net.ipv4.conf.default.accept_redirects" = 0;
+    "net.ipv4.conf.default.send_redirects" = 0;
+    "net.ipv4.conf.all.log_martians" = 1;
+    "kernel.kexec_load_disabled" = 1;
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -150,6 +162,8 @@
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
   services.openssh.settings.PermitRootLogin = "no";
+  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh.settings.KbdInteractiveAuthentication = false;
 
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
@@ -167,6 +181,7 @@
   # Refer to the following link for more details:
   # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
   nix.settings.auto-optimise-store = true;
+  nix.settings.allowed-users = ["root" "@wheel"];
 
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?

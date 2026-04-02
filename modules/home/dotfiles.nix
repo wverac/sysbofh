@@ -4,7 +4,7 @@
     ".config/hypr/hyprland.conf".source = ../../modules/home/config/hypr/hyprland.conf;
     ".config/hypr/hyprlock.conf".source = ../../modules/home/config/hypr/hyprlock.conf;
     ".config/hypr/hypridle.conf".source = ../../modules/home/config/hypr/hypridle.conf;
-    ".config/hypr/scripts/swww-random.sh".source = ../../modules/home/config/hypr/scripts/swww-random.sh;
+    ".config/hypr/scripts/awww-random.sh".source = ../../modules/home/config/hypr/scripts/awww-random.sh;
     ".config/feh/themes".source = ../../modules/home/config/feh/feh.conf;
     ".config/waybar/config".source = ../../modules/home/config/waybar/config;
     ".config/waybar/style.css".source = ../../modules/home/config/waybar/style.css;

@@ -5,7 +5,7 @@ final: prev: {
     nativeBuildInputs =
       (old.nativeBuildInputs or [])
       ++ [
-        final.nodejs.pkgs.node-gyp
+        final.node-gyp
       ];
   });
 }

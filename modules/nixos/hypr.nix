@@ -24,7 +24,7 @@
     wttrbar
     rofi
     dunst
-    swww
+    awww
     # swaylock-effects/swayidle - commented for hyprlock/hypridle migration
     #swaylock-effects
     #swayidle
