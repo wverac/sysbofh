@@ -17,12 +17,12 @@
     ../../modules/nixos/cli-bundle.nix
     #../../modules/nixos/tailscale.nix
     ../../modules/nixos/keyd.nix
-    # ../../modules/nixos/auto-cpufreq.nix
+    ../../modules/nixos/auto-cpufreq.nix
     ../../modules/nixos/usbprinter.nix
     ../../modules/nixos/batterycargethreshold.nix
     ../../modules/nixos/docker.nix
     #../../modules/nixos/mullvad.nix
-    ../../modules/nixos/system76-lemp13b.nix
+    #../../modules/nixos/system76-lemp13b.nix
     ../../modules/nixos/nixvim.nix
     ../../modules/nixos/thunderbolt.nix
     ../../modules/nixos/vial.nix

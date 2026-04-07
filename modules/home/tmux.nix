@@ -34,6 +34,7 @@ in {
     plugins = with pkgs.tmuxPlugins; [
       sensible
       yank
+      resurrect
       {
         plugin = selectedTheme.plugin;
         extraConfig = selectedTheme.extraConfig;

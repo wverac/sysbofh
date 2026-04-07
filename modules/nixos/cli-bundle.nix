@@ -56,6 +56,7 @@
     cloudflared
     ripgrep
     rclone
+    python313Packages.clustershell
     # LLM tools
     inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default

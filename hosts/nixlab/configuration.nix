@@ -120,7 +120,7 @@
     "nix-command"
     "flakes"
   ];
-  nix.settings.allowed-users = [ "root" "@wheel" "@hydra" ];
+  nix.settings.allowed-users = ["root" "@wheel" "@hydra"];
   environment.systemPackages = with pkgs; [
     # Flakes clones its dependencies through the git command,
     # so git must be installed first
