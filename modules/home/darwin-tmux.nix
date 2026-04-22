@@ -15,6 +15,7 @@
     plugins = with pkgs.tmuxPlugins; [
       sensible
       yank
+      resurrect
       {
         plugin = gruvbox;
         extraConfig = ''

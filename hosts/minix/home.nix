@@ -11,6 +11,7 @@
     starship
     inputs.nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
     git
+    gh
     # vim
     gotop
     wget
@@ -45,23 +46,6 @@
       init.defaultBranch = "main";
     };
   };
-
-  # Bash configuration moved to darwin-fixes.nix module
-  # programs.bash = {
-  #   enable = true;
-  #   enableCompletion = true;
-  #   shellAliases = {
-  #     cat = "bat --paging=never";
-  #     lcat = "bat --style=plain --paging=never";
-  #     ls = lib.mkForce "lsd";
-  #     ll = lib.mkForce "lsd -latrh";
-  #     vim = lib.mkForce "nvim";
-  #   };
-  #   bashrcExtra = ''
-  #     # Use modern bash features with Nix bash
-  #     eval "$(fzf --bash)"
-  #   '';
-  # };
 
   programs.starship = {
     enable = true;

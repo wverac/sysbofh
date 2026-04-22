@@ -53,7 +53,7 @@
     feh
     vlc
     brightnessctl
-    cider # apple music client
+    # cider # apple music client
     zoom-us
     marktext
     obsidian
