@@ -1,8 +1,11 @@
 {pkgs, ...}: {
+  services.displayManager.defaultSession = "hyprland";
+
   services.xserver.enable = true;
   services.displayManager.sddm = {
     enable = true;
     theme = "where_is_my_sddm_theme";
+    settings.Users.RememberLastSession = false;
     extraPackages = with pkgs; [
       kdePackages.qt5compat
     ];
