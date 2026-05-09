@@ -44,7 +44,7 @@
     cdrtools
     ansible
     awscli
-    libguestfs-with-appliance
+    # libguestfs-with-appliance
     exfatprogs
     sshuttle
     bc

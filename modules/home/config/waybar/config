@@ -39,7 +39,8 @@
                     "months": "<span color='#ffffff'><b>{}</b></span>",
                     "days": "<span color='#ffffff'>{}</span>",
                     "weekdays": "<span color='#7c818c'><b>{}</b></span>",
-                    "today": "<span color='#87ceeb'><b>{}</b></span>"
+                    "today": "<span color='#87ceeb'><b>{}</b></span>",
+                    "weeks": "<span color='#5a5f69'>{}</span>"
                 }
             }
         },
