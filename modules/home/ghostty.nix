@@ -1,7 +1,7 @@
 {...}: {
   programs.ghostty = {
     enable = true;
-    enableBashIntegration = true;
+    enableBashIntegration = false;
     themes = {
       catppuccin-mocha = {
         background = "1e1e2e";
@@ -30,6 +30,7 @@
       };
     };
     settings = {
+      shell-integration = "none";
       term = "xterm-256color";
       keybind = [
         "ctrl+alt+s=toggle_tab_overview"
