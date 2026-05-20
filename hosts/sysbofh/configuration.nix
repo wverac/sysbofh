@@ -26,6 +26,7 @@
     ../../modules/nixos/nixvim.nix
     ../../modules/nixos/thunderbolt.nix
     ../../modules/nixos/vial.nix
+    ../../modules/nixos/touchpad-elan0412-pm.nix
     ../../modules/nixos/dock-reboot-fix.nix
     #../../modules/nixos/ollama.nix
     #../../modules/nixos/proton.nix
