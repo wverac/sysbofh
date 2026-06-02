@@ -50,7 +50,7 @@
       sysbofh = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          {nixpkgs.overlays = [self.overlays.marktext self.overlays.nomachine];}
+          {nixpkgs.overlays = [self.overlays.nomachine];}
           inputs.sops-nix.nixosModules.sops
           ./hosts/sysbofh/configuration.nix
         ];
