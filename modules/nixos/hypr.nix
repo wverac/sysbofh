@@ -61,8 +61,8 @@
     imagemagick
     pro-office-calculator
     # sddm deps
-    libsForQt5.qt5.qtgraphicaleffects
-    libsForQt5.qt5.qtquickcontrols2
+    qt5.qtgraphicaleffects
+    qt5.qtquickcontrols2
     # todoist
     todoist-electron
   ];
