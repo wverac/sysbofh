@@ -74,9 +74,15 @@ in {
       ];
       custom.vpn_script = {
         command = "${config.home.homeDirectory}/.config/scripts/ivpn.sh";
-        format = "[$output]($style)";
+        format = "[$output ]($style)";
         style = "green";
         when = "hostname | grep -qE '^(sysbofh|m4nix|nixlab)'";
+      };
+      custom.tailscale_script = {
+        command = "${config.home.homeDirectory}/.config/scripts/tailscale.sh";
+        format = "[$output ]($style)";
+        style = "blue";
+        when = "hostname | grep -qE '^(sysbofh|nixlab)'";
       };
       username = {
         format = "[$user]($style)";
@@ -128,6 +134,11 @@ in {
   # Deploy IVPN status script on all platforms (same binary interface)
   home.file.".config/scripts/ivpn.sh" = {
     source = ../../modules/home/config/scripts/ivpn.sh;
+    executable = true;
+  };
+
+  home.file.".config/scripts/tailscale.sh" = {
+    source = ../../modules/home/config/scripts/tailscale.sh;
     executable = true;
   };
 }

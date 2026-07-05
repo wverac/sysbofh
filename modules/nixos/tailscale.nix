@@ -31,7 +31,7 @@ in {
       "--accept-dns=false"
       "--advertise-exit-node=false"
       "--operator=${tailscaleOperator}"
-      "--shields-up=true"
+      "--shields-up=false"
       "--ssh=false"
     ];
   };
@@ -93,7 +93,7 @@ in {
         --accept-routes=true \
         --accept-dns=false \
         --operator=${tailscaleOperator} \
-        --shields-up=true \
+        --shields-up=false \
         --ssh=false
     '';
   };
