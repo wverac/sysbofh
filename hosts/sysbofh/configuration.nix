@@ -15,7 +15,7 @@
     ../../modules/nixos/sound.nix
     ../../modules/nixos/libvirtd.nix
     ../../modules/nixos/cli-bundle.nix
-    #../../modules/nixos/tailscale.nix
+    ../../modules/nixos/tailscale.nix
     ../../modules/nixos/keyd.nix
     ../../modules/nixos/auto-cpufreq.nix
     ../../modules/nixos/usbprinter.nix
@@ -145,6 +145,7 @@
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/bofh/.config/sops/age/keys.txt";
   sops.secrets.tailscaleKey = {}; # tailscale service
+  sops.secrets.tailscaleHost = {}; # hostname advertised to the tailnet
   sops.secrets.exitNode = {}; # tailscale exit node
   sops.secrets.rcloneMountRemote = {};
   sops.secrets.rcloneMountPoint = {};

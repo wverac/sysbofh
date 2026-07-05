@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
 
-if tailscale status &>/dev/null; then
-  if tailscale exit-node list | grep -q selected; then
-    tooltip=$(tailscale exit-node list | grep selected | awk '{print $2" "$3}')
-    echo "{\"text\": \" \", \"class\": \"vpn-on\", \"tooltip\": \"$tooltip\"}"
-  else
-    tooltip="No exit-node assigned"
-    echo "{\"text\": \" \", \"class\": \"vpn-off\", \"tooltip\": \"$tooltip\"}"
-  fi
+status=$(tailscale status --json 2>/dev/null) || status=""
+
+if jq -e '.BackendState == "Running" and .Self.Online == true' <<<"$status" &>/dev/null; then
+  hostname=$(jq -r '.Self.HostName // "Tailscale"' <<<"$status")
+  echo "{\"text\": \" \", \"class\": \"vpn-on\", \"tooltip\": \"Tailscale connected: $hostname\"}"
 else
-    tooltip="Tailscale is not connected"
-    echo "{\"text\": \" \", \"class\": \"vpn-off\", \"tooltip\": \"$tooltip\"}"
+  echo '{"text": " ", "class": "vpn-off", "tooltip": "Tailscale is not connected"}'
 fi
