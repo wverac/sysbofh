@@ -16,6 +16,7 @@
     ../../modules/nixos/libvirtd.nix
     ../../modules/nixos/cli-bundle.nix
     ../../modules/nixos/tailscale.nix
+    ../../modules/nixos/ivpn-tailscale-coexist.nix
     ../../modules/nixos/keyd.nix
     ../../modules/nixos/auto-cpufreq.nix
     ../../modules/nixos/usbprinter.nix
