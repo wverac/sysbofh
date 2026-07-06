@@ -22,6 +22,7 @@
     #../../modules/nixos/ollama.nix #FIXME: Some issues with open-webui
     #../../modules/nixos/proton-wg.nix
     ../../modules/nixos/ivpn.nix
+    ../../modules/nixos/ivpn-tailscale-coexist.nix
     ../../modules/nixos/fail2ban.nix
     ../../modules/nixos/auditd.nix
   ];
@@ -29,6 +30,9 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Enable systemd-resolved
+  services.resolved.enable = true;
 
   # Sysctl hardening
   boot.kernel.sysctl = {
