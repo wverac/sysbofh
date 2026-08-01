@@ -62,5 +62,16 @@
     inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
     opencode
     bun
+    psmisc
+    minicom
+    dnsmasq
+    screen
+    tcpdump
+    picocom
+    ipmitool
+    sshpass
+    figlet
+    parted
+    dosfstools
   ];
 }

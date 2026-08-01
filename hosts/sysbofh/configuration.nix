@@ -32,6 +32,7 @@
     #../../modules/nixos/ollama.nix
     #../../modules/nixos/proton.nix
     ../../modules/nixos/ivpn.nix
+    ../../modules/nixos/captive-portal.nix
     ../../modules/nixos/large-builds.nix
     ../../modules/nixos/rclone-mount.nix
     ../../modules/nixos/fail2ban.nix

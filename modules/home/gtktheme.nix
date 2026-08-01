@@ -11,11 +11,20 @@
 
   gtk = {
     enable = true;
+
+    # GTK 3
     theme = {
-      package = pkgs.flat-remix-gtk;
-      # name = "Flat-Remix-GTK-Grey-Darkest";
-      name = "Flat-Remix-GTK";
+      package = pkgs.adw-gtk3;
+      name = "adw-gtk3";
     };
+
+    # GTK 2
+    gtk2.theme = {
+      package = pkgs.gnome-themes-extra;
+      name = "Adwaita";
+    };
+
+    # GTK 4/libadwaita
     gtk4.theme = null;
 
     iconTheme = {
