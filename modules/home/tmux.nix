@@ -13,8 +13,8 @@
         set -g @tokyo-night-tmux_window_id_style 'hsquare'
         set -g @tokyo-night-tmux_pane_id_style 'hsquare'
         set -g @tokyo-night-tmux_zoom_id_style 'dsquare'
-        set -g @tokyo-night-tmux_show_netspeed '1'
-        set -g @tokyo-night-tmux_show_wbg '1'
+        set -g @tokyo-night-tmux_show_netspeed '0'
+        set -g @tokyo-night-tmux_show_wbg '0'
       '';
     };
     nixlab = {
@@ -72,6 +72,15 @@ in {
       set -sg escape-time 50
       set -g focus-events off
       set -g repeat-time 200
+
+      # Stable status bar: keep the Gruvbox look without asynchronous plugin
+      # widgets, which cause visible redraws when many windows are open.
+      set -g status-interval 30
+      set -g status-left "#[fg=#83a598,bg=#282828]#[fg=#282828,bg=#83a598,bold] #{?client_prefix,󰠠,󱄅} #S #[fg=#83a598,bg=#282828,nobold]"
+      set -g status-right "#[fg=#fabd2f,bg=#282828]#[fg=#282828,bg=#fabd2f,bold] 󰃭 %a %d %b  󰥔 %I:%M %p #[fg=#fabd2f,bg=#282828,nobold]"
+      setw -g window-status-format "#[fg=#a89984,bg=#282828]   #I #W#{?window_zoomed_flag, 󰊓,} "
+      setw -g window-status-current-format "#[fg=#b8bb26,bg=#282828]#[fg=#282828,bg=#b8bb26,bold]  #I #W#{?window_zoomed_flag, 󰊓,} #[fg=#b8bb26,bg=#282828,nobold]"
+      set -g window-status-separator " "
 
       # Vi-mode for selection
       setw -g mode-keys vi
