@@ -1,7 +1,9 @@
 {...}: {
   home.file = {
     ".config/alacritty/alacritty.toml".source = ../../modules/home/config/alacritty/alacritty.toml;
-    ".config/hypr/hyprland.conf".source = ../../modules/home/config/hypr/hyprland.conf;
+    # Legacy hyprlang config kept for rollback; .conf support removed in Hyprland 0.57
+    # ".config/hypr/hyprland.conf".source = ../../modules/home/config/hypr/hyprland.conf;
+    ".config/hypr/hyprland.lua".source = ../../modules/home/config/hypr/hyprland.lua;
     ".config/hypr/hyprlock.conf".source = ../../modules/home/config/hypr/hyprlock.conf;
     ".config/hypr/hypridle.conf".source = ../../modules/home/config/hypr/hypridle.conf;
     ".config/hypr/scripts/awww-random.sh".source = ../../modules/home/config/hypr/scripts/awww-random.sh;

@@ -2,13 +2,15 @@
   services.logind = {
     settings = {
       Login = {
-        HandlePowerKey = "suspend";
+        HandlePowerKey = "lock";
         HandlePowerKeyLongPress = "poweroff";
 
-        # NOTE: ignore lidSwitch, testing docking station
-        HandleLidSwitch = "suspend-then-hibernate";
-        HandleLidSwitchExternalPower = "ignore";
-        HandleLidSwitchDocked = "ignore";
+        # suspend-then-hibernate is unsupported (zram only, no resume device);
+        # logind's fallback queues duplicate suspends that re-fire on lid open
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "lock";
+        HandleLidSwitchDocked = "lock";
+        InhibitDelayMaxSec = "15s";
       };
     };
   };

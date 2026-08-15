@@ -25,10 +25,25 @@ in {
     script = ''
       nft delete table ip ts-coexist 2>/dev/null || true
       nft add table ip ts-coexist
+      nft 'add set ip ts-coexist lan_bypass { type ipv4_addr; flags interval; }'
       nft 'add chain ip ts-coexist guard { type filter hook output priority filter + 10; policy accept; }'
+      nft add rule ip ts-coexist guard ip daddr @lan_bypass counter accept
       nft add rule ip ts-coexist guard ip daddr ${tailnetRange} oifname != tailscale0 oifname != lo counter drop
 
+      last_lan=""
       while :; do
+        lan_subnets="$(ip -4 route show proto kernel scope link 2>/dev/null \
+          | sed -n 's|^\(100\.[0-9.]\+/[0-9]\+\) dev \([^ ]\+\).*|\1 \2|p' \
+          | while read -r subnet dev; do [ "$dev" = "tailscale0" ] || echo "$subnet"; done \
+          | sort)"
+        if [ "$lan_subnets" != "$last_lan" ]; then
+          nft flush set ip ts-coexist lan_bypass 2>/dev/null || true
+          for subnet in $lan_subnets; do
+            nft add element ip ts-coexist lan_bypass "{ $subnet }" 2>/dev/null || true
+          done
+          last_lan="$lan_subnets"
+        fi
+
         current_table="$(ip -4 rule show | sed -n 's/.*not from all fwmark 0x[0-9a-f]\+ lookup \([0-9]\+\).*/\1/p' | head -n1)"
 
         ip -4 route show table all 2>/dev/null \
