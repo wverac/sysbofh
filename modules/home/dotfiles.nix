@@ -11,6 +11,7 @@
     ".config/waybar/config".source = ../../modules/home/config/waybar/config;
     ".config/waybar/style.css".source = ../../modules/home/config/waybar/style.css;
     ".config/waybar/scripts/tailscale.sh".source = ../../modules/home/config/waybar/scripts/tailscale.sh;
+    ".config/waybar/scripts/mullvad.sh".source = ../../modules/home/config/waybar/scripts/mullvad.sh;
     # cloud storage waybar module disabled
     ".config/wlogout/layout".source = ../../modules/home/config/wlogout/layout;
     ".config/wlogout/style.css".source = ../../modules/home/config/wlogout/style.css;

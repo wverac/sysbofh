@@ -202,7 +202,8 @@ window#waybar.hidden {
     animation-direction: alternate;
 }
 
-#custom-vpn.vpn-on {
+#custom-vpn.vpn-on,
+#custom-mullvad.vpn-on {
     margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;
@@ -212,7 +213,8 @@ window#waybar.hidden {
     background: #383c4a;
 }
 
-#custom-vpn.vpn-off {
+#custom-vpn.vpn-off,
+#custom-mullvad.vpn-off {
     margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;

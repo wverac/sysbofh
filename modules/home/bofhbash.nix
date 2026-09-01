@@ -73,7 +73,7 @@ in {
         "$character"
       ];
       custom.vpn_script = {
-        command = "${config.home.homeDirectory}/.config/scripts/ivpn.sh";
+        command = "${config.home.homeDirectory}/.config/scripts/mullvad.sh";
         format = "[$output ]($style)";
         style = "green";
         when = "hostname | grep -qE '^(sysbofh|m4nix|nixlab)'";
@@ -134,6 +134,12 @@ in {
   # Deploy IVPN status script on all platforms (same binary interface)
   home.file.".config/scripts/ivpn.sh" = {
     source = ../../modules/home/config/scripts/ivpn.sh;
+    executable = true;
+  };
+
+  # Deploy Mullvad status script on all platforms (same binary interface)
+  home.file.".config/scripts/mullvad.sh" = {
+    source = ../../modules/home/config/scripts/mullvad.sh;
     executable = true;
   };
 

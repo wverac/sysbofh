@@ -16,13 +16,13 @@
     ../../modules/nixos/libvirtd.nix
     ../../modules/nixos/cli-bundle.nix
     ../../modules/nixos/tailscale.nix
-    ../../modules/nixos/ivpn-tailscale-coexist.nix
+    #../../modules/nixos/ivpn-tailscale-coexist.nix
     ../../modules/nixos/keyd.nix
     ../../modules/nixos/auto-cpufreq.nix
     ../../modules/nixos/usbprinter.nix
     ../../modules/nixos/batterycargethreshold.nix
     ../../modules/nixos/docker.nix
-    #../../modules/nixos/mullvad.nix
+    ../../modules/nixos/mullvad.nix
     #../../modules/nixos/system76-lemp13b.nix
     ../../modules/nixos/nixvim.nix
     ../../modules/nixos/thunderbolt.nix
@@ -31,7 +31,8 @@
     ../../modules/nixos/dock-reboot-fix.nix
     #../../modules/nixos/ollama.nix
     #../../modules/nixos/proton.nix
-    ../../modules/nixos/ivpn.nix
+    #../../modules/nixos/ivpn.nix
+    #../../modules/nixos/vpn-resilience.nix
     ../../modules/nixos/captive-portal.nix
     ../../modules/nixos/large-builds.nix
     ../../modules/nixos/rclone-mount.nix

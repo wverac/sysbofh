@@ -3,7 +3,7 @@
 
         "modules-left": ["hyprland/workspaces"],
         "modules-center": ["clock"],
-        "modules-right": ["custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "idle_inhibitor", "custom/exit", "tray"],
+        "modules-right": ["custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "idle_inhibitor", "custom/exit", "custom/mullvad", "tray"],
 
         "hyprland/workspaces": {
             "disable-scroll": true,
@@ -128,6 +128,14 @@
 
         "custom/vpn": {
             "exec": "~/.config/waybar/scripts/tailscale.sh",
+            "interval": 10,
+            "format": "{}",
+            "tooltip": true,
+            "return-type": "json"
+        },
+
+        "custom/mullvad": {
+            "exec": "~/.config/waybar/scripts/mullvad.sh",
             "interval": 10,
             "format": "{}",
             "tooltip": true,
