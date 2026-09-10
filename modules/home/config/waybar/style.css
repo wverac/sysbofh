@@ -51,6 +51,22 @@ window#waybar.hidden {
     background: #7c818c;
 }
 
+#custom-paste {
+    margin-right: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+    color: #ffffff;
+    background: #383c4a;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 14px;
+}
+
+#custom-paste:hover {
+    color: #487caf;
+}
+
 #language {
     padding-left: 16px;
     padding-right: 8px;

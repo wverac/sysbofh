@@ -57,6 +57,7 @@
     ripgrep
     rclone
     python313Packages.clustershell
+    jq
     # LLM tools
     inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -73,5 +74,7 @@
     figlet
     parted
     dosfstools
+    _1password-cli
+    wtype
   ];
 }

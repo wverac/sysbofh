@@ -3,7 +3,10 @@
 
         "modules-left": ["hyprland/workspaces"],
         "modules-center": ["clock"],
-        "modules-right": ["custom/weather", "pulseaudio", "battery", "custom/mem", "cpu", "idle_inhibitor", "custom/exit", "custom/mullvad", "tray"],
+        "modules-right": ["custom/weather", "pulseaudio", "battery", "custom/paste",
+            // "custom/mem",
+            // "cpu",
+            "idle_inhibitor", "custom/exit", "custom/mullvad", "tray"],
 
         "hyprland/workspaces": {
             "disable-scroll": true,
@@ -27,6 +30,13 @@
                 "12": " ₁₂",
                 "13": "☠ ₁₃"
             }
+        },
+
+        "custom/paste": {
+            "format": "󰆍",
+            "on-click": "sleep 2; wl-paste -n | ydotool type -d 20 -H 20 -f -",
+            "tooltip": true,
+            "tooltip-format": "Type clipboard into the focused window (starts in 2s)"
         },
 
         "clock": {
@@ -75,18 +85,18 @@
             "min-length": 13,
         },
 
-        "custom/mem": {
-            "format": "{} ",
-            "interval": 3,
-            "exec": "free -h | awk '/Mem:/{printf $3}'",
-            "tooltip": false,
-        },
+        // "custom/mem": {
+            // "format": "{} ",
+            // "interval": 3,
+            // "exec": "free -h | awk '/Mem:/{printf $3}'",
+            // "tooltip": false,
+        // },
         
-        "cpu": {
-            "interval": 10,
-            "format": "{}% ",
-            "max-length": 10
-        },
+        // "cpu": {
+            // "interval": 10,
+            // "format": "{}% ",
+            // "max-length": 10
+        // },
 
 
         "battery": {
