@@ -6,7 +6,9 @@
         "modules-right": ["custom/weather", "pulseaudio", "battery", "custom/paste",
             // "custom/mem",
             // "cpu",
-            "idle_inhibitor", "custom/exit", "custom/mullvad", "tray"],
+            "idle_inhibitor", "custom/exit",
+            // "custom/mullvad",
+            "tray"],
 
         "hyprland/workspaces": {
             "disable-scroll": true,
@@ -144,11 +146,11 @@
             "return-type": "json"
         },
 
-        "custom/mullvad": {
-            "exec": "~/.config/waybar/scripts/mullvad.sh",
-            "interval": 10,
-            "format": "{}",
-            "tooltip": true,
-            "return-type": "json"
-        }
+        // "custom/mullvad": {
+            // "exec": "~/.config/waybar/scripts/mullvad.sh",
+            // "interval": 10,
+            // "format": "{}",
+            // "tooltip": true,
+            // "return-type": "json"
+        // }
 }
