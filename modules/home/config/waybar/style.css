@@ -134,7 +134,8 @@ window#waybar.hidden {
     color: #2a5c45;
 }
 
-#custom-mem {
+#cpu,
+#memory {
     margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;
@@ -142,16 +143,18 @@ window#waybar.hidden {
     transition: none;
     color: #ffffff;
     background: #383c4a;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 14px;
 }
 
-#cpu {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+#cpu.warning,
+#memory.warning {
+    color: #ffbe61;
+}
+
+#cpu.critical,
+#memory.critical {
+    color: #fb4934;
 }
 
 #idle_inhibitor {
