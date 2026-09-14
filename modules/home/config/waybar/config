@@ -34,7 +34,7 @@
 
         "custom/paste": {
             "format": "󰆍",
-            "on-click": "sleep 2; wl-paste -n | ydotool type -d 20 -H 20 -f -",
+            "on-click": "notify-send -t 2000 -u low 'Clipboard' 'Typing in 2s' ; sleep 2 ; wl-paste -n | ydotool type -d 20 -H 20 -f -",
             "tooltip": true,
             "tooltip-format": "Type clipboard into the focused window (starts in 2s)"
         },

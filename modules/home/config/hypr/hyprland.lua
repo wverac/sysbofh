@@ -125,7 +125,7 @@ hl.bind(mainMod .. " + SHIFT + M", function()
 	if not w then
 		return
 	end
-	hl.dispatch(hl.dsp.workspace.move({ workspace = w.id, monitor = "DP-7" }))
+	hl.dispatch(hl.dsp.workspace.move({ workspace = w.id, monitor = "desc:Dell Inc. DELL S2725QS F1PC364" }))
 end)
 
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
