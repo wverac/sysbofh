@@ -33,6 +33,7 @@
       hydra = import ./overlays/hydra.nix;
       marktext = import ./overlays/marktext.nix;
       nomachine = import ./overlays/nomachine.nix;
+      sops-go-builder = import ./overlays/sops-go-builder.nix;
       #picosvg = import ./overlays/picosvg.nix;
     };
     hydraJobs = import ./hydra.nix {inherit inputs outputs;};
@@ -50,7 +51,7 @@
       sysbofh = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          {nixpkgs.overlays = [self.overlays.nomachine];}
+          {nixpkgs.overlays = [self.overlays.nomachine self.overlays.sops-go-builder];}
           inputs.sops-nix.nixosModules.sops
           ./hosts/sysbofh/configuration.nix
         ];
