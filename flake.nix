@@ -43,6 +43,7 @@
       nixlab = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
+          {nixpkgs.overlays = [self.overlays.sops-go-builder];}
           inputs.sops-nix.nixosModules.sops
           ./hosts/nixlab/configuration.nix
         ];

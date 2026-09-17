@@ -11,7 +11,7 @@
     ../../modules/nixos/libvirtd.nix
     ../../modules/nixos/cli-bundle.nix
     ../../modules/nixos/tailscale.nix
-    #../../modules/nixos/mullvad.nix
+    ../../modules/nixos/mullvad.nix
     ../../modules/nixos/zen-kernel.nix
     ../../modules/nixos/hydra-service.nix
     ../../modules/nixos/sws.nix
@@ -21,7 +21,7 @@
     ../../modules/nixos/nixvim.nix
     #../../modules/nixos/ollama.nix #FIXME: Some issues with open-webui
     #../../modules/nixos/proton-wg.nix
-    ../../modules/nixos/ivpn.nix
+    #../../modules/nixos/ivpn.nix
     ../../modules/nixos/ivpn-tailscale-coexist.nix
     ../../modules/nixos/fail2ban.nix
     ../../modules/nixos/auditd.nix
