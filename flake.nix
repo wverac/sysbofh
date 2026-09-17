@@ -80,7 +80,10 @@
         ];
       };
       "wvera@minix" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          overlays = [self.overlays.sops-go-builder];
+        };
         extraSpecialArgs = {
           inherit inputs outputs;
           hostname = "minix";

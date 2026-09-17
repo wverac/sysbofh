@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   home.username = "wvera";
@@ -75,6 +76,17 @@
   sops.secrets.ollamaHost = {};
   sops.secrets.ollamaPort = {};
   sops.secrets.ollamaOrigins = {};
+
+  launchd.agents."ollama-serve".domain = "user";
+  launchd.agents."cloudflared-tunnel".domain = "user";
+  launchd.agents.sops-nix.domain = "user";
+
+  home.activation.reloadOllama = lib.mkForce "";
+  home.activation.reloadCloudflared = lib.mkForce "";
+  home.activation.sops-nix = lib.mkForce (lib.hm.dag.entryAfter ["setupLaunchAgents"] ''
+    /bin/launchctl bootout user/$(id -u ${config.home.username})/org.nix-community.home.sops-nix 2>/dev/null || true
+    /bin/launchctl bootstrap user/$(id -u ${config.home.username}) ${config.home.homeDirectory}/Library/LaunchAgents/org.nix-community.home.sops-nix.plist
+  '');
 
   services.ollama-darwin = {
     enable = true;
