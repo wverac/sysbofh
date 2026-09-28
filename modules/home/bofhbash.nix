@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  isDarwin = pkgs.stdenv.isDarwin;
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
 in {
   # sysBOFH
   programs.bat.enable = true;
