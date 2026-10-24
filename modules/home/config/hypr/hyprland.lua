@@ -39,7 +39,7 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal = "ghostty"
-local fileManager = "thunar"
+local fileManager = "nautilus"
 local menu = "rofi -show drun"
 
 -- Some default env vars.
@@ -199,12 +199,12 @@ hl.bind("CTRL + SHIFT + print", hl.dsp.exec_cmd(screenshotarea .. " " .. saveto)
 
 hl.bind("mouse:274", hl.dsp.exec_cmd(";"))
 
-hl.window_rule({
-	match = {
-		class = "thunar",
-	},
-	opacity = "0.8 0.8",
-})
+-- hl.window_rule({
+-- 	match = {
+-- 		class = "thunar",
+-- 	},
+-- 	opacity = "0.8 0.8",
+-- })
 
 hl.window_rule({
 	match = {

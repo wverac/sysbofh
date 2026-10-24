@@ -42,6 +42,10 @@ in {
         "--vfs-read-chunk-size=64M"
         "--dir-cache-time=72h"
         "--poll-interval=15s"
+        # Walk the tree once at mount time: the remote is small (14 dirs) and
+        # dir-cache-time keeps it warm, so this trades ~6s at startup for
+        # instant browsing instead of 0.4s per first visit to each folder.
+        "--vfs-refresh"
       ];
       description = "Extra mount arguments.";
     };

@@ -22,7 +22,11 @@
     "application/x-shellscript" = "code.desktop";
     "text/markdown" = "code.desktop";
     "text/plain" = "code.desktop";
-    "image/png" = "org.gnome.eog.desktop";
-    "image/jpeg" = "org.gnome.eog.desktop";
+    "image/png" = "org.gnome.Loupe.desktop";
+    "image/jpeg" = "org.gnome.Loupe.desktop";
+    "image/heic" = "org.gnome.Loupe.desktop";
+    "image/heif" = "org.gnome.Loupe.desktop";
+    "image/avif" = "org.gnome.Loupe.desktop";
+    "image/webp" = "org.gnome.Loupe.desktop";
   };
 }

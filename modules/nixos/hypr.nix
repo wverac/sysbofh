@@ -36,16 +36,27 @@ in {
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
   # Thunar
-  programs.thunar.enable = true;
+  # programs.thunar.enable = true;
   services.gvfs.enable = true; # Mount, trash, and other functionalities
-  services.tumbler.enable = true; # Thumbnail support for images
+  # services.tumbler.enable = true; # Thumbnail support for images
 
-  programs.thunar.plugins = with pkgs; [
-    thunar-archive-plugin
-    thunar-volman
-  ];
+  # programs.thunar.plugins = with pkgs; [
+  #   thunar-archive-plugin
+  #   thunar-volman
+  # ];
+
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "ghostty";
+  };
+
+  environment.pathsToLink = ["/share/glycin-loaders"];
 
   environment.systemPackages = with pkgs; [
+    nautilus
+    sushi # space-bar file previews
+    glycin-loaders # HEIF, JXL and SVG decoding for nautilus and sushi
+    loupe # image viewer with native HEIC support
     firefox
     alacritty
     waybarLuaWorkspaces

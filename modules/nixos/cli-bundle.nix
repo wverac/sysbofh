@@ -43,7 +43,7 @@
     terraform
     cdrtools
     ansible
-    awscli
+    awscli2
     # libguestfs-with-appliance
     exfatprogs
     sshuttle
@@ -56,7 +56,7 @@
     cloudflared
     ripgrep
     rclone
-    python313Packages.clustershell
+    # python313Packages.clustershell
     jq
     # LLM tools
     inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
