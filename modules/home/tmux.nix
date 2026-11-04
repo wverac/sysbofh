@@ -9,12 +9,16 @@
     sysbofh = {
       plugin = pkgs.tmuxPlugins.tokyo-night-tmux;
       extraConfig = ''
-        set -g @tokyo-night-tmux_theme 'gruvbox'
+        set -g @tokyo-night-tmux_theme 'storm'
         set -g @tokyo-night-tmux_window_id_style 'hsquare'
         set -g @tokyo-night-tmux_pane_id_style 'hsquare'
         set -g @tokyo-night-tmux_zoom_id_style 'dsquare'
         set -g @tokyo-night-tmux_show_netspeed '0'
         set -g @tokyo-night-tmux_show_wbg '1'
+        # Plugin 1.8.1 reads these but never assigns a default, so the widgets
+        # print "invalid option" instead of rendering unless they are declared.
+        set -g @tokyo-night-tmux_transparent '0'
+        set -g @tokyo-night-tmux_show_git '1'
       '';
     };
     nixlab = {
@@ -47,6 +51,19 @@
   githubStatus =
     lib.optionalString (hostname == "sysbofh")
     "#(${githubStatusScript} #{pane_current_path})";
+
+  # The theme builds status-right itself and embeds a bare call to its own git
+  # widget. Swap that call for the wrapped script, which pins PATH and adds a
+  # timeout so a hung gh cannot freeze the status bar.
+  gitWidgetSwap = pkgs.writeShellScript "tmux-git-widget-swap" ''
+    current=$(${pkgs.tmux}/bin/tmux show-options -gv status-right)
+    patched=$(printf '%s' "$current" \
+      | ${pkgs.gnused}/bin/sed 's|#([^)]*wb-git-status\.sh[^)]*)|${githubStatus}|')
+    ${pkgs.tmux}/bin/tmux set -g status-right "$patched"
+  '';
+  gitWidgetSwapCall =
+    lib.optionalString (hostname == "sysbofh")
+    "run-shell ${gitWidgetSwap}";
 in {
   programs.tmux = {
     enable = true;
@@ -92,14 +109,12 @@ in {
       set -g focus-events off
       set -g repeat-time 200
 
-      # Stable status bar: keep the Gruvbox look without asynchronous plugin
-      # widgets, which cause visible redraws when many windows are open.
+      # The theme builds the whole status bar, window list included, and its
+      # own status-left already carries the Nix icon next to the session name.
+      # Only the refresh interval is forced here, to keep the gh calls of the
+      # git widget infrequent. Both lines run after the theme, so they win.
       set -g status-interval 30
-      set -g status-left "#[fg=#83a598,bg=#282828]#[fg=#282828,bg=#83a598,bold] #{?client_prefix,󰠠,󱄅} #S #[fg=#83a598,bg=#282828,nobold]"
-      set -g status-right "${githubStatus}#[fg=#fabd2f,bg=#282828]#[fg=#282828,bg=#fabd2f,bold] 󰃭 %a %d %b  󰥔 %I:%M %p #[fg=#fabd2f,bg=#282828,nobold]"
-      setw -g window-status-format "#[fg=#a89984,bg=#282828]   #I #W#{?window_zoomed_flag, 󰊓,} "
-      setw -g window-status-current-format "#[fg=#b8bb26,bg=#282828]#[fg=#282828,bg=#b8bb26,bold]  #I #W#{?window_zoomed_flag, 󰊓,} #[fg=#b8bb26,bg=#282828,nobold]"
-      set -g window-status-separator " "
+      ${gitWidgetSwapCall}
 
       # Vi-mode for selection
       setw -g mode-keys vi
