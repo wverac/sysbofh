@@ -78,7 +78,7 @@ in {
     eog # Eye of GNOME
     xdg-utils
     google-chrome
-    brave
+    #brave # dropped from nixpkgs, not in nixos-unstable yet
     slack
     xclip
     wl-clipboard

@@ -14,6 +14,7 @@
     # ../../modules/home/lvim.nix
     ../../modules/home/vim.nix
     ../../modules/home/tmux.nix
+    ../../modules/home/herdr.nix
     ../../modules/home/bofhbash.nix
     ../../modules/home/fastfetch.nix
     ../../modules/home/ghostty.nix
