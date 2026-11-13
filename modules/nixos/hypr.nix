@@ -1,32 +1,4 @@
-{pkgs, ...}: let
-  # Waybar 0.15.0 still sends Hyprland's legacy workspace dispatcher when a
-  # workspace button is clicked.  Lua-configured Hyprland rejects that syntax.
-  waybarLuaWorkspaces = pkgs.waybar.overrideAttrs (oldAttrs: {
-    patches =
-      (oldAttrs.patches or [])
-      ++ [
-        (pkgs.writeText "waybar-hyprland-lua-workspace-click.patch" ''
-          diff --git a/src/modules/hyprland/workspace.cpp b/src/modules/hyprland/workspace.cpp
-          --- a/src/modules/hyprland/workspace.cpp
-          +++ b/src/modules/hyprland/workspace.cpp
-          @@ -73,9 +73,12 @@ bool Workspace::handleClicked(GdkEventButton* bt) const {
-                 if (id() > 0) {  // normal
-                   if (m_workspaceManager.moveToMonitor()) {
-          -          m_ipc.getSocket1Reply("dispatch focusworkspaceoncurrentmonitor " + std::to_string(id()));
-          +          m_ipc.getSocket1Reply(
-          +              "/dispatch hl.dsp.focus({ workspace = \"" + std::to_string(id()) +
-          +              "\", on_current_monitor = true })");
-                   } else {
-          -          m_ipc.getSocket1Reply("dispatch workspace " + std::to_string(id()));
-          +          m_ipc.getSocket1Reply("/dispatch hl.dsp.focus({ workspace = \"" +
-          +                                std::to_string(id()) + "\" })");
-                   }
-                 } else if (!isSpecial()) {  // named (this includes persistent)
-                   if (m_workspaceManager.moveToMonitor()) {
-        '')
-      ];
-  });
-in {
+{pkgs, ...}: {
   # Enable Hyprland
   programs.hyprland.enable = true;
   # swaylock - commented for hyprlock migration
@@ -59,7 +31,7 @@ in {
     loupe # image viewer with native HEIC support
     firefox
     alacritty
-    waybarLuaWorkspaces
+    waybar
     wttrbar
     rofi
     dunst
@@ -78,7 +50,7 @@ in {
     eog # Eye of GNOME
     xdg-utils
     google-chrome
-    #brave # dropped from nixpkgs, not in nixos-unstable yet
+    brave
     slack
     xclip
     wl-clipboard

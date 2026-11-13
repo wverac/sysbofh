@@ -33,7 +33,6 @@
       hydra = import ./overlays/hydra.nix;
       marktext = import ./overlays/marktext.nix;
       #nomachine = import ./overlays/nomachine.nix; # nixpkgs ships 10.2.3
-      opencode = import ./overlays/opencode.nix;
       sops-go-builder = import ./overlays/sops-go-builder.nix;
       #picosvg = import ./overlays/picosvg.nix;
     };
@@ -53,7 +52,7 @@
       sysbofh = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          {nixpkgs.overlays = [self.overlays.opencode self.overlays.sops-go-builder];}
+          {nixpkgs.overlays = [self.overlays.sops-go-builder];}
           inputs.sops-nix.nixosModules.sops
           ./hosts/sysbofh/configuration.nix
         ];
