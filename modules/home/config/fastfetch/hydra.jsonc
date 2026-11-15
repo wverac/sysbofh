@@ -45,7 +45,7 @@
         },
         {
             "type": "kernel",
-            "key": "{#90}{$1}│ {#93}{icon} Kernel      {#90}│",
+            "key": "{#90}{$1}│ {#93}󰝨 Kernel      {#90}│",
             "format": "{$2}{$3}{sysname} {#2}[v{release}]"
         },
         {

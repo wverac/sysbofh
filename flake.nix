@@ -39,7 +39,7 @@
     hydraJobs = import ./hydra.nix {inherit inputs outputs;};
 
     nixosConfigurations = {
-      # Home lab - Beelink S12 Pro Mini PC
+      # Beelink S12 Pro Mini PC
       nixlab = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
@@ -48,7 +48,7 @@
           ./hosts/nixlab/configuration.nix
         ];
       };
-      # Personal laptop - System76 Lemur Pro
+      # System76 Lemur Pro
       sysbofh = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
@@ -57,7 +57,7 @@
           ./hosts/sysbofh/configuration.nix
         ];
       };
-      # Personal laptop - ASUS ProArt P14 (NVIDIA N1X, aarch64)
+      # ASUS ProArt P14 (NVIDIA N1X, aarch64)
       hydra = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [

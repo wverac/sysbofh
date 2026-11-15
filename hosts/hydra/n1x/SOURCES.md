@@ -18,3 +18,11 @@ headers of each one.
 
 - URL: https://github.com/alsa-project/alsa-ucm-conf/pull/862
 - Commits: 822569010ce34a6c58539509f482ced7b0c4d428, 7d3555a754936ce073ce5fe3d623294d81dd5c66
+
+## Kernel, patches `1120` to `1127`, `9100` and `9103`
+
+- URL: https://github.com/omacom/omarchy-pkgs/pull/1958
+- Commit: 7b34581ed770399e38630b333d7af31c7c3396cf
+- License: GPL-2.0
+
+Patch `9190` is local to this host.

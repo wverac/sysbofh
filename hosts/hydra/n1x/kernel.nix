@@ -25,6 +25,9 @@ in {
   # Keyboard and touchpad drivers in the initrd.
   boot.initrd.kernelModules = ["i2c_hid_acpi" "hid_asus" "hid_multitouch"];
 
+  # Top row boots as media keys.
+  boot.kernelParams = ["asus_wmi.fnlock_default=0"];
+
   # Applied in name order.
   boot.kernelPatches =
     map (n: {
@@ -51,6 +54,12 @@ in {
           ACPI_FFH = yes;
           ACPI_EC = option yes;
           NVIDIA_FFA_EC = yes;
+          # ASUS platform
+          ACPI_WMI = module;
+          ASUS_WMI = module;
+          ASUS_NB_WMI = module;
+          ASUS_WMI_DEPRECATED_ATTRS = no;
+          ASUS_ARMOURY = no;
           # USB4 and Thunderbolt
           USB4_PLATFORM_NHI = module;
           # Audio

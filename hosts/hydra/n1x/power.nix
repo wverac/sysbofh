@@ -10,10 +10,20 @@
       echo 1 > "$p/auto_select"
     done
   '';
+
+  # Battery charge limit, percent.
+  chargeLimit = 80;
+  setChargeLimit = pkgs.writeShellScript "n1x-charge-limit" ''
+    for b in /sys/class/power_supply/BAT*; do
+      [ -w "$b/charge_control_end_threshold" ] || continue
+      echo ${toString chargeLimit} > "$b/charge_control_end_threshold"
+    done
+  '';
 in {
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="module", KERNEL=="cppc_cpufreq", RUN+="${cppcAutonomous}"
     ACTION=="online", SUBSYSTEM=="cpu", TEST=="cpufreq/auto_select", ATTR{cpufreq/auto_select}="0", ATTR{cpufreq/scaling_max_freq}="$attr{cpufreq/cpuinfo_max_freq}", ATTR{cpufreq/scaling_min_freq}="$attr{cpufreq/cpuinfo_min_freq}", ATTR{cpufreq/auto_select}="1"
+    ACTION=="bind", SUBSYSTEM=="platform", DRIVER=="asus-nb-wmi", RUN+="${setChargeLimit}"
   '';
 
   # Reserve PCI resources for USB4 docks.

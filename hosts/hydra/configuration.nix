@@ -68,12 +68,9 @@
     font = "ter-v32n";
   };
 
-  # Suspend is off for now
-  systemd.targets.sleep.enable = false;
-  systemd.targets.suspend.enable = false;
+  # Suspend only, no hibernation
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
-  services.logind.settings.Login.HandleLidSwitch = lib.mkForce "lock";
 
   # SDDM greeter on Wayland
   services.displayManager.sddm.wayland.enable = true;
