@@ -12,11 +12,19 @@ hl.monitor({
 
 -- New monitor Dell 27" 4k setup
 --## (embedded DisplayPort)
+-- Internal panel scale per host
+local hostname_file = io.open("/etc/hostname", "r")
+local hostname = hostname_file and hostname_file:read("*l") or ""
+if hostname_file then
+	hostname_file:close()
+end
+local internal_scale = hostname == "hydra" and "1.6" or "1"
+
 hl.monitor({
 	output = "eDP-1",
 	mode = "preferred",
 	position = "0x0",
-	scale = "1",
+	scale = internal_scale,
 })
 
 --## External new monitor
@@ -186,6 +194,12 @@ hl.bind("XF86AudioMute", hl.dsp.exec_cmd("volumectl toggle-mute"), { locked = tr
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("volumectl -m toggle-mute"), { locked = true })
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("lightctl up"))
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("lightctl down"))
+hl.bind(
+	"XF86KbdLightOnOff",
+	hl.dsp.exec_cmd(
+		[[sh -c 'd="*::kbd_backlight"; brightnessctl -q -c leds -d "$d" set $(( ($(brightnessctl -c leds -d "$d" get) + 1) % ($(brightnessctl -c leds -d "$d" max) + 1) ))']]
+	)
+)
 
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 

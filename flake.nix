@@ -57,6 +57,15 @@
           ./hosts/sysbofh/configuration.nix
         ];
       };
+      # Personal laptop - ASUS ProArt P14 (NVIDIA N1X, aarch64)
+      hydra = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          {nixpkgs.overlays = [self.overlays.sops-go-builder];}
+          inputs.sops-nix.nixosModules.sops
+          ./hosts/hydra/configuration.nix
+        ];
+      };
     };
     homeConfigurations = {
       "tank@nixlab" = home-manager.lib.homeManagerConfiguration {
@@ -77,6 +86,16 @@
         };
         modules = [
           ./hosts/sysbofh/home.nix
+        ];
+      };
+      "bofh@hydra" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+          hostname = "hydra";
+        };
+        modules = [
+          ./hosts/hydra/home.nix
         ];
       };
       "wvera@minix" = home-manager.lib.homeManagerConfiguration {
