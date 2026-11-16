@@ -76,13 +76,13 @@ in {
         command = "${config.home.homeDirectory}/.config/scripts/mullvad.sh";
         format = "[$output ]($style)";
         style = "green";
-        when = "hostname | grep -qE '^(sysbofh|m4nix|nixlab)'";
+        when = "hostname | grep -qE '^(sysops|m4nix|nixlab)'";
       };
       custom.tailscale_script = {
         command = "${config.home.homeDirectory}/.config/scripts/tailscale.sh";
         format = "[$output ]($style)";
         style = "blue";
-        when = "hostname | grep -qE '^(sysbofh|nixlab)'";
+        when = "hostname | grep -qE '^(sysops|nixlab)'";
       };
       username = {
         format = "[$user]($style)";

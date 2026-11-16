@@ -6,7 +6,7 @@
 }: let
   # Theme configuration per hostname
   themeConfig = {
-    sysbofh = {
+    sysops = {
       plugin = pkgs.tmuxPlugins.tokyo-night-tmux;
       extraConfig = ''
         set -g @tokyo-night-tmux_theme 'storm'
@@ -31,7 +31,7 @@
   };
 
   # Fallback to gruvbox if hostname not found
-  selectedTheme = themeConfig.${hostname} or themeConfig.sysbofh;
+  selectedTheme = themeConfig.${hostname} or themeConfig.sysops;
   githubStatusScript = pkgs.writeShellScript "tmux-github-status" ''
     export PATH=${lib.makeBinPath [
       pkgs.bash
@@ -49,7 +49,7 @@
       ${pkgs.tmuxPlugins.tokyo-night-tmux}/share/tmux-plugins/tokyo-night-tmux/src/wb-git-status.sh "$@"
   '';
   githubStatus =
-    lib.optionalString (hostname == "sysbofh")
+    lib.optionalString (hostname == "sysops")
     "#(${githubStatusScript} #{pane_current_path})";
 
   # The theme builds status-right itself and embeds a bare call to its own git
@@ -62,7 +62,7 @@
     ${pkgs.tmux}/bin/tmux set -g status-right "$patched"
   '';
   gitWidgetSwapCall =
-    lib.optionalString (hostname == "sysbofh")
+    lib.optionalString (hostname == "sysops")
     "run-shell ${gitWidgetSwap}";
 in {
   programs.tmux = {

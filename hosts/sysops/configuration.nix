@@ -6,38 +6,38 @@
   imports = [
     # sudo nixos-generate-config --show-hardware-config > ./hosts/$hostname/hardware-configuration.nix
     ./hardware-configuration.nix
-    ../../modules/nixos/zen-kernel.nix
-    ../../modules/nixos/poweroptions.nix
-    ../../modules/nixos/sddm.nix
-    ../../modules/nixos/fonts.nix
-    ../../modules/nixos/hypr.nix
-    ../../modules/nixos/bluetooth.nix
-    ../../modules/nixos/sound.nix
+    #../../modules/nixos/zen-kernel.nix
+    #../../modules/nixos/poweroptions.nix
+    #../../modules/nixos/sddm.nix
+    #../../modules/nixos/fonts.nix
+    #../../modules/nixos/hypr.nix
+    #../../modules/nixos/bluetooth.nix
+    #../../modules/nixos/sound.nix
     ../../modules/nixos/libvirtd.nix
     ../../modules/nixos/cli-bundle.nix
-    ../../modules/nixos/tailscale.nix
+    #../../modules/nixos/tailscale.nix
     #../../modules/nixos/ivpn-tailscale-coexist.nix
-    ../../modules/nixos/mullvad-tailscale-coexist.nix
-    ../../modules/nixos/keyd.nix
+    #../../modules/nixos/mullvad-tailscale-coexist.nix
+    #../../modules/nixos/keyd.nix
     ../../modules/nixos/auto-cpufreq.nix
-    ../../modules/nixos/usbprinter.nix
+    #../../modules/nixos/usbprinter.nix
     ../../modules/nixos/batterycargethreshold.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/mullvad.nix
     #../../modules/nixos/system76-lemp13b.nix
     ../../modules/nixos/nixvim.nix
     ../../modules/nixos/thunderbolt.nix
-    ../../modules/nixos/vial.nix
-    ../../modules/nixos/ydotool.nix
-    ../../modules/nixos/touchpad-elan0412-pm.nix
+    #../../modules/nixos/vial.nix
+    #../../modules/nixos/ydotool.nix
+    #../../modules/nixos/touchpad-elan0412-pm.nix
     ../../modules/nixos/dock-reboot-fix.nix
     #../../modules/nixos/ollama.nix
     #../../modules/nixos/proton.nix
     #../../modules/nixos/ivpn.nix
     #../../modules/nixos/vpn-resilience.nix
-    ../../modules/nixos/captive-portal.nix
+    #../../modules/nixos/captive-portal.nix
     ../../modules/nixos/large-builds.nix
-    ../../modules/nixos/rclone-mount.nix
+    #../../modules/nixos/rclone-mount.nix
     ../../modules/nixos/fail2ban.nix
     ../../modules/nixos/auditd.nix
   ];
@@ -58,10 +58,17 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.hostName = "sysbofh"; # Define your hostname.
+  networking.hostName = "sysops"; # Define your hostname.
 
   # Enable systemd-resolved
   services.resolved.enable = true;
+
+  # Runs with the lid closed.
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitchDocked = "ignore";
+  };
 
   # Enable cron
   services.cron.enable = true;
@@ -92,9 +99,9 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
-    "bofh" = {
+    "dozer" = {
       isNormalUser = true;
-      description = "BOFH";
+      description = "Nebuchadnezzar's operator";
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -104,6 +111,9 @@
       shell = pkgs.bash;
       ignoreShellProgramCheck = true;
       packages = [];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOD+PjILkShGsDvqChmZzVzDbExoENsKlsPEqHxnr4PN wv@linux.com"
+      ];
     };
   };
   # sudo no passwd
@@ -117,7 +127,7 @@
             options = ["NOPASSWD"];
           }
         ];
-        users = ["bofh"];
+        users = ["dozer"];
       }
     ];
   };
@@ -129,7 +139,7 @@
   };
 
   # Latest Kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
 
@@ -146,24 +156,24 @@
   ];
 
   # SOPS
-  sops.defaultSopsFile = ./secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/bofh/.config/sops/age/keys.txt";
-  sops.secrets.tailscaleKey = {}; # tailscale service
-  sops.secrets.tailscaleHost = {}; # hostname advertised to the tailnet
-  sops.secrets.exitNode = {}; # tailscale exit node
-  sops.secrets.rcloneMountRemote = {};
-  sops.secrets.rcloneMountPoint = {};
-  sops.secrets.rcloneConfig = {};
+  #sops.defaultSopsFile = ./secrets.yaml;
+  #sops.defaultSopsFormat = "yaml";
+  #sops.age.keyFile = "/home/bofh/.config/sops/age/keys.txt";
+  #sops.secrets.tailscaleKey = {}; # tailscale service
+  #sops.secrets.tailscaleHost = {}; # hostname advertised to the tailnet
+  #sops.secrets.exitNode = {}; # tailscale exit node
+  #sops.secrets.rcloneMountRemote = {};
+  #sops.secrets.rcloneMountPoint = {};
+  #sops.secrets.rcloneConfig = {};
 
   # rclone remote mount
-  services.rclone-mount = {
-    enable = true;
-    remoteSecretFile = config.sops.secrets.rcloneMountRemote.path;
-    mountPointSecretFile = config.sops.secrets.rcloneMountPoint.path;
-    configFile = config.sops.secrets.rcloneConfig.path;
-    user = "bofh";
-  };
+  #services.rclone-mount = {
+  #  enable = true;
+  #  remoteSecretFile = config.sops.secrets.rcloneMountRemote.path;
+  #  mountPointSecretFile = config.sops.secrets.rcloneMountPoint.path;
+  #  configFile = config.sops.secrets.rcloneConfig.path;
+  #  user = "bofh";
+  #};
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -191,5 +201,5 @@
   nix.settings.allowed-users = ["root" "@wheel"];
 
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "26.11"; # Did you read the comment?
 }
