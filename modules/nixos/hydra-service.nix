@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   config = {
     nix.settings = {
       allowed-uris = [
@@ -15,15 +19,23 @@
       enable = true;
       hydraURL = "http://localhost:3000";
       notificationSender = "hydra@localhost";
-      buildMachinesFiles = [];
       useSubstitutes = true;
       listenHost = "127.0.0.1";
+      queueRunner.grpc.address = "[::]";
+      queueRunner.settings.tokenPaths = [config.sops.secrets.hydraBuilderToken.path];
+    };
+
+    services.hydra-builder = {
+      enable = true;
+      queueRunnerAddr = "http://nixlab.local:50051";
+      authorizationFile = config.sops.secrets.hydraBuilderToken.path;
     };
 
     services.postgresql.identMap = lib.mkForce ''
       hydra-users postgres postgres
       hydra-users hydra hydra
       hydra-users hydra-www hydra
+      hydra-users hydra-ws hydra
       hydra-users hydra-queue-runner hydra
     '';
 
@@ -36,6 +48,7 @@
     networking.firewall = {
       enable = true;
       allowedTCPPorts = [];
+      interfaces."enp1s0".allowedTCPPorts = [50051];
     };
   };
 }
