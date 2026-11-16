@@ -25,10 +25,10 @@
       queueRunner.settings.tokenPaths = [config.sops.secrets.hydraBuilderToken.path];
     };
 
-    services.hydra-builder = {
-      enable = true;
-      queueRunnerAddr = "http://nixlab.local:50051";
-      authorizationFile = config.sops.secrets.hydraBuilderToken.path;
+    # Kept here so the module stands on its own.
+    sops.secrets.hydraBuilderToken = {
+      group = "hydra"; # created by the upstream module
+      mode = "0440";
     };
 
     services.postgresql.identMap = lib.mkForce ''
@@ -48,7 +48,11 @@
     networking.firewall = {
       enable = true;
       allowedTCPPorts = [];
-      interfaces."enp1s0".allowedTCPPorts = [50051];
+      interfaces."enp1s0" = {
+        allowedTCPPorts = [50051];
+        # Multicast name resolution, so this host is reachable by name.
+        allowedUDPPorts = [5353];
+      };
     };
   };
 }
