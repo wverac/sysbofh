@@ -33,7 +33,7 @@
     ../../modules/nixos/rclone-mount.nix
     ../../modules/nixos/fail2ban.nix
     ../../modules/nixos/auditd.nix
-    ../../modules/nixos/hydra-builder.nix
+    #../../modules/nixos/hydra-builder.nix
   ];
 
   # Bootloader
