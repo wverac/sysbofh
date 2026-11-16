@@ -16,13 +16,15 @@
     ../../modules/nixos/hydra-service.nix
     ../../modules/nixos/sws.nix
     ../../modules/nixos/cloudflare.nix
+    ../../modules/nixos/mullvad-cloudflared-coexist.nix
     ../../modules/nixos/dropbear.nix
     #../../modules/nixos/jenkins.nix
     ../../modules/nixos/nixvim.nix
     #../../modules/nixos/ollama.nix #FIXME: Some issues with open-webui
     #../../modules/nixos/proton-wg.nix
     #../../modules/nixos/ivpn.nix
-    ../../modules/nixos/ivpn-tailscale-coexist.nix
+    #../../modules/nixos/ivpn-tailscale-coexist.nix # nixlab runs Mullvad, not IVPN
+    ../../modules/nixos/mullvad-tailscale-coexist.nix
     ../../modules/nixos/fail2ban.nix
     ../../modules/nixos/auditd.nix
   ];
@@ -145,6 +147,10 @@
   sops.secrets.TunnelName = {}; # Cloudflared
   sops.secrets.CloudflareCred = {}; # Cloudflared
   sops.secrets.tunnelConfig = {}; # Cloudflared
+  sops.secrets.hydraBuilderToken = {
+    group = "hydra";
+    mode = "0440";
+  }; # Hydra queue runner and build agent
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
