@@ -49,12 +49,12 @@
         ];
       };
       # System76 Lemur Pro
-      sysbofh = nixpkgs.lib.nixosSystem {
+      sysops = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           {nixpkgs.overlays = [self.overlays.sops-go-builder];}
           inputs.sops-nix.nixosModules.sops
-          ./hosts/sysbofh/configuration.nix
+          ./hosts/sysops/configuration.nix
         ];
       };
       # ASUS ProArt P14 (NVIDIA N1X, aarch64)
@@ -78,14 +78,14 @@
           ./hosts/nixlab/home.nix
         ];
       };
-      "bofh@sysbofh" = home-manager.lib.homeManagerConfiguration {
+      "dozer@sysops" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;
-          hostname = "sysbofh";
+          hostname = "sysops";
         };
         modules = [
-          ./hosts/sysbofh/home.nix
+          ./hosts/sysops/home.nix
         ];
       };
       "bofh@hydra" = home-manager.lib.homeManagerConfiguration {

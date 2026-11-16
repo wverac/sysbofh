@@ -1,23 +1,23 @@
 {...}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "bofh";
-  home.homeDirectory = "/home/bofh";
+  home.username = "dozer";
+  home.homeDirectory = "/home/dozer";
 
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
   imports = [
-    ../../modules/home/mimedefault.nix
-    ../../modules/home/gtktheme.nix
-    ../../modules/home/dotfiles.nix
-    ../../modules/home/avizo.nix
+    #../../modules/home/mimedefault.nix
+    #../../modules/home/gtktheme.nix
+    #../../modules/home/dotfiles.nix
+    #../../modules/home/avizo.nix
     # ../../modules/home/lvim.nix
     ../../modules/home/vim.nix
     ../../modules/home/tmux.nix
-    ../../modules/home/herdr.nix
+    #../../modules/home/herdr.nix
     ../../modules/home/bofhbash.nix
     ../../modules/home/fastfetch.nix
-    ../../modules/home/ghostty.nix
+    #../../modules/home/ghostty.nix
   ];
 
   # Disable mismatched versions warning

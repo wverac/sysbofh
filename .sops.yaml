@@ -10,7 +10,7 @@ creation_rules:
       - age:
           - *nixlab
 
-  - path_regex: hosts/sysbofh/secrets.yaml$
+  - path_regex: hosts/sysops/secrets.yaml$
     key_groups:
       - age:
           - *sysbofh

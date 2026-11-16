@@ -7,17 +7,18 @@
   lib = pkgs.lib;
   username = config.home.username;
   hostConfigs = {
+    sysops = {configFile = ../../modules/home/config/fastfetch/sysops.jsonc;};
     hydra = {
       configFile = ../../modules/home/config/fastfetch/hydra.jsonc;
       logoFile = ../../modules/home/config/fastfetch/hydra-logo.txt;
     };
   };
   userConfigs = {
-    bofh = {configFile = ../../modules/home/config/fastfetch/sysbofh.jsonc;};
+    bofh = {configFile = ../../modules/home/config/fastfetch/sysops.jsonc;};
     tank = {configFile = ../../modules/home/config/fastfetch/nixlab.jsonc;};
   };
   defaultConfig = {
-    configFile = ../../modules/home/config/fastfetch/sysbofh.jsonc;
+    configFile = ../../modules/home/config/fastfetch/sysops.jsonc;
   };
   userConfig =
     if lib.hasAttr hostname hostConfigs

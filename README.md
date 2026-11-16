@@ -40,7 +40,7 @@
 - [SDDM](https://github.com/sddm/sddm) Login Manager ~~with my custom ([BOFH Theme](https://github.com/wverac/bofh-theme-sddm)) version of [tokyo-night-sddm](https://github.com/rototrash/tokyo-night-sddm)~~
 - [Wayland](https://wayland.freedesktop.org/) with [Hyprland](https://hyprland.org/) and [waybar](https://github.com/alexays/waybar)
 - [SOPS-Nix](https://github.com/Mic92/sops-nix) as secrets management scheme
-- [zen-kernel](https://github.com/zen-kernel/zen-kernel) on `sysbofh`, Linux 7.3 with platform patches on `hydra`
+- [zen-kernel](https://github.com/zen-kernel/zen-kernel) on `nixlab`, Linux 7.3 with platform patches on `hydra`
 - One flake for x86_64 and aarch64 NixOS hosts and one macOS host
 
 ## Structure
@@ -52,7 +52,7 @@ sysbofh/
 │   │   └── n1x
 │   ├── minix
 │   ├── nixlab
-│   └── sysbofh
+│   └── sysops
 ├── modules
 │   ├── home
 │   │   └── config
@@ -76,7 +76,7 @@ sysbofh/
   - [hydra](hosts/hydra) ASUS ProArt P14 (NVIDIA N1X, aarch64)
   - [m4nix](hosts/minix) Apple M4 Pro
   - [nixlab](hosts/nixlab) Beelink S12 Pro Mini PC
-  - [sysbofh](hosts/sysbofh) System76 Lemur Pro
+  - [sysops](hosts/sysops) System76 Lemur Pro
   - ~~overcloud, ThinkPad X1 Carbon 6th~~
   - ~~work, ThinkPad X1 Yoga Gen 6~~
 - [modules](modules) Modularized NixOS configurations
