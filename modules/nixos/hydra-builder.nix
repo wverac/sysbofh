@@ -13,6 +13,10 @@ in {
       mode = "0440";
     };
 
+    # Replies to multicast name lookups arrive on this port, and the
+    # interface varies per machine, so it is not scoped to one.
+    networking.firewall.allowedUDPPorts = [5353];
+
     services.hydra-builder = {
       enable = true;
       queueRunnerAddr = queueRunner;
