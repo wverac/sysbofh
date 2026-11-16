@@ -21,14 +21,20 @@
       notificationSender = "hydra@localhost";
       useSubstitutes = true;
       listenHost = "127.0.0.1";
-      queueRunner.grpc.address = "[::]";
-      queueRunner.settings.tokenPaths = [config.sops.secrets.hydraBuilderToken.path];
+      #queueRunner.grpc.address = "[::]";
+      #queueRunner.settings.tokenPaths = [config.sops.secrets.hydraBuilderToken.path];
     };
 
-    # Kept here so the module stands on its own.
-    sops.secrets.hydraBuilderToken = {
-      group = "hydra"; # created by the upstream module
-      mode = "0440";
+    #Kept here so the module stands on its own.
+    #sops.secrets.hydraBuilderToken = {
+    #  group = "hydra"; # created by the upstream module
+    #  mode = "0440";
+    #};
+
+    # Since 26.11 the queue runner no longer builds, this host runs its own agent.
+    services.hydra-builder = {
+      enable = true;
+      queueRunnerAddr = "http://[::1]:${toString config.services.hydra.queueRunner.grpc.port}";
     };
 
     services.postgresql.identMap = lib.mkForce ''
@@ -48,11 +54,11 @@
     networking.firewall = {
       enable = true;
       allowedTCPPorts = [];
-      interfaces."enp1s0" = {
-        allowedTCPPorts = [50051];
-        # Multicast name resolution, so this host is reachable by name.
-        allowedUDPPorts = [5353];
-      };
+      #interfaces."enp1s0" = {
+      #  allowedTCPPorts = [50051];
+      #  # Multicast name resolution, so this host is reachable by name.
+      #  allowedUDPPorts = [5353];
+      #};
     };
   };
 }
