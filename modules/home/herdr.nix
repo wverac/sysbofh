@@ -27,6 +27,10 @@
         focus_pane_down = ["prefix+down" "prefix+j"];
         focus_pane_up = ["prefix+up" "prefix+k"];
         focus_pane_right = ["prefix+right" "prefix+l"];
+        resize_pane_left = "prefix+shift+left";
+        resize_pane_down = "prefix+shift+down";
+        resize_pane_up = "prefix+shift+up";
+        resize_pane_right = "prefix+shift+right";
       };
     };
   };
