@@ -14,7 +14,7 @@
     ../../modules/nixos/mullvad.nix
     ../../modules/nixos/zen-kernel.nix
     ../../modules/nixos/hydra-service.nix
-    ../../modules/nixos/hydra-builder.nix
+    #../../modules/nixos/hydra-builder.nix
     ../../modules/nixos/sws.nix
     ../../modules/nixos/cloudflare.nix
     ../../modules/nixos/mullvad-cloudflared-coexist.nix
