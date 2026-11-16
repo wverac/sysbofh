@@ -14,11 +14,10 @@
   #  outputs.homeConfigurations;
 
   # Hydra only has x86_64-linux builders
-  #isBuildable = _: cfg: cfg.pkgs.stdenv.hostPlatform.system == "x86_64-linux";
-
-  # Builders for aarch64-linux and aarch64-darwin are being added, so every
+  isBuildable = _: cfg: cfg.pkgs.stdenv.hostPlatform.system == "x86_64-linux";
+  # Not in use: builders for aarch64-linux and aarch64-darwin are being added, so every
   # system is offered to the queue runner.
-  isBuildable = _: _: true;
+  #isBuildable = _: _: true;
 in {
   hosts = lib.mapAttrs getConfigTopLevel (lib.filterAttrs isBuildable outputs.nixosConfigurations);
   homes = lib.mapAttrs getHomeCfg (lib.filterAttrs isBuildable outputs.homeConfigurations);
