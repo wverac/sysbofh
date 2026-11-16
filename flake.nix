@@ -98,18 +98,18 @@
           ./hosts/hydra/home.nix
         ];
       };
-      "wvera@minix" = home-manager.lib.homeManagerConfiguration {
+      "wvera@m4nix" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
           overlays = [self.overlays.sops-go-builder];
         };
         extraSpecialArgs = {
           inherit inputs outputs;
-          hostname = "minix";
+          hostname = "m4nix";
         };
         modules = [
           inputs.sops-nix.homeManagerModules.sops
-          ./hosts/minix/home.nix
+          ./hosts/m4nix/home.nix
         ];
       };
     };

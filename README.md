@@ -50,7 +50,7 @@ sysbofh/
 ├── hosts
 │   ├── hydra
 │   │   └── n1x
-│   ├── minix
+│   ├── m4nix
 │   ├── nixlab
 │   └── sysops
 ├── modules
@@ -74,7 +74,7 @@ sysbofh/
 
 - [hosts](hosts) Custom settings for each machine I use
   - [hydra](hosts/hydra) ASUS ProArt P14 (NVIDIA N1X, aarch64)
-  - [m4nix](hosts/minix) Apple M4 Pro
+  - [m4nix](hosts/m4nix) Apple M4 Pro
   - [nixlab](hosts/nixlab) Beelink S12 Pro Mini PC
   - [sysops](hosts/sysops) System76 Lemur Pro
   - ~~overcloud, ThinkPad X1 Carbon 6th~~

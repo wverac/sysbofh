@@ -2,7 +2,7 @@ keys:
   - &nixlab age1fgugkzpt620qzcufv6fnv7y0awra7q26cxmlcnnhnhm28gt4xyuq2tl8sg
   - &sysbofh age1nps4uakty7t5zmuyxcr3cm94zcnq29js3zeterg5cvgzmvkzeq6qajmqx7
   - &hydra age1p7qzmnczc48new5wwd35skqdqha6ftegphe7leqdzg6n3vnlla3qrvdlls
-  - &minix age1lserw975kwpncu87jm2qy4vcsnw7j0qqt686kkg7plgaftl5z4tq5d3mgh
+  - &m4nix age1lserw975kwpncu87jm2qy4vcsnw7j0qqt686kkg7plgaftl5z4tq5d3mgh
 
 creation_rules:
   - path_regex: hosts/nixlab/secrets.yaml$
@@ -20,7 +20,7 @@ creation_rules:
       - age:
           - *hydra
 
-  - path_regex: hosts/minix/secrets.yaml$
+  - path_regex: hosts/m4nix/secrets.yaml$
     key_groups:
       - age:
-          - *minix
+          - *m4nix
