@@ -1,0 +1,107 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "file",
+        "source": "~/.config/fastfetch/logo.txt",
+        "padding": {
+            "top": 0,
+            "left": 1,
+            "right": 2
+        }
+    },
+    "display": {
+        "separator": "",
+        "constants": [
+            "\u001b[48;2;43;43;69m",
+            "\u001b[48;2;56;59;78m",
+            "\u001b[90m│                                                  │\u001b[50D\u001b[39m",
+        ]
+    },
+    "modules": [
+        {
+            "type": "custom",
+            "key": "{#90}{$1}╭───────────────╮",
+            "format": "{#90}{$2}╭──────────────────────────────────────────────────╮",
+        },
+        {
+            "type": "datetime",
+            "key": "{#90}{$1}│ {#92}{icon} Datetime    {#90}│",
+            "format": "{$2}{$3}{year}-{month-pretty}-{day-in-month}  {hour-pretty}:{minute-pretty}:{second-pretty}  {#2}{weekday}  {#2}[W{week}] {#2}[UTC{offset-from-utc}]"
+        },
+        {
+            "type": "title",
+            "key": "{#90}{$1}│ {#93}󰩟 Host:       {#90}│",
+            "format": "{$2}{$3}{#1}{#36}{host-name}"
+        },
+        {
+            "type": "host",
+            "key": "{#90}{$1}│ {#93}{icon} Machine     {#90}│",
+            "format": "{$2}{$3}{name} {#2}{version}"
+        },
+        {
+            "type": "os",
+            "key": "{#90}{$1}│ {#93}{icon} OS          {#90}│",
+            "format": "{$2}{$3}{pretty-name}   {#2}[{arch}]"
+        },
+        {
+            "type": "kernel",
+            "key": "{#90}{$1}│ {#93}󰝨 Kernel      {#90}│",
+            "format": "{$2}{$3}{sysname} {#2}[v{release}]"
+        },
+        {
+            "type": "uptime",
+            "key": "{#90}{$1}│ {#93}{icon} Uptime      {#90}│",
+            "format": "{$2}{$3}{?days}{days} Days + {?}{hours}:{minutes}:{seconds}"
+        },
+        {
+            "type": "cpu",
+            "key": "{#90}{$1}│ {#91}{icon} CPU         {#90}│",
+            "showPeCoreCount": true,
+            "temp": true,
+            "format": "{$2}{$3}{name}"
+        },
+        {
+            "type": "gpu",
+            "key": "{#90}{$1}│ {#91}{icon} GPU         {#90}│",
+            "detectionMethod": "auto",
+            "driverSpecific": true,
+            "format": "{$2}{$3}{name}"
+        },
+        {
+            "type": "memory",
+            "key": "{#90}{$1}│ {#91}{icon} Memory      {#90}│",
+            "format": "{$2}{$3}{used} / {total} ({percentage}{$2})"
+        },
+        {
+            "type": "command",
+            "key": "{#90}{$1}│ {#91} Disk        {#90}│",
+            "text": "u=$(df -B1 --output=used -t ext4 -t vfat | awk 'NR>1{s+=$1} END{print s}'); t=$(lsblk -bdno SIZE,TRAN | awk '$2==\"nvme\"{s+=$1} END{print s}'); awk -v u=$u -v t=$t 'BEGIN{printf \"%.2f GiB / %.2f TiB (%d%%)\", u/2^30, t/2^40, u*100/t}'",
+            "format": "{$2}{$3}{result}"
+        },
+        {
+            "type": "poweradapter",
+            "key": "{#90}{$1}│ {#91}{icon} Power       {#90}│",
+            "format": "{$2}{$3}{name}"
+        },
+        {
+            "type": "wm",
+            "key": "{#90}{$1}│ {#95}{icon} WM          {#90}│",
+            "format": "{$2}{$3}{pretty-name} {version} {#2}({protocol-name})"
+        },
+        {
+            "type": "terminal",
+            "key": "{#90}{$1}│ {#95}{icon} Terminal    {#90}│",
+            "format": "{$2}{$3}{pretty-name} {version}"
+        },
+        {
+            "type": "shell",
+            "key": "{#90}{$1}│ {#95}{icon} Shell       {#90}│",
+            "format": "{$2}{$3}{pretty-name} {version}"
+        },
+        {
+            "type": "custom",
+            "key": "{#90}{$1}╰───────────────╯",
+            "format": "{#90}{$2}╰──────────────────────────────────────────────────╯",
+        }
+    ]
+}

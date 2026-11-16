@@ -1,0 +1,37 @@
+ACPI, platform/x86: admit the ASUS ProArt P14 (H7407BA)
+
+The P14 firmware (BIOS 303) carries the same LPI hierarchy and the same
+two-dword RSOC response as the P16. Admit it in the coordinated
+suspend-to-idle gate and in the asus-wmi RSOC quirk.
+
+--- a/drivers/acpi/processor_idle.c
++++ b/drivers/acpi/processor_idle.c
+@@ -73,11 +73,14 @@
+ {
+ 	const char *product = dmi_get_system_info(DMI_PRODUCT_NAME);
+ 	static const char model[] = "ProArt P16";
++	static const char model_p14[] = "ProArt P14";
+ 
+ 	/* Require a model boundary so that ProArt P160 is not admitted. */
+ 	return dmi_match(DMI_SYS_VENDOR, "ASUS") && product &&
+-	       !strncmp(product, model, sizeof(model) - 1) &&
+-	       (!product[sizeof(model) - 1] || product[sizeof(model) - 1] == ' ') &&
++	       ((!strncmp(product, model, sizeof(model) - 1) &&
++		 (!product[sizeof(model) - 1] || product[sizeof(model) - 1] == ' ')) ||
++		(!strncmp(product, model_p14, sizeof(model_p14) - 1) &&
++		 (!product[sizeof(model_p14) - 1] || product[sizeof(model_p14) - 1] == ' '))) &&
+ 	       acpi_dev_present("NVDA6210", NULL, -1);
+ }
+ 
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -358,7 +358,8 @@
+ static bool asus_wmi_p16_extended_rsoc(void)
+ {
+ 	return dmi_match(DMI_SYS_VENDOR, "ASUS") &&
+-	       dmi_match(DMI_PRODUCT_NAME, "ProArt P16 H7607BA");
++	       (dmi_match(DMI_PRODUCT_NAME, "ProArt P16 H7607BA") ||
++		dmi_match(DMI_PRODUCT_NAME, "ProArt P14 H7407BA"));
+ }
+ 
+ static int asus_wmi_evaluate_method3(u32 method_id,

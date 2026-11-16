@@ -39,7 +39,7 @@
     hydraJobs = import ./hydra.nix {inherit inputs outputs;};
 
     nixosConfigurations = {
-      # Home lab - Beelink S12 Pro Mini PC
+      # Beelink S12 Pro Mini PC
       nixlab = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
@@ -48,13 +48,22 @@
           ./hosts/nixlab/configuration.nix
         ];
       };
-      # Personal laptop - System76 Lemur Pro
+      # System76 Lemur Pro
       sysbofh = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           {nixpkgs.overlays = [self.overlays.sops-go-builder];}
           inputs.sops-nix.nixosModules.sops
           ./hosts/sysbofh/configuration.nix
+        ];
+      };
+      # ASUS ProArt P14 (NVIDIA N1X, aarch64)
+      hydra = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          {nixpkgs.overlays = [self.overlays.sops-go-builder];}
+          inputs.sops-nix.nixosModules.sops
+          ./hosts/hydra/configuration.nix
         ];
       };
     };
@@ -77,6 +86,16 @@
         };
         modules = [
           ./hosts/sysbofh/home.nix
+        ];
+      };
+      "bofh@hydra" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+          hostname = "hydra";
+        };
+        modules = [
+          ./hosts/hydra/home.nix
         ];
       };
       "wvera@minix" = home-manager.lib.homeManagerConfiguration {

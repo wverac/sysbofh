@@ -1,11 +1,11 @@
-{...}: {
+{config, ...}: {
   # Kernel audit subsystem
   security.audit = {
     enable = true;
     rules = [
       # Privilege escalation: monitor sudo, su, setuid/setgid changes
-      "-a always,exit -F arch=b64 -S execve -F path=/run/wrappers/bin/sudo -k privilege_escalation"
-      "-a always,exit -F arch=b64 -S execve -F path=/run/wrappers/bin/su -k privilege_escalation"
+      "-a always,exit -F arch=b64 -S execve -F path=${config.security.wrappers.sudo.source} -k privilege_escalation"
+      "-a always,exit -F arch=b64 -S execve -F path=${config.security.wrappers.su.source} -k privilege_escalation"
       "-a always,exit -F arch=b64 -S setuid -S setgid -S setreuid -S setregid -k privilege_change"
 
       # Identity & authentication changes
