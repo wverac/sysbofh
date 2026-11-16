@@ -14,6 +14,7 @@
     ../../modules/nixos/mullvad.nix
     ../../modules/nixos/zen-kernel.nix
     ../../modules/nixos/hydra-service.nix
+    ../../modules/nixos/hydra-builder.nix
     ../../modules/nixos/sws.nix
     ../../modules/nixos/cloudflare.nix
     ../../modules/nixos/mullvad-cloudflared-coexist.nix
@@ -147,10 +148,6 @@
   sops.secrets.TunnelName = {}; # Cloudflared
   sops.secrets.CloudflareCred = {}; # Cloudflared
   sops.secrets.tunnelConfig = {}; # Cloudflared
-  sops.secrets.hydraBuilderToken = {
-    group = "hydra";
-    mode = "0440";
-  }; # Hydra queue runner and build agent
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
