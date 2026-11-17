@@ -199,7 +199,7 @@
   sops.secrets.tailscaleHost = {};
   sops.secrets.rcloneMountRemote = {};
   sops.secrets.rcloneMountPoint = {};
-  sops.secrets.rcloneConfig = {};
+  sops.secrets.rcloneConfig.owner = "bofh";
 
   # rclone remote mount
   services.rclone-mount = {
