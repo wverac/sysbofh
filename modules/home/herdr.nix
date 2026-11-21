@@ -1,4 +1,14 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  # herdr has no confirmation for close_pane, only for workspaces (confirm_close).
+  # prefix+x opens this in a popup and closes the pane only on "y".
+  confirmClosePane = pkgs.writeShellScript "herdr-confirm-close-pane" ''
+    pane="''${HERDR_ACTIVE_PANE_ID:-}"
+    [ -n "$pane" ] || { echo "✘ no active pane id"; sleep 2; exit 1; }
+    printf 'Close pane %s? [y/N] ' "$pane"
+    read -r -n1 answer
+    [ "$answer" = y ] || [ "$answer" = Y ] && herdr pane close "$pane"
+  '';
+in {
   programs.herdr = {
     enable = true;
     package = pkgs.herdr;
@@ -31,6 +41,17 @@
         resize_pane_down = "prefix+shift+down";
         resize_pane_up = "prefix+shift+up";
         resize_pane_right = "prefix+shift+right";
+        # Unbind the default immediate close, the popup below takes prefix+x.
+        close_pane = "";
+        command = [
+          {
+            key = "prefix+x";
+            type = "popup";
+            command = "${confirmClosePane}";
+            width = 40;
+            height = 5;
+          }
+        ];
       };
     };
   };

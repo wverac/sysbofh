@@ -73,6 +73,9 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
 
+  # No swap on this host
+  zramSwap.enable = lib.mkForce false;
+
   # SDDM greeter on Wayland
   services.displayManager.sddm.wayland.enable = true;
 
