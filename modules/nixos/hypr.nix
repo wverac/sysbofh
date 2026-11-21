@@ -33,6 +33,7 @@
       nautilus
       sushi # space-bar file previews
       glycin-loaders # HEIF, JXL and SVG decoding for nautilus and sushi
+      glycin-thumbnailer # HEIF/AVIF thumbnails in the nautilus grid
       loupe # image viewer with native HEIC support
       firefox
       alacritty
