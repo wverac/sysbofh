@@ -40,11 +40,16 @@
     #../../modules/nixos/rclone-mount.nix
     ../../modules/nixos/fail2ban.nix
     ../../modules/nixos/auditd.nix
+    ../../modules/nixos/dropbear.nix
   ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Disk encryption
+  boot.initrd.luks.devices.cryptroot.allowDiscards = true;
+  boot.initrd.availableKernelModules = ["r8152"];
 
   # Sysctl hardening
   boot.kernel.sysctl = {
