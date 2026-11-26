@@ -1,7 +1,6 @@
-{lib, ...}: {
+{
   boot.kernelParams = ["ip=dhcp"];
   boot.initrd = {
-    availableKernelModules = ["r8169"];
     network = {
       enable = true;
       ssh = {
@@ -14,6 +13,4 @@
       };
     };
   };
-
-  fileSystems."/".device = lib.mkForce "/dev/mapper/luks-887cbdd0-fade-4cea-83b8-3ac6a8f28113";
 }
