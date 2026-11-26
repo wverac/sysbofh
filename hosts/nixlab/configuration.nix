@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   outputs,
   ...
@@ -33,6 +34,9 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.initrd.availableKernelModules = ["r8169"];
+  fileSystems."/".device = lib.mkForce "/dev/mapper/luks-887cbdd0-fade-4cea-83b8-3ac6a8f28113";
 
   # Enable systemd-resolved
   services.resolved.enable = true;
